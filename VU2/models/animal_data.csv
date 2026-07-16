@@ -1,0 +1,400 @@
+﻿stage_id,stage_name,animal_id,animal_name,species,life_stage,prefab_name,prefab_path,density_per_100m2,spawn_index,x,y,z
+vegetative,Vegetative Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,25,1,4.744,-14.808,0.741
+vegetative,Vegetative Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,25,2,4.779,-14.804,0.742
+vegetative,Vegetative Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,25,3,5.017,-15.295,0.742
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,1,11.206,-12.103,0.587
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,2,11.267,-12.169,0.736
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,3,11.269,-12.157,0.607
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,4,11.256,-12.143,0.717
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,5,11.261,-12.139,0.604
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,6,11.26,-12.216,0.736
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,7,11.217,-12.106,0.643
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,8,11.271,-12.168,0.662
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,9,11.238,-12.118,0.665
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,10,11.27,-12.192,0.684
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,11,11.239,-12.114,0.592
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,12,11.274,-12.191,0.611
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,13,11.216,-12.111,0.717
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,14,11.067,-11.691,0.736
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,15,11.055,-11.693,0.607
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,16,11.046,-11.711,0.717
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,17,11.04,-11.707,0.604
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,18,11.113,-11.682,0.736
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,19,11.025,-11.76,0.643
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,20,11.064,-11.687,0.662
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,21,11.029,-11.736,0.665
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,22,11.087,-11.68,0.684
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,23,11.024,-11.737,0.592
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,24,11.084,-11.677,0.611
+vegetative,Vegetative Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,25,25,11.03,-11.759,0.717
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,1,5.051,-14.948,0.616
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,2,4.997,-15.008,0.74
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,3,4.992,-15.0,0.935
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,4,5.0,-14.988,1.129
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,5,5.025,-14.915,0.935
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,6,4.942,-14.889,0.846
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,7,5.027,-14.915,1.083
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,8,4.962,-14.885,1.025
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,9,4.821,-14.912,0.613
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,10,4.927,-15.0,0.616
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,11,5.007,-14.997,0.74
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,12,5.005,-15.006,0.935
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,13,4.992,-15.008,1.129
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,14,4.922,-15.042,0.935
+vegetative,Vegetative Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,25,15,4.962,-15.119,0.846
+vegetative,Vegetative Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,12,1,5.362,0.053,0.922
+vegetative,Vegetative Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,12,2,5.678,0.131,0.925
+vegetative,Vegetative Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,12,3,5.211,-0.298,0.922
+vegetative,Vegetative Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,12,4,5.424,-0.545,0.925
+vegetative,Vegetative Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,12,1,11.033,-0.12,0.723
+vegetative,Vegetative Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,12,2,10.716,0.321,0.717
+vegetative,Vegetative Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,12,3,11.094,0.431,1.429
+vegetative,Vegetative Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,12,4,10.924,0.099,0.723
+vegetative,Vegetative Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,12,5,11.383,-0.192,0.717
+vegetative,Vegetative Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,12,6,11.073,-0.435,1.429
+vegetative,Vegetative Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,12,1,4.931,-0.298,1.198
+vegetative,Vegetative Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,12,2,4.794,-0.415,1.449
+vegetative,Vegetative Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,12,3,5.161,0.28,1.909
+vegetative,Vegetative Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,12,4,4.703,-0.073,1.198
+vegetative,Vegetative Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,12,5,4.536,-0.004,1.449
+vegetative,Vegetative Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,12,6,5.323,-0.017,1.909
+vegetative,Vegetative Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,6,1,5.329,-5.417,0.837
+vegetative,Vegetative Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,6,2,5.319,-5.508,0.713
+vegetative,Vegetative Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,6,3,5.209,-6.548,0.713
+vegetative,Vegetative Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,6,1,14.362,-6.287,1.406
+vegetative,Vegetative Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,6,2,13.384,-5.75,2.006
+vegetative,Vegetative Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,6,3,13.541,-6.054,1.406
+vegetative,Vegetative Stage,golden_apple_snail_eggs,Golden Apple Snail - Eggs,Golden Apple Snail,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,1,5.164,-9.241,0.829
+vegetative,Vegetative Stage,golden_apple_snail_eggs,Golden Apple Snail - Eggs,Golden Apple Snail,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,2,4.708,-9.166,1.363
+vegetative,Vegetative Stage,golden_apple_snail_eggs,Golden Apple Snail - Eggs,Golden Apple Snail,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,3,4.786,-8.801,0.829
+vegetative,Vegetative Stage,golden_apple_snail_eggs,Golden Apple Snail - Eggs,Golden Apple Snail,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,4,5.248,-8.773,1.363
+vegetative,Vegetative Stage,golden_apple_snail_eggs,Golden Apple Snail - Eggs,Golden Apple Snail,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,5,4.811,-9.222,0.829
+vegetative,Vegetative Stage,golden_apple_snail_eggs,Golden Apple Snail - Eggs,Golden Apple Snail,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,6,4.762,-8.763,1.363
+vegetative,Vegetative Stage,golden_apple_snail_adult,Golden Apple Snail - Adult,Golden Apple Snail,adult,SM_GoldenAppleSnail_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GoldenAppleSnail_01.prefab,18,1,5.139,-9.281,0.408
+vegetative,Vegetative Stage,golden_apple_snail_adult,Golden Apple Snail - Adult,Golden Apple Snail,adult,SM_GoldenAppleSnail_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GoldenAppleSnail_01.prefab,18,2,4.804,-9.007,2.356
+vegetative,Vegetative Stage,golden_apple_snail_adult,Golden Apple Snail - Adult,Golden Apple Snail,adult,SM_GoldenAppleSnail_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GoldenAppleSnail_01.prefab,18,3,4.803,-8.757,0.408
+vegetative,Vegetative Stage,golden_apple_snail_adult,Golden Apple Snail - Adult,Golden Apple Snail,adult,SM_GoldenAppleSnail_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GoldenAppleSnail_01.prefab,18,4,17.899,3.688,-0.495
+vegetative,Vegetative Stage,golden_apple_snail_adult,Golden Apple Snail - Adult,Golden Apple Snail,adult,SM_GoldenAppleSnail_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GoldenAppleSnail_01.prefab,18,5,4.766,-9.208,0.408
+vegetative,Vegetative Stage,golden_apple_snail_adult,Golden Apple Snail - Adult,Golden Apple Snail,adult,SM_GoldenAppleSnail_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GoldenAppleSnail_01.prefab,18,6,4.941,-8.813,2.356
+vegetative,Vegetative Stage,rat,Rat,Rat,unspecified,SM_Rat_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Rat_01.prefab,1,1,43.01,-30.38,0.716
+vegetative,Vegetative Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,2,1,8.188,-21.058,3.689
+vegetative,Vegetative Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,2,2,30.738,-23.171,3.575
+vegetative,Vegetative Stage,ladybug,Ladybug,Ladybug,unspecified,SM_Ladybug_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Ladybug_01.prefab,8,1,10.902,-2.764,1.097
+vegetative,Vegetative Stage,ladybug,Ladybug,Ladybug,unspecified,SM_Ladybug_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Ladybug_01.prefab,8,2,10.945,-3.249,1.097
+vegetative,Vegetative Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,6,1,13.961,-0.248,3.405
+vegetative,Vegetative Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,6,2,25.002,16.996,3.341
+vegetative,Vegetative Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,6,3,26.996,-33.997,3.341
+vegetative,Vegetative Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,6,4,-7.003,-27.004,3.341
+vegetative,Vegetative Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,6,5,46.997,-13.003,3.341
+vegetative,Vegetative Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,6,6,13.861,-0.209,3.405
+vegetative,Vegetative Stage,duck,Duck,Duck,unspecified,SM_Duck_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Duck_01.prefab,2,1,19.82,-30.4,0.59
+vegetative,Vegetative Stage,duck,Duck,Duck,unspecified,SM_Duck_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Duck_01.prefab,2,2,0.39,-18.38,-0.48
+vegetative,Vegetative Stage,fish,Fish,Fish,unspecified,SM_Fish_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Fish_01.prefab,5,1,17.0,8.23,-0.429
+vegetative,Vegetative Stage,fish,Fish,Fish,unspecified,SM_Fish_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Fish_01.prefab,5,2,36.13,-16.55,-0.347
+vegetative,Vegetative Stage,fish,Fish,Fish,unspecified,SM_Fish_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Fish_01.prefab,5,3,4.56,-26.15,-0.347
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,1,8.542,-16.821,-0.479
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,2,9.95,17.06,-0.479
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,3,31.48,-10.93,-0.479
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,4,25.76,-28.39,-0.479
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,5,0.304,-4.079,-0.479
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,6,11.02,5.765,-0.479
+vegetative,Vegetative Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,7,7,18.45,-4.145,-0.479
+vegetative,Vegetative Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,4,1,13.698,-2.629,1.581
+vegetative,Vegetative Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,4,2,13.701,-2.618,1.686
+vegetative,Vegetative Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,4,3,13.654,-2.58,1.741
+vegetative,Vegetative Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,4,4,13.626,-2.615,1.582
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,1,1.698,-9.443,1.583
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,2,25.393,16.635,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,3,47.51,-34.781,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,4,18.739,-34.468,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,5,24.745,-34.472,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,6,-6.479,-4.874,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,7,-7.245,-8.523,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,8,49.362,-10.604,1.612
+vegetative,Vegetative Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,9,9,47.536,3.031,1.612
+vegetative,Vegetative Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,6,1,4.868,-3.4,3.308
+vegetative,Vegetative Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,6,2,5.272,-2.679,3.308
+vegetative,Vegetative Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,6,3,5.154,-2.608,3.308
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,1,7.347,-5.898,0.837
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,2,7.352,-5.851,0.837
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,3,7.302,-5.864,0.916
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,4,7.387,-5.878,0.795
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,5,8.654,-6.096,0.837
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,6,8.649,-6.143,0.837
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,7,8.699,-6.13,0.916
+vegetative,Vegetative Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,12,8,8.614,-6.116,0.795
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,1,22.26,8.04,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,2,34.357,-2.85,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,3,23.642,-20.559,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,4,30.46,-28.75,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,5,17.347,-27.807,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,6,4.727,-17.319,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,7,14.175,0.817,-0.456
+vegetative,Vegetative Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,8,8,6.8,8.79,-0.456
+vegetative,Vegetative Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,5,1,4.831,-11.752,3.499
+vegetative,Vegetative Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,5,2,5.038,-11.702,3.499
+vegetative,Vegetative Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,5,3,5.285,-12.094,3.499
+vegetative,Vegetative Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,4,1,1.081,-15.283,3.089
+vegetative,Vegetative Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,4,2,2.903,-14.67,3.089
+vegetative,Vegetative Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,4,3,1.873,-14.047,3.089
+vegetative,Vegetative Stage,cricket,Cricket,Cricket,unspecified,SM_Cricket_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Cricket_01.prefab,10,1,4.428,-17.363,2.87
+vegetative,Vegetative Stage,cricket,Cricket,Cricket,unspecified,SM_Cricket_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Cricket_01.prefab,10,2,5.678,-18.523,2.87
+vegetative,Vegetative Stage,cricket,Cricket,Cricket,unspecified,SM_Cricket_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Cricket_01.prefab,10,3,5.79,-17.67,2.87
+reproductive,Reproductive Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,60,1,5.044,-15.317,0.741
+reproductive,Reproductive Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,60,2,5.017,-15.295,0.742
+reproductive,Reproductive Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,60,3,4.744,-14.808,0.741
+reproductive,Reproductive Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,60,4,4.779,-14.804,0.742
+reproductive,Reproductive Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,60,5,4.875,-14.705,0.741
+reproductive,Reproductive Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,60,6,4.908,-14.72,0.742
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,1,11.271,-12.168,0.662
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,2,11.238,-12.118,0.665
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,3,11.27,-12.192,0.684
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,4,11.239,-12.114,0.592
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,5,11.274,-12.191,0.611
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,6,11.216,-12.111,0.717
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,7,11.129,-11.809,0.587
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,8,11.201,-11.757,0.736
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,9,11.19,-11.753,0.607
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,10,11.174,-11.764,0.717
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,11,11.17,-11.758,0.604
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,12,11.246,-11.77,0.736
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,13,11.132,-11.798,0.643
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,14,11.2,-11.752,0.662
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,15,11.147,-11.779,0.665
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,16,11.224,-11.756,0.684
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,17,11.143,-11.778,0.592
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,18,11.224,-11.752,0.611
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,19,11.137,-11.8,0.717
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,20,11.067,-11.691,0.736
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,21,11.055,-11.693,0.607
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,22,11.046,-11.711,0.717
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,23,11.04,-11.707,0.604
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,24,11.113,-11.682,0.736
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,25,11.025,-11.76,0.643
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,26,11.064,-11.687,0.662
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,27,11.029,-11.736,0.665
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,28,11.087,-11.68,0.684
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,29,11.024,-11.737,0.592
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,30,11.084,-11.677,0.611
+reproductive,Reproductive Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,60,31,11.03,-11.759,0.717
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,1,4.927,-15.0,0.616
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,2,5.007,-14.997,0.74
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,3,5.005,-15.006,0.935
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,4,4.992,-15.008,1.129
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,5,4.922,-15.042,0.935
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,6,4.962,-15.119,0.846
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,7,4.921,-15.04,1.083
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,8,4.945,-15.108,1.025
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,9,5.064,-15.189,0.613
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,10,4.927,-15.0,0.616
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,11,5.007,-14.997,0.74
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,12,5.005,-15.006,0.935
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,13,4.992,-15.008,1.129
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,14,4.922,-15.042,0.935
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,15,4.962,-15.119,0.846
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,16,4.921,-15.04,1.083
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,17,4.945,-15.108,1.025
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,18,5.064,-15.189,0.613
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,19,5.051,-14.948,0.616
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,20,4.997,-15.008,0.74
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,21,4.992,-15.0,0.935
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,22,5.0,-14.988,1.129
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,23,5.025,-14.915,0.935
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,24,4.942,-14.889,0.846
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,25,5.027,-14.915,1.083
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,26,4.962,-14.885,1.025
+reproductive,Reproductive Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,60,27,4.821,-14.912,0.613
+reproductive,Reproductive Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,1,4.887,-0.348,0.922
+reproductive,Reproductive Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,2,4.816,-0.665,0.925
+reproductive,Reproductive Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,3,5.211,-0.298,0.922
+reproductive,Reproductive Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,4,5.424,-0.545,0.925
+reproductive,Reproductive Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,5,5.678,0.131,0.925
+reproductive,Reproductive Stage,leaf_folder_eggs,Leaf Folder - Eggs,Leaf Folder,eggs,SM_GLF_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Eggs.prefab,18,6,5.362,0.053,0.922
+reproductive,Reproductive Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,18,1,10.976,0.123,0.723
+reproductive,Reproductive Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,18,2,11.259,-0.342,0.717
+reproductive,Reproductive Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,18,3,10.873,-0.422,1.429
+reproductive,Reproductive Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,18,4,10.924,0.099,0.723
+reproductive,Reproductive Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,18,5,11.383,-0.192,0.717
+reproductive,Reproductive Stage,leaf_folder_larva,Leaf Folder - Larva,Leaf Folder,larva,SM_GLF_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GLF_Nymph.prefab,18,6,11.073,-0.435,1.429
+reproductive,Reproductive Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,18,1,4.764,0.194,1.198
+reproductive,Reproductive Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,18,2,4.72,0.369,1.449
+reproductive,Reproductive Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,18,3,5.179,-0.269,1.909
+reproductive,Reproductive Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,18,4,4.703,-0.073,1.198
+reproductive,Reproductive Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,18,5,4.536,-0.004,1.449
+reproductive,Reproductive Stage,leaf_folder_adult,Leaf Folder - Adult,Leaf Folder,adult,SM_GreenLeafFolder_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_GreenLeafFolder_01.prefab,18,6,5.323,-0.017,1.909
+reproductive,Reproductive Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,10,1,5.129,-5.343,0.837
+reproductive,Reproductive Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,10,2,5.209,-6.548,0.713
+reproductive,Reproductive Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,10,3,5.329,-5.417,0.837
+reproductive,Reproductive Stage,yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,Yellow Stem Borer,eggs,SM_YSB_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YSB_Eggs.prefab,10,4,5.319,-5.508,0.713
+reproductive,Reproductive Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,10,1,14.073,-5.544,1.406
+reproductive,Reproductive Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,10,2,14.083,-6.66,2.006
+reproductive,Reproductive Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,10,3,13.541,-6.054,1.406
+reproductive,Reproductive Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,10,4,14.612,-5.741,2.006
+reproductive,Reproductive Stage,yellow_stem_borer_adult,Yellow Stem Borer - Adult,Yellow Stem Borer,adult,SM_YellowStemBorer_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_YellowStemBorer_01.prefab,10,5,13.384,-5.75,2.006
+reproductive,Reproductive Stage,rat,Rat,Rat,unspecified,SM_Rat_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Rat_01.prefab,2,1,6.17,9.863,-0.501
+reproductive,Reproductive Stage,rat,Rat,Rat,unspecified,SM_Rat_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Rat_01.prefab,2,2,20.64,-3.909,-0.145
+reproductive,Reproductive Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,3,1,27.555,13.732,0.722
+reproductive,Reproductive Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,3,2,-2.075,13.728,0.722
+reproductive,Reproductive Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,3,3,21.669,-29.81,0.722
+reproductive,Reproductive Stage,ladybug,Ladybug,Ladybug,unspecified,SM_Ladybug_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Ladybug_01.prefab,15,1,11.201,-2.843,1.097
+reproductive,Reproductive Stage,ladybug,Ladybug,Ladybug,unspecified,SM_Ladybug_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Ladybug_01.prefab,15,2,10.945,-3.249,1.097
+reproductive,Reproductive Stage,ladybug,Ladybug,Ladybug,unspecified,SM_Ladybug_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Ladybug_01.prefab,15,3,10.902,-2.764,1.097
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,1,13.861,-0.209,3.405
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,2,13.774,-0.109,3.405
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,3,9.071,18.334,3.64
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,4,45.983,17.743,3.64
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,5,21.268,-33.882,3.64
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,6,-7.248,-14.845,3.64
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,7,46.734,-7.122,3.64
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,8,13.961,-0.248,3.405
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,9,25.002,16.996,3.341
+reproductive,Reproductive Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,10,10,26.996,-33.997,3.341
+reproductive,Reproductive Stage,duck,Duck,Duck,unspecified,SM_Duck_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Duck_01.prefab,2,1,42.98,14.23,0.69
+reproductive,Reproductive Stage,duck,Duck,Duck,unspecified,SM_Duck_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Duck_01.prefab,2,2,-2.21,0.94,0.69
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,1,24.44,-18.404,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,2,32.782,-3.82,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,3,45.19,-18.44,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,4,40.78,-28.84,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,5,18.17,-25.812,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,6,12.98,-6.93,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,7,11.935,-14.15,-0.479
+reproductive,Reproductive Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,8,8,3.729,-25.587,-0.479
+reproductive,Reproductive Stage,snake,Snake,Snake,unspecified,SM_Snake_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Snake_01.prefab,1,1,2.64,8.173,-0.502
+reproductive,Reproductive Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,5,1,14.248,-3.409,1.581
+reproductive,Reproductive Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,5,2,14.244,-3.419,1.686
+reproductive,Reproductive Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,5,3,14.286,-3.463,1.741
+reproductive,Reproductive Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,5,4,14.318,-3.433,1.582
+reproductive,Reproductive Stage,weaver_ant,Weaver Ant,Weaver Ant,unspecified,SM_WeaverAnt_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_WeaverAnt_01.prefab,5,5,14.338,-3.453,1.687
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,1,2.45,-8.709,1.583
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,2,15.078,17.531,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,3,25.393,16.635,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,4,47.51,-34.781,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,5,18.739,-34.468,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,6,24.745,-34.472,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,7,-6.479,-4.874,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,8,-7.245,-8.523,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,9,49.362,-10.604,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,10,47.536,3.031,1.612
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,11,1.698,-9.443,1.583
+reproductive,Reproductive Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,16,12,1.751,-8.525,1.583
+reproductive,Reproductive Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,12,1,4.868,-3.4,3.308
+reproductive,Reproductive Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,12,2,5.272,-2.679,3.308
+reproductive,Reproductive Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,12,3,5.154,-2.608,3.308
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,1,7.455,-6.374,0.837
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,2,7.427,-6.336,0.837
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,3,7.399,-6.379,0.916
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,4,7.471,-6.332,0.795
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,5,7.347,-5.898,0.837
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,6,7.352,-5.851,0.837
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,7,7.302,-5.864,0.916
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,8,7.387,-5.878,0.795
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,9,8.654,-6.096,0.837
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,10,8.649,-6.143,0.837
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,11,8.699,-6.13,0.916
+reproductive,Reproductive Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,18,12,8.614,-6.116,0.795
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,1,34.357,-2.85,-0.456
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,2,23.642,-20.559,-0.456
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,3,30.46,-28.75,-0.456
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,4,17.347,-27.807,-0.456
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,5,4.727,-17.319,-0.456
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,6,14.175,0.817,-0.456
+reproductive,Reproductive Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,7,6.8,8.79,-0.456
+reproductive,Reproductive Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,4,1,5.038,-11.702,3.499
+reproductive,Reproductive Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,4,2,4.831,-11.752,3.499
+reproductive,Reproductive Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,3,1,1.873,-14.047,3.089
+reproductive,Reproductive Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,3,2,1.081,-15.283,3.089
+reproductive,Reproductive Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,3,3,2.903,-14.67,3.089
+ripening,Ripening Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,40,1,4.875,-14.705,0.741
+ripening,Ripening Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,40,2,4.908,-14.72,0.742
+ripening,Ripening Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,40,3,5.017,-15.295,0.742
+ripening,Ripening Stage,brown_planthopper_eggs,Brown Planthopper - Eggs,Brown Planthopper,eggs,SM_BPH_Eggs,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Eggs.prefab,40,4,4.779,-14.804,0.742
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,1,11.026,-11.771,0.587
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,2,11.067,-11.691,0.736
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,3,11.055,-11.693,0.607
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,4,11.046,-11.711,0.717
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,5,11.04,-11.707,0.604
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,6,11.113,-11.682,0.736
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,7,11.025,-11.76,0.643
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,8,11.064,-11.687,0.662
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,9,11.029,-11.736,0.665
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,10,11.087,-11.68,0.684
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,11,11.024,-11.737,0.592
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,12,11.084,-11.677,0.611
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,13,11.03,-11.759,0.717
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,14,11.206,-12.103,0.587
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,15,11.267,-12.169,0.736
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,16,11.269,-12.157,0.607
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,17,11.256,-12.143,0.717
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,18,11.261,-12.139,0.604
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,19,11.26,-12.216,0.736
+ripening,Ripening Stage,brown_planthopper_nymph,Brown Planthopper - Nymph,Brown Planthopper,nymph,SM_BPH_Nymph,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BPH_Nymph.prefab,40,20,11.217,-12.106,0.643
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,1,5.071,-14.981,0.616
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,2,4.994,-15.005,0.74
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,3,4.993,-14.996,0.935
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,4,5.006,-14.99,1.129
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,5,5.064,-14.939,0.935
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,6,5.006,-14.875,0.846
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,7,5.066,-14.941,1.083
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,8,5.025,-14.882,1.025
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,9,4.89,-14.834,0.613
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,10,4.927,-15.0,0.616
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,11,5.007,-14.997,0.74
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,12,5.005,-15.006,0.935
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,13,4.992,-15.008,1.129
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,14,4.922,-15.042,0.935
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,15,4.962,-15.119,0.846
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,16,4.921,-15.04,1.083
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,17,4.945,-15.108,1.025
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,18,5.064,-15.189,0.613
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,19,5.0,-14.988,1.129
+ripening,Ripening Stage,brown_planthopper_adult,Brown Planthopper - Adult,Brown Planthopper,adult,SM_BrownPlantHopper_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_BrownPlantHopper_01.prefab,40,20,5.025,-14.915,0.935
+ripening,Ripening Stage,rat,Rat,Rat,unspecified,SM_Rat_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Rat_01.prefab,5,1,6.17,9.863,-0.501
+ripening,Ripening Stage,rat,Rat,Rat,unspecified,SM_Rat_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Rat_01.prefab,5,2,20.603,4.621,-0.097
+ripening,Ripening Stage,rat,Rat,Rat,unspecified,SM_Rat_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Rat_01.prefab,5,3,20.64,-3.909,-0.145
+ripening,Ripening Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,8,1,27.555,13.732,0.7
+ripening,Ripening Stage,bird,Bird,Bird,unspecified,SM_Bird_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bird_01.prefab,8,2,2.582,18.733,3.575
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,1,13.774,-0.109,3.405
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,2,9.071,18.334,3.64
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,3,45.983,17.743,3.64
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,4,21.268,-33.882,3.64
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,5,-7.248,-14.845,3.64
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,6,46.734,-7.122,3.64
+ripening,Ripening Stage,dragonfly,Dragonfly,Dragonfly,unspecified,SM_Dragonfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Dragonfly_01.prefab,7,7,26.996,-33.997,3.341
+ripening,Ripening Stage,duck,Duck,Duck,unspecified,SM_Duck_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Duck_01.prefab,1,1,8.19,14.54,0.729
+ripening,Ripening Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,5,1,36.343,-10.321,-0.504
+ripening,Ripening Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,5,2,28.305,-7.163,-0.504
+ripening,Ripening Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,5,3,6.177,-20.178,-0.504
+ripening,Ripening Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,5,4,7.844,-6.508,-0.504
+ripening,Ripening Stage,frog,Frog,Frog,unspecified,SM_Frog_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Frog_01.prefab,5,5,16.774,-8.934,-0.504
+ripening,Ripening Stage,snake,Snake,Snake,unspecified,SM_Snake_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Snake_01.prefab,2,1,2.64,8.173,-0.502
+ripening,Ripening Stage,snake,Snake,Snake,unspecified,SM_Snake_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Snake_01.prefab,2,2,38.074,9.104,-0.502
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,1,1.751,-8.525,1.583
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,2,2.45,-8.709,1.583
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,3,15.078,17.531,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,4,25.393,16.635,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,5,47.51,-34.781,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,6,18.739,-34.468,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,7,24.745,-34.472,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,8,-6.479,-4.874,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,9,-7.245,-8.523,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,10,49.362,-10.604,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,11,47.536,3.031,1.612
+ripening,Ripening Stage,lynx_spider,Lynx Spider,Lynx Spider,unspecified,SM_Spider_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Spider_01.prefab,12,12,1.698,-9.443,1.583
+ripening,Ripening Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,10,1,4.868,-3.4,3.308
+ripening,Ripening Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,10,2,5.272,-2.679,3.308
+ripening,Ripening Stage,wasp,Wasp,Wasp,unspecified,SM_Wasp_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Wasp_01.prefab,10,3,5.154,-2.608,3.308
+ripening,Ripening Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,8,1,8.654,-6.096,0.837
+ripening,Ripening Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,8,2,8.649,-6.143,0.837
+ripening,Ripening Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,8,3,8.699,-6.13,0.916
+ripening,Ripening Stage,trichogramma,Trichogramma,Trichogramma,unspecified,SM_Trichogramma_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Trichogramma_01.prefab,8,4,8.614,-6.116,0.795
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,1,24.116,4.639,-0.5
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,2,22.936,8.174,-0.5
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,3,38.33,-26.72,-0.5
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,4,23.85,-25.82,-0.5
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,5,16.679,-19.75,-0.5
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,6,18.691,3.855,-0.5
+ripening,Ripening Stage,worm,Worm,Worm,unspecified,SM_Worm_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Worm_01.prefab,7,7,9.461,13.462,-0.5
+ripening,Ripening Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,2,1,5.285,-12.094,3.499
+ripening,Ripening Stage,bee,Bee,Bee,unspecified,SM_Bee_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Bee_01.prefab,2,2,4.831,-11.752,3.499
+ripening,Ripening Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,2,1,2.903,-14.67,3.089
+ripening,Ripening Stage,butterfly,Butterfly,Butterfly,unspecified,SM_Butterfly_01,simple.CADT.VU1.New\Assets\Assets\Prefabs\Animals\SM_Butterfly_01.prefab,2,2,1.081,-15.283,3.089
