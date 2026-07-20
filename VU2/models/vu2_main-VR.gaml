@@ -90,7 +90,7 @@ experiment vr_xp parent:"vu2" autorun: false type: unity {
 
 	action create_player(string id) {
 		ask unity_linker {
-			do create_player(id)˛
+			do create_player(id);
 		}
 	}
 
