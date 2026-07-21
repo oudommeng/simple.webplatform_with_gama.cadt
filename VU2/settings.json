@@ -1,0 +1,10 @@
+{
+"type": "json_settings",
+"name": "cropguard_rice_field_3d_corrected_model_VR",
+"splashscreen": "./models/snapshots/snapshot.png",
+"model_file_path": "./models/vu2_test-VR.gaml",
+"experiment_name": "vr_xp",
+"minimal_players": "0",
+"maximal_players": "6",
+"selected_monitoring": "gama_screen"
+}
