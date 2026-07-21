@@ -1,8 +1,8 @@
 {
 "type": "json_settings",
-"name": "CropGuard - VU2",
+"name": "cropguard_rice_field_3d_corrected_model_VR",
 "splashscreen": "./models/snapshots/snapshot.png",
-"model_file_path": "./models/vu2_main-VR.gaml",
+"model_file_path": "./models/vu2_test-VR.gaml",
 "experiment_name": "vr_xp",
 "minimal_players": "0",
 "maximal_players": "6",

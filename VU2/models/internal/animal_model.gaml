@@ -132,6 +132,8 @@ species animal_template skills: [moving] {
 	point movement_destination;
 	int destination_timer <- 0;
 	float movement_speed <- 0.08;
+	float movement_heading <- 0.0;
+	bool has_movement_heading <- false;
 
 	action setup_from_csv_rows(list<int> matching_rows) {
 
@@ -179,7 +181,14 @@ species animal_template skills: [moving] {
 		};
 
 		movement_speed <- get_movement_speed(movement_mode);
-		do choose_new_destination;
+		heading <- movement_heading;
+		has_movement_heading <- true;
+
+		if movement_mode != "stationary" {
+			do choose_new_destination;
+		} else {
+			movement_destination <- location;
+		}
 	}
 
 	string get_movement_mode(string species_value, string life_value) {
@@ -287,6 +296,33 @@ species animal_template skills: [moving] {
 		};
 
 		destination_timer <- rnd(20, 80);
+		do update_heading_between(location, movement_destination);
+	}
+
+	action update_heading_between(point origin, point destination) {
+
+		float delta_x <- destination.x - origin.x;
+		float delta_y <- destination.y - origin.y;
+
+		if abs(delta_x) > 0.001 or abs(delta_y) > 0.001 {
+			float new_heading <- atan2(delta_y, delta_x);
+
+			if new_heading < 0.0 {
+				new_heading <- new_heading + 360.0;
+			}
+
+			float heading_delta <- abs(new_heading - movement_heading);
+
+			if heading_delta > 180.0 {
+				heading_delta <- 360.0 - heading_delta;
+			}
+
+			if !has_movement_heading or heading_delta > 0.1 {
+				movement_heading <- new_heading;
+				heading <- movement_heading;
+				has_movement_heading <- true;
+			}
+		}
 	}
 
 	reflex move_independently {
@@ -302,7 +338,14 @@ species animal_template skills: [moving] {
 				do choose_new_destination;
 			}
 
+			point previous_location <- location;
 			do goto target: movement_destination speed: movement_speed;
+
+			if previous_location distance_to location > 0.001 {
+				do update_heading_between(previous_location, location);
+			} else if has_movement_heading {
+				heading <- movement_heading;
+			}
 		}
 	}
 
