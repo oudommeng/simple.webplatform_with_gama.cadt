@@ -1,0 +1,137 @@
+sequenceDiagram
+    participant User as User/<br/>Interface
+    participant Sim as GAMA<br/>Simulator
+    participant Config as vu2_config<br/>Parameters
+    participant Rice as Rice<br/>Model
+    participant Animals as Animal<br/>Model
+    participant Display as 3D<br/>Display
+
+    User->>Sim: Start Simulation
+    activate Sim
+    
+    Sim->>Config: Load configuration
+    activate Config
+    Config->>Config: Load animal_data.csv
+    Config->>Config: Set field parameters<br/>(13×13 grid, 1521m²)
+    Config-->>Sim: Ready
+    deactivate Config
+
+    Note over Sim: INITIALIZATION PHASE (Cycle 0)
+    
+    Sim->>Rice: create_field_ground()
+    activate Rice
+    Rice->>Display: Draw green field background
+    deactivate Rice
+    
+    Sim->>Rice: create_rice_field()
+    activate Rice
+    Rice->>Rice: Create 169 vegetative plants<br/>in 13×13 grid
+    Rice->>Display: Draw plants (H=1.0m, green)
+    deactivate Rice
+    
+    Sim->>Animals: create_animals_for_stage("vegetative")
+    activate Animals
+    Animals->>Config: Get animal_data rows<br/>matching "vegetative"
+    Config-->>Animals: 20+ animal types
+    loop For each animal type
+        Animals->>Animals: Calculate population<br/>(density × field_area × 0.15)
+        Animals->>Animals: Create agents<br/>(1-150 per type)
+        Animals->>Animals: Set position, movement mode
+    end
+    Animals->>Display: Draw all animal 3D models
+    deactivate Animals
+
+    Note over Sim: SIMULATION CYCLES 1-299 (VEGETATIVE STAGE)
+    
+    loop Cycles 1-299
+        Sim->>Sim: Check progress reflex
+        Sim->>Rice: (No stage change)
+        Sim->>Animals: (Agents move autonomously)
+        Animals->>Animals: Update position toward destination
+        Animals->>Animals: Render 3D models
+        Display->>User: Show live scene
+    end
+
+    Note over Sim: STAGE TRANSITION (Cycle 300)
+    
+    Sim->>Sim: Evaluate stage_index = 300/300 = 1
+    Sim->>Rice: new_stage = "reproductive"
+    
+    Sim->>Rice: clear_rice_field()
+    activate Rice
+    Rice->>Rice: Kill all vegetative plants (169)
+    deactivate Rice
+    
+    Sim->>Rice: create_rice_field()
+    activate Rice
+    Rice->>Rice: Create 169 reproductive plants<br/>in same grid positions
+    Rice->>Rice: (H=1.45m, medium green, + panicles)
+    Rice->>Display: Draw new plants
+    deactivate Rice
+    
+    Sim->>Animals: clear_animals()
+    activate Animals
+    Animals->>Animals: Kill all 20+ species<br/>(entire population cleared)
+    deactivate Animals
+    
+    Sim->>Animals: create_animals_for_stage("reproductive")
+    activate Animals
+    Animals->>Config: Get animal_data rows<br/>matching "reproductive"
+    Config-->>Animals: Different set for reproductive stage
+    loop For each animal type (may differ)
+        Animals->>Animals: Calculate population
+        Animals->>Animals: Create new agents
+        Animals->>Animals: Set position, movement mode<br/>(may be different life stages)
+    end
+    Animals->>Display: Draw all new animal models
+    deactivate Animals
+
+    Note over Sim: SIMULATION CYCLES 301-599 (REPRODUCTIVE STAGE)
+    
+    loop Cycles 301-599
+        Sim->>Sim: Agents move, render
+        Display->>User: Show reproductive stage
+    end
+
+    Note over Sim: STAGE TRANSITION (Cycle 600)
+    
+    Sim->>Rice: new_stage = "ripening"
+    Sim->>Rice: clear_rice_field()
+    Sim->>Rice: create_rice_field()
+    activate Rice
+    Rice->>Display: Draw ripening plants<br/>(H=1.70m, yellow, golden heads)
+    deactivate Rice
+    
+    Sim->>Animals: clear_animals()
+    Sim->>Animals: create_animals_for_stage("ripening")
+    activate Animals
+    Animals->>Display: Draw ripening stage animals
+    deactivate Animals
+
+    Note over Sim: SIMULATION CYCLES 601-899 (RIPENING STAGE)
+    
+    loop Cycles 601-899
+        Sim->>Sim: Agents move, render
+        Display->>User: Show ripening stage
+    end
+
+    Note over Sim: CYCLE 900+ (LOOP REPEATS)
+    
+    Sim->>Rice: Cycle back to vegetative
+    Sim->>Rice: clear_rice_field()
+    Sim->>Rice: create_rice_field()
+    Sim->>Animals: clear_animals()
+    Sim->>Animals: create_animals_for_stage("vegetative")
+    Display->>User: Restart cycle
+    
+    par Continuous Loop
+        loop Until user stops
+            Sim->>Sim: progress_rice_stage reflex
+            Sim->>Animals: Move animals
+            Sim->>Display: Render frame
+        end
+    end
+    
+    User->>Sim: Stop Simulation
+    deactivate Sim
+
