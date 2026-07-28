@@ -1,0 +1,27 @@
+animal_id,animal_name,species_id,species_name,scientific_name,life_stage,ecological_role,gama_species,movement_mode,spawn_surface,speed_min_m_per_cycle,speed_max_m_per_cycle,prefab_name,unity_resource_path,asset_status,enabled
+brown_planthopper_eggs,Brown Planthopper - Eggs,brown_planthopper,Brown Planthopper,Nilaparvata lugens,eggs,pest,brown_planthopper,stationary,leaf,0,0,SM_BPH_Eggs,Prefabs/Visual Prefabs/Prefabs/Animals/SM_BPH_Eggs,configured,true
+brown_planthopper_nymph,Brown Planthopper - Nymph,brown_planthopper,Brown Planthopper,Nilaparvata lugens,nymph,pest,brown_planthopper,plant,plant,0.05,0.14,SM_BPH_Nymph,Prefabs/Visual Prefabs/Prefabs/Animals/SM_BPH_Nymph,configured,true
+brown_planthopper_adult,Brown Planthopper - Adult,brown_planthopper,Brown Planthopper,Nilaparvata lugens,adult,pest,brown_planthopper,plant,plant,0.05,0.14,SM_BrownPlantHopper_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_BrownPlantHopper_01,configured,true
+leaf_folder_eggs,Leaf Folder - Eggs,leaf_folder,Leaf Folder,Cnaphalocrocis medinalis,eggs,pest,leaf_folder,stationary,leaf,0,0,SM_GLF_Eggs,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GLF_Eggs,configured,true
+leaf_folder_larva,Leaf Folder - Larva,leaf_folder,Leaf Folder,Cnaphalocrocis medinalis,larva,pest,leaf_folder,plant,plant,0.05,0.14,SM_GLF_Nymph,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GLF_Nymph,needs_review,true
+leaf_folder_adult,Leaf Folder - Adult,leaf_folder,Leaf Folder,Cnaphalocrocis medinalis,adult,pest,leaf_folder,plant,plant,0.05,0.14,SM_GreenLeafFolder_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GreenLeafFolder_01,configured,true
+yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,yellow_stem_borer,Yellow Stem Borer,Scirpophaga incertulas,eggs,pest,yellow_stem_borer,stationary,leaf,0,0,SM_YSB_Eggs,Prefabs/Visual Prefabs/Prefabs/Animals/SM_YSB_Eggs,configured,true
+yellow_stem_borer_adult,Yellow Stem Borer - Adult,yellow_stem_borer,Yellow Stem Borer,Scirpophaga incertulas,adult,pest,yellow_stem_borer,plant,plant,0.05,0.14,SM_YellowStemBorer_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_YellowStemBorer_01,configured,true
+golden_apple_snail_eggs,Golden Apple Snail - Eggs,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,eggs,pest,golden_apple_snail,stationary,stem,0,0,,,missing,true
+golden_apple_snail_adult,Golden Apple Snail - Adult,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,adult,pest,golden_apple_snail,water,water,0.06,0.18,SM_GoldenAppleSnail_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GoldenAppleSnail_01,configured,true
+rat,Rat,rat,Rat,Rattus spp.,mixed,pest,rat,ground,soil,0.03,0.1,SM_Rat_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Rat_01,configured,true
+bird,Bird,bird,Bird,Aves,mixed,pest,bird,fly,air,0.2,0.5,SM_Bird_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Bird_01,configured,true
+ladybug,Ladybug,ladybug,Ladybug,Coccinellidae,mixed,predator,ladybug,plant,plant,0.05,0.14,SM_Ladybug_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Ladybug_01,configured,true
+dragonfly,Dragonfly,dragonfly,Dragonfly,Anisoptera,mixed,predator,dragonfly,fly,air,0.2,0.5,SM_Dragonfly_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Dragonfly_01,configured,true
+duck,Duck,duck,Duck,Anatidae,mixed,predator,duck,water,water,0.06,0.18,SM_Duck_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Duck_01,configured,true
+fish,Fish,fish,Fish,Actinopterygii,mixed,predator,fish,water,water,0.06,0.18,SM_Fish_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Fish_01,configured,true
+frog,Frog,frog,Frog,Anura,mixed,predator,frog,ground,soil,0.03,0.1,SM_Frog_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Frog_01,configured,true
+weaver_ant,Weaver Ant,weaver_ant,Weaver Ant,Oecophylla smaragdina,mixed,predator,weaver_ant,plant,plant,0.05,0.14,SM_WeaverAnt_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_WeaverAnt_01,configured,true
+lynx_spider,Lynx Spider,lynx_spider,Lynx Spider,Oxyopes spp.,mixed,predator,lynx_spider,plant,plant,0.05,0.14,SM_Spider_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Spider_01,configured,true
+wasp,Wasp,wasp,Wasp,Hymenoptera,mixed,predator,wasp,fly,air,0.2,0.5,SM_Wasp_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Wasp_01,configured,true
+trichogramma,Trichogramma,trichogramma,Trichogramma,Trichogramma spp.,mixed,parasitoid,trichogramma,fly,air,0.2,0.5,SM_Trichogramma_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Trichogramma_01,configured,true
+worm,Worm,worm,Worm,not_specified,mixed,decomposer,worm,ground,soil,0.03,0.1,SM_Worm_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Worm_01,configured,true
+bee,Bee,bee,Bee,Anthophila,mixed,pollinator,bee,fly,air,0.2,0.5,SM_Bee_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Bee_01,configured,true
+butterfly,Butterfly,butterfly,Butterfly,Lepidoptera,mixed,pollinator,butterfly,fly,air,0.2,0.5,SM_Butterfly_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Butterfly_01,configured,true
+cricket,Cricket,cricket,Cricket,Gryllidae,mixed,neutral,cricket,plant,plant,0.05,0.14,SM_Cricket_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Cricket_01,configured,true
+snake,Snake,snake,Snake,Serpentes,mixed,predator,snake,ground,soil,0.03,0.1,SM_Snake_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Snake_01,configured,true

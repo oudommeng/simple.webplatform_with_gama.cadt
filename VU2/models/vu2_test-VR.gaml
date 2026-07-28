@@ -52,7 +52,7 @@ species unity_linker parent: abstract_unity_linker {
 		do add_geometries_to_send(wasp,up_default);
 		do add_geometries_to_send(frog,up_frog);
 		do add_geometries_to_send(ripening_rice_plant,up_ripening_rice_plant);
-		do add_geometries_to_send(reproductive_rice_plant,up_vegetative_rice_plant);
+		do add_geometries_to_send(reproductive_rice_plant,up_reproductive_rice_plant);
 		do add_geometries_to_send(vegetative_rice_plant,up_vegetative_rice_plant);
 	}
 }
@@ -79,7 +79,7 @@ species unity_player parent: abstract_unity_player{
 experiment vr_xp parent:"vu2" autorun: false type: unity {
 	float minimum_cycle_duration <- 0.1;
 	string unity_linker_species <- string(unity_linker);
-	list<string> displays_to_hide <- ["VU2","Rice stage","Rice plants","Animal agents","Pest agents","CSV rows","Field area m2","VU2","Rice stage","Rice plants","Animal agents","Pest agents","CSV rows","Field area m2"];
+	list<string> displays_to_hide <- ["VU2","Rice stage","Rice plants","Animal agents","Pest agents","Animal data records","Field area m2"];
 	float t_ref;
 
 	action create_player(string id) {

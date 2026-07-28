@@ -120,8 +120,10 @@ experiment vu2 type: gui {
 				+ length(cricket where (each.is_pest))
 				+ length(fish where (each.is_pest));
 
-		monitor "CSV rows"
-			value: animal_data.rows;
+		monitor "Animal data records"
+			value: animal_types_data.rows - 1
+				+ stage_populations_data.rows - 1
+				+ spawn_points_data.rows;
 
 		monitor "Field area m2"
 			value: field_area_m2;

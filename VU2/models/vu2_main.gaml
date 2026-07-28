@@ -16,6 +16,7 @@ import "internal/vu2_gui_experiment.gaml"
 global {
 
 	init {
+		do validate_animal_csv_data;
 		do create_field_ground;
 		do create_rice_field;
 		do create_animals_for_stage(rice_stage);

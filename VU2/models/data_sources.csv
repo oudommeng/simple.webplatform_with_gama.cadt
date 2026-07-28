@@ -1,0 +1,2 @@
+source_id,title,source_url,sampling_date,location_id,rice_variety,sampling_method,notes
+legacy_animal_data_v1,Legacy VU2 animal data,,not_recorded,not_recorded,not_recorded,not_recorded,Migrated from animal_data.csv. Density uncertainty and field provenance still require confirmation.

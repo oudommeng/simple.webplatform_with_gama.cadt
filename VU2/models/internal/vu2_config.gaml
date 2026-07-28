@@ -40,11 +40,21 @@ global {
 	// CSV DATA
 	// ------------------------------------------------------------------------
 
-	string animal_csv_path <- "animal_data.csv";
+	// The legacy animal_data.csv is retained only as migration evidence.
+	// Runtime data is separated by responsibility to avoid repeated metadata.
+	string animal_types_csv_path <- "animal_types.csv";
+	string stage_populations_csv_path <- "stage_populations.csv";
+	string spawn_points_csv_path <- "spawn_points.csv";
 
-	// GAMA loads CSV content as a matrix.
-	file animal_csv_file <- csv_file(animal_csv_path, ",");
-	matrix animal_data <- matrix(animal_csv_file);
+	file animal_types_csv_file <- csv_file(animal_types_csv_path, ",");
+	file stage_populations_csv_file <- csv_file(stage_populations_csv_path, ",");
+	file spawn_points_csv_file <- csv_file(spawn_points_csv_path, ",");
+
+	matrix animal_types_data <- matrix(animal_types_csv_file);
+	matrix stage_populations_data <- matrix(stage_populations_csv_file);
+	matrix spawn_points_data <- matrix(spawn_points_csv_file);
+
+	bool animal_csv_is_valid <- true;
 
 	// Percentage of the density value to instantiate in GAMA.
 	// 0.15 means 15% of the calculated population.
@@ -61,15 +71,4 @@ global {
 	bool show_all_animal_labels <- false;
 	bool show_rice_labels <- false;
 
-	list<string> pest_species <- [
-		"Brown Planthopper",
-		"Golden Apple Snail",
-		"Leaf Folder",
-		"Leaffolder",
-		"Yellow Stem Borer",
-		"Rat",
-		"Rats",
-		"Bird",
-		"Birds"
-	];
 }
