@@ -295,6 +295,9 @@ reproductive,butterfly,1,-11.8608,-3.9392,3.089,gama_field_local_m,air,1,1.873,-
 reproductive,butterfly,2,-12.3505,-4.7476,3.089,gama_field_local_m,air,1,1.081,-15.283,3.089
 reproductive,butterfly,3,-11.2240,-4.3467,3.089,gama_field_local_m,air,1,2.903,-14.67,3.089
 reproductive,snake,1,-11.3866,10.5934,0.000,gama_field_local_m,soil,1,2.64,8.173,-0.502
+reproductive,yellow_stem_borer_larva,1,-6.9289,1.3565,0.800,gama_field_local_m,plant,1,9.850,-5.950,0.800
+reproductive,yellow_stem_borer_larva,2,-6.4961,1.1603,0.900,gama_field_local_m,plant,1,10.550,-6.250,0.900
+reproductive,yellow_stem_borer_larva,3,-6.0942,1.5200,0.850,gama_field_local_m,plant,1,11.200,-5.700,0.850
 ripening,brown_planthopper_eggs,1,-10.0048,-4.3696,0.741,gama_field_local_m,leaf,1,4.875,-14.705,0.741
 ripening,brown_planthopper_eggs,2,-9.9844,-4.3794,0.742,gama_field_local_m,leaf,1,4.908,-14.72,0.742
 ripening,brown_planthopper_eggs,3,-9.9170,-4.7555,0.742,gama_field_local_m,leaf,1,5.017,-15.295,0.742

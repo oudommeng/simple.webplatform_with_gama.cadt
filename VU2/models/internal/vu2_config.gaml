@@ -63,6 +63,9 @@ global {
 	// Safety limit for visualization performance.
 	int maximum_agents_per_animal_type <- 150;
 
+	// Child models can replace seeded eggs with a runtime reproduction system.
+	bool create_seeded_bph_eggs <- true;
+
 	// ------------------------------------------------------------------------
 	// IDENTIFICATION DISPLAY
 	// ------------------------------------------------------------------------
@@ -70,5 +73,6 @@ global {
 	bool show_pest_labels <- false;
 	bool show_all_animal_labels <- false;
 	bool show_rice_labels <- false;
+	bool animal_markers_are_triangles <- false;
 
 }

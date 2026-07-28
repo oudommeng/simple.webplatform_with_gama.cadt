@@ -1,2 +1,3 @@
 source_id,title,source_url,sampling_date,location_id,rice_variety,sampling_method,notes
 legacy_animal_data_v1,Legacy VU2 animal data,,not_recorded,not_recorded,not_recorded,not_recorded,Migrated from animal_data.csv. Density uncertainty and field provenance still require confirmation.
+vu3_reproductive_spec_v1,VU3 reproductive interaction specification,,not_recorded,simulation_only,not_recorded,user_supplied_interaction_requirement,Adds Yellow Stem Borer larva presence required by VU3. Placement points are simulation-only and need field validation; no larva-specific Unity prefab is currently configured.

@@ -1,0 +1,10 @@
+{
+	"type": "json_settings",
+	"name": "cropguard_vu3_vr",
+	"splashscreen": "./models/snapshots/snapshot.png",
+	"model_file_path": "./models/vu3_main-VR.gaml",
+	"experiment_name": "vu3_vr",
+	"minimal_players": "0",
+	"maximal_players": "6",
+	"selected_monitoring": "gama_screen"
+}

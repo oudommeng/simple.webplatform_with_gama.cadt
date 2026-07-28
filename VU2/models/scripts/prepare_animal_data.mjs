@@ -6,6 +6,69 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const modelsDirectory = path.resolve(scriptDirectory, "..");
 const legacyRows = await readCsv(path.join(modelsDirectory, "animal_data.csv"));
 
+// The user-supplied VU3 reproductive interaction specification explicitly
+// requires Yellow Stem Borer larvae. The legacy CSV has eggs and adults only,
+// so these simulation-only placement records preserve that added requirement
+// without rewriting the legacy source file.
+const reproductiveInteractionRows = [
+	{
+		stage_id: "reproductive",
+		stage_name: "Reproductive Stage",
+		animal_id: "yellow_stem_borer_larva",
+		animal_name: "Yellow Stem Borer - Larva",
+		species: "Yellow Stem Borer",
+		life_stage: "larva",
+		prefab_name: "",
+		prefab_path: "",
+		density_per_100m2: "10",
+		spawn_index: "1",
+		x: "9.850",
+		y: "-5.950",
+		z: "0.800",
+		source_id: "vu3_reproductive_spec_v1",
+		confidence: "unknown",
+		fraction_basis: "interaction_spec_spawn_share",
+	},
+	{
+		stage_id: "reproductive",
+		stage_name: "Reproductive Stage",
+		animal_id: "yellow_stem_borer_larva",
+		animal_name: "Yellow Stem Borer - Larva",
+		species: "Yellow Stem Borer",
+		life_stage: "larva",
+		prefab_name: "",
+		prefab_path: "",
+		density_per_100m2: "10",
+		spawn_index: "2",
+		x: "10.550",
+		y: "-6.250",
+		z: "0.900",
+		source_id: "vu3_reproductive_spec_v1",
+		confidence: "unknown",
+		fraction_basis: "interaction_spec_spawn_share",
+	},
+	{
+		stage_id: "reproductive",
+		stage_name: "Reproductive Stage",
+		animal_id: "yellow_stem_borer_larva",
+		animal_name: "Yellow Stem Borer - Larva",
+		species: "Yellow Stem Borer",
+		life_stage: "larva",
+		prefab_name: "",
+		prefab_path: "",
+		density_per_100m2: "10",
+		spawn_index: "3",
+		x: "11.200",
+		y: "-5.700",
+		z: "0.850",
+		source_id: "vu3_reproductive_spec_v1",
+		confidence: "unknown",
+		fraction_basis: "interaction_spec_spawn_share",
+	},
+];
+
+const sourceRows = [...legacyRows, ...reproductiveInteractionRows];
+
 const stages = ["vegetative", "reproductive", "ripening"];
 const stageNames = {
 	vegetative: "Vegetative Stage",
@@ -103,7 +166,7 @@ function speeds(mode) {
 }
 
 const firstByAnimalId = new Map();
-for (const row of legacyRows) {
+for (const row of sourceRows) {
 	if (!firstByAnimalId.has(row.animal_id)) firstByAnimalId.set(row.animal_id, row);
 }
 
@@ -111,9 +174,10 @@ const animalTypes = [...firstByAnimalId.values()].map((row) => {
 	const speciesId = slug(row.species);
 	const mode = movementMode(row.species, row.life_stage);
 	const [speedMin, speedMax] = speeds(mode);
-	const missingSnailEggAsset = row.animal_id === "golden_apple_snail_eggs";
+	const missingAsset =
+		row.animal_id === "golden_apple_snail_eggs" || !row.prefab_name;
 	const larvaAssetNeedsReview = row.animal_id === "leaf_folder_larva";
-	const prefabName = missingSnailEggAsset ? "" : row.prefab_name;
+	const prefabName = missingAsset ? "" : row.prefab_name;
 
 	return {
 		animal_id: row.animal_id,
@@ -132,7 +196,7 @@ const animalTypes = [...firstByAnimalId.values()].map((row) => {
 		unity_resource_path: prefabName
 			? `Prefabs/Visual Prefabs/Prefabs/Animals/${prefabName}`
 			: "",
-		asset_status: missingSnailEggAsset
+		asset_status: missingAsset
 			? "missing"
 			: larvaAssetNeedsReview
 				? "needs_review"
@@ -141,18 +205,18 @@ const animalTypes = [...firstByAnimalId.values()].map((row) => {
 	};
 });
 
-const uniqueLegacyRows = [];
+const uniqueSourceRows = [];
 const coordinateKeys = new Set();
-for (const row of legacyRows) {
+for (const row of sourceRows) {
 	const key = [row.stage_id, row.animal_id, row.x, row.y, row.z].join("|");
 	if (!coordinateKeys.has(key)) {
 		coordinateKeys.add(key);
-		uniqueLegacyRows.push(row);
+		uniqueSourceRows.push(row);
 	}
 }
 
-const xValues = uniqueLegacyRows.map((row) => Number(row.x));
-const yValues = uniqueLegacyRows.map((row) => Number(row.y));
+const xValues = uniqueSourceRows.map((row) => Number(row.x));
+const yValues = uniqueSourceRows.map((row) => Number(row.y));
 const sourceBounds = {
 	xMin: Math.min(...xValues),
 	xMax: Math.max(...xValues),
@@ -166,7 +230,7 @@ function normalize(value, minimum, maximum) {
 }
 
 const groupedSpawnRows = new Map();
-for (const row of uniqueLegacyRows) {
+for (const row of uniqueSourceRows) {
 	const key = `${row.stage_id}|${row.animal_id}`;
 	const group = groupedSpawnRows.get(key) ?? [];
 	group.push(row);
@@ -197,7 +261,7 @@ for (const stage of stages) {
 }
 
 const originalGroup = new Map();
-for (const row of legacyRows) {
+for (const row of sourceRows) {
 	originalGroup.set(`${row.stage_id}|${row.animal_id}`, row);
 }
 
@@ -245,11 +309,13 @@ for (const stage of stages) {
 			density_sd: "",
 			sample_size: sampleSize,
 			presence_status: "observed",
-			source_id: "legacy_animal_data_v1",
-			confidence: "low",
-			fraction_basis: speciesHasMultipleLifeStages
-				? "unique_spawn_point_share"
-				: "single_life_stage",
+			source_id: original.source_id ?? "legacy_animal_data_v1",
+			confidence: original.confidence ?? "low",
+			fraction_basis:
+				original.fraction_basis ??
+				(speciesHasMultipleLifeStages
+					? "unique_spawn_point_share"
+					: "single_life_stage"),
 		});
 	}
 }
@@ -339,10 +405,21 @@ await writeCsv(
 			notes:
 				"Migrated from animal_data.csv. Density uncertainty and field provenance still require confirmation.",
 		},
+		{
+			source_id: "vu3_reproductive_spec_v1",
+			title: "VU3 reproductive interaction specification",
+			source_url: "",
+			sampling_date: "not_recorded",
+			location_id: "simulation_only",
+			rice_variety: "not_recorded",
+			sampling_method: "user_supplied_interaction_requirement",
+			notes:
+				"Adds Yellow Stem Borer larva presence required by VU3. Placement points are simulation-only and need field validation; no larva-specific Unity prefab is currently configured.",
+		},
 	],
 );
 
 console.log(`Generated ${animalTypes.length} animal types.`);
 console.log(`Generated ${stagePopulations.length} stage population records.`);
 console.log(`Generated ${spawnPoints.length} unique normalized spawn points.`);
-console.log(`Removed ${legacyRows.length - uniqueLegacyRows.length} duplicate coordinate records.`);
+console.log(`Removed ${sourceRows.length - uniqueSourceRows.length} duplicate coordinate records.`);

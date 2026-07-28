@@ -25,3 +25,4 @@ bee,Bee,bee,Bee,Anthophila,mixed,pollinator,bee,fly,air,0.2,0.5,SM_Bee_01,Prefab
 butterfly,Butterfly,butterfly,Butterfly,Lepidoptera,mixed,pollinator,butterfly,fly,air,0.2,0.5,SM_Butterfly_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Butterfly_01,configured,true
 cricket,Cricket,cricket,Cricket,Gryllidae,mixed,neutral,cricket,plant,plant,0.05,0.14,SM_Cricket_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Cricket_01,configured,true
 snake,Snake,snake,Snake,Serpentes,mixed,predator,snake,ground,soil,0.03,0.1,SM_Snake_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Snake_01,configured,true
+yellow_stem_borer_larva,Yellow Stem Borer - Larva,yellow_stem_borer,Yellow Stem Borer,Scirpophaga incertulas,larva,pest,yellow_stem_borer,plant,plant,0.05,0.14,,,missing,true

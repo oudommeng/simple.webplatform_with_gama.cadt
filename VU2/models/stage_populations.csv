@@ -25,14 +25,15 @@ vegetative,Vegetative Stage,bee,bee,5,1.000000,,3,observed,legacy_animal_data_v1
 vegetative,Vegetative Stage,butterfly,butterfly,4,1.000000,,3,observed,legacy_animal_data_v1,low,single_life_stage
 vegetative,Vegetative Stage,cricket,cricket,10,1.000000,,3,observed,legacy_animal_data_v1,low,single_life_stage
 vegetative,Vegetative Stage,snake,snake,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
+vegetative,Vegetative Stage,yellow_stem_borer_larva,yellow_stem_borer,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 reproductive,Reproductive Stage,brown_planthopper_eggs,brown_planthopper,60,0.109091,,6,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,brown_planthopper_nymph,brown_planthopper,60,0.563636,,31,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,brown_planthopper_adult,brown_planthopper,60,0.327273,,18,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,leaf_folder_eggs,leaf_folder,18,0.333333,,6,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,leaf_folder_larva,leaf_folder,18,0.333333,,6,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,leaf_folder_adult,leaf_folder,18,0.333333,,6,observed,legacy_animal_data_v1,low,unique_spawn_point_share
-reproductive,Reproductive Stage,yellow_stem_borer_eggs,yellow_stem_borer,10,0.444444,,4,observed,legacy_animal_data_v1,low,unique_spawn_point_share
-reproductive,Reproductive Stage,yellow_stem_borer_adult,yellow_stem_borer,10,0.555556,,5,observed,legacy_animal_data_v1,low,unique_spawn_point_share
+reproductive,Reproductive Stage,yellow_stem_borer_eggs,yellow_stem_borer,10,0.333333,,4,observed,legacy_animal_data_v1,low,unique_spawn_point_share
+reproductive,Reproductive Stage,yellow_stem_borer_adult,yellow_stem_borer,10,0.416667,,5,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,golden_apple_snail_eggs,golden_apple_snail,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 reproductive,Reproductive Stage,golden_apple_snail_adult,golden_apple_snail,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 reproductive,Reproductive Stage,rat,rat,2,1.000000,,2,observed,legacy_animal_data_v1,low,single_life_stage
@@ -51,6 +52,7 @@ reproductive,Reproductive Stage,bee,bee,4,1.000000,,2,observed,legacy_animal_dat
 reproductive,Reproductive Stage,butterfly,butterfly,3,1.000000,,3,observed,legacy_animal_data_v1,low,single_life_stage
 reproductive,Reproductive Stage,cricket,cricket,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 reproductive,Reproductive Stage,snake,snake,1,1.000000,,1,observed,legacy_animal_data_v1,low,single_life_stage
+reproductive,Reproductive Stage,yellow_stem_borer_larva,yellow_stem_borer,10,0.250000,,3,observed,vu3_reproductive_spec_v1,unknown,interaction_spec_spawn_share
 ripening,Ripening Stage,brown_planthopper_eggs,brown_planthopper,40,0.090909,,4,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 ripening,Ripening Stage,brown_planthopper_nymph,brown_planthopper,40,0.454545,,20,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 ripening,Ripening Stage,brown_planthopper_adult,brown_planthopper,40,0.454545,,20,observed,legacy_animal_data_v1,low,unique_spawn_point_share
@@ -77,3 +79,4 @@ ripening,Ripening Stage,bee,bee,2,1.000000,,2,observed,legacy_animal_data_v1,low
 ripening,Ripening Stage,butterfly,butterfly,2,1.000000,,2,observed,legacy_animal_data_v1,low,single_life_stage
 ripening,Ripening Stage,cricket,cricket,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 ripening,Ripening Stage,snake,snake,2,1.000000,,2,observed,legacy_animal_data_v1,low,single_life_stage
+ripening,Ripening Stage,yellow_stem_borer_larva,yellow_stem_borer,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available

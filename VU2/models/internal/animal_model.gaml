@@ -43,7 +43,13 @@ global {
 				string row_animal_id <- string(stage_populations_data[2, population_row]);
 				int type_row <- find_animal_type_row(row_animal_id);
 
-				if type_row > 0 and string(animal_types_data[15, type_row]) = "true" {
+				bool should_create_type <- row_animal_id != "brown_planthopper_eggs"
+					or create_seeded_bph_eggs;
+
+				if should_create_type
+					and type_row > 0
+					and string(animal_types_data[15, type_row]) = "true" {
+
 					list<int> matching_spawn_rows <- [];
 
 					// GAMA recognizes the fully populated spawn header, so row 0 is data.
@@ -248,6 +254,13 @@ species animal_template skills: [moving] {
 	float movement_heading <- 0.0;
 	bool has_movement_heading <- false;
 
+	// Generic lifecycle state. VU2 does not act on these fields; child models
+	// such as VU3 can add reproduction without replacing the base animal model.
+	bool spawned_by_reproduction <- false;
+	int eggs_laid <- 0;
+	int next_egg_laying_cycle <- 0;
+	agent host_rice;
+
 	action setup_from_csv_rows(
 		int type_row,
 		int population_row,
@@ -428,9 +441,16 @@ species animal_template skills: [moving] {
 			body_size <- 0.12;
 		}
 
-		draw sphere(body_size)
-			at: location
-			color: animal_color;
+		if animal_markers_are_triangles {
+			draw triangle(body_size * 2.0)
+				at: location
+				rotate: heading + 90.0
+				color: animal_color;
+		} else {
+			draw sphere(body_size)
+				at: location
+				color: animal_color;
+		}
 
 		bool display_label <- show_all_animal_labels
 			or (show_pest_labels and is_pest);
