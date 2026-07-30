@@ -5,6 +5,8 @@ import "vu2_test.gaml"
 species unity_linker parent: abstract_unity_linker {
 	string player_species <- string(unity_player);
 	int max_num_players  <- 6;
+	unity_property up_player;
+	unity_property up_wasp;
 	unity_property up_default;
 	unity_property up_ripening_rice_plant;
 	unity_property up_vegetative_rice_plant;
@@ -19,11 +21,21 @@ species unity_linker parent: abstract_unity_linker {
 
 	init {
 		do define_properties;
-		player_unity_properties <- [nil,nil,nil,nil,nil,nil];
+		player_unity_properties <- [up_player,up_player,up_player,up_player,up_player,up_player];
 	}
 	action define_properties {
-		unity_aspect default_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_Wasp_01",10.0,0.0,1.0,0.0,precision);
-		up_default <- geometry_properties("default","animal",default_aspect,#no_interaction,false);
+		unity_aspect player_aspect <- geometry_aspect(1.0,#red,precision);
+		up_player <- geometry_properties("player","player",player_aspect,#no_interaction,false);
+		unity_properties << up_player;
+
+
+		unity_aspect wasp_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_Wasp_01",10.0,0.0,1.0,-90.0,precision);
+		up_wasp <- geometry_properties("wasp","animal",wasp_aspect,#no_interaction,false);
+		unity_properties << up_wasp;
+
+
+		unity_aspect default_aspect <- geometry_aspect(1.0,#gray,precision);
+		up_default <- geometry_properties("default","",default_aspect,#no_interaction,false);
 		unity_properties << up_default;
 
 
@@ -42,17 +54,17 @@ species unity_linker parent: abstract_unity_linker {
 		unity_properties << up_reproductive_rice_plant;
 
 
-		unity_aspect frog_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_Frog_01",1.0,0.0,1.0,0.0,precision);
+		unity_aspect frog_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_Frog_01",1.0,0.0,1.0,-90.0,precision);
 		up_frog <- geometry_properties("frog","animal",frog_aspect,#no_interaction,false);
 		unity_properties << up_frog;
 
 
 	}
 	reflex send_geometries {
-		do add_geometries_to_send(wasp,up_default);
+		do add_geometries_to_send(wasp,up_wasp);
 		do add_geometries_to_send(frog,up_frog);
 		do add_geometries_to_send(ripening_rice_plant,up_ripening_rice_plant);
-		do add_geometries_to_send(reproductive_rice_plant,up_vegetative_rice_plant);
+		do add_geometries_to_send(reproductive_rice_plant,up_reproductive_rice_plant);
 		do add_geometries_to_send(vegetative_rice_plant,up_vegetative_rice_plant);
 	}
 }

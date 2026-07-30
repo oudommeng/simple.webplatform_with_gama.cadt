@@ -32,6 +32,7 @@ global {
 
 	string rice_stage <- "vegetative";
 	bool auto_progress_rice_stage <- true;
+	//cycle per stage
 	int stage_duration_cycles <- 300;
 
 	string previous_rice_stage <- "vegetative";

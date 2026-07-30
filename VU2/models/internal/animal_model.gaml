@@ -25,6 +25,52 @@ global {
 		ask fish { do die; }
 	}
 
+	action clear_animals_for_stage_change {
+		ask brown_planthopper { do die; }
+		ask leaf_folder { do die; }
+		ask lynx_spider { do die; }
+		ask trichogramma { do die; }
+		ask dragonfly { do die; }
+		ask worm { do die; }
+		ask yellow_stem_borer { do die; }
+		ask golden_apple_snail { do die; }
+		ask wasp { do die; }
+		ask weaver_ant { do die; }
+		ask butterfly { do die; }
+		ask bee { do die; }
+		ask bird { do die; }
+		ask rat { do die; }
+		ask ladybug { do die; }
+		ask duck { do die; }
+		ask snake { do die; }
+		ask cricket { do die; }
+		ask fish { do die; }
+	}
+
+	action sync_frogs_for_stage(list<int> matching_rows, int desired_count) {
+
+		int current_count <- length(frog);
+
+		if current_count < desired_count {
+			create frog number: desired_count - current_count {
+				do setup_from_csv_rows(matching_rows);
+			}
+		} else if current_count > desired_count {
+			ask ((current_count - desired_count) among frog) {
+				do die;
+			}
+		}
+
+		if !empty(matching_rows) {
+			int stage_row <- first(matching_rows);
+			ask frog {
+				stage_id <- string(animal_data[0, stage_row]);
+				stage_name <- string(animal_data[1, stage_row]);
+				density_per_100m2 <- float(animal_data[8, stage_row]);
+			}
+		}
+	}
+
 	action create_animals_for_stage(string requested_stage) {
 
 		list<string> processed_animal_ids <- [];
@@ -79,7 +125,7 @@ global {
 					} else if species_value = "Worm" {
 						create worm number: desired_count { do setup_from_csv_rows(matching_rows); }
 					} else if species_value = "Frog" {
-						create frog number: desired_count { do setup_from_csv_rows(matching_rows); }
+						do sync_frogs_for_stage(matching_rows, desired_count);
 					} else if species_value = "Yellow Stem Borer" {
 						create yellow_stem_borer number: desired_count { do setup_from_csv_rows(matching_rows); }
 					} else if species_value = "Golden Apple Snail" {
@@ -129,9 +175,12 @@ species animal_template skills: [moving] {
 	bool is_pest <- false;
 	string movement_mode <- "ground";
 
-	point movement_destination;
-	int destination_timer <- 0;
-	float movement_speed <- 0.08;
+	point movement_direction <- {1.0, 0.0, 0.0};
+	point target_movement_direction <- {1.0, 0.0, 0.0};
+	bool movement_direction_initialized <- false;
+	int direction_timer <- 0;
+	float movement_speed <- 0.0001;
+	float steering_rate <- 0.12;
 	float movement_heading <- 0.0;
 	bool has_movement_heading <- false;
 
@@ -185,9 +234,7 @@ species animal_template skills: [moving] {
 		has_movement_heading <- true;
 
 		if movement_mode != "stationary" {
-			do choose_new_destination;
-		} else {
-			movement_destination <- location;
+			do choose_new_direction;
 		}
 	}
 
@@ -272,40 +319,78 @@ species animal_template skills: [moving] {
 		return rnd(0.03, 0.10);
 	}
 
-	action choose_new_destination {
+	action choose_new_direction {
 
-		float destination_z <- location.z;
+		float direction_x <- rnd(-1.0, 1.0);
+		float direction_y <- rnd(-1.0, 1.0);
+		float direction_z <- 0.0;
 
 		if movement_mode = "fly" {
-			destination_z <- rnd(1.2, 4.0);
-
+			direction_z <- rnd(-0.35, 0.35);
 		} else if movement_mode = "plant" {
-			destination_z <- rnd(0.25, 1.70);
-
-		} else if movement_mode = "water" {
-			destination_z <- 0.10;
-
-		} else if movement_mode = "ground" {
-			destination_z <- rnd(0.08, 0.30);
+			direction_z <- rnd(-0.15, 0.15);
 		}
 
-		movement_destination <- {
-			rnd(field_min_x, field_max_x),
-			rnd(field_min_y, field_max_y),
-			destination_z
+		if abs(direction_x) + abs(direction_y) < 0.01 {
+			direction_x <- 1.0;
+		}
+
+		float direction_length <- sqrt(
+			direction_x * direction_x
+			+ direction_y * direction_y
+			+ direction_z * direction_z
+		);
+
+		target_movement_direction <- {
+			direction_x / direction_length,
+			direction_y / direction_length,
+			direction_z / direction_length
 		};
 
-		destination_timer <- rnd(20, 80);
-		do update_heading_between(location, movement_destination);
+		if !movement_direction_initialized {
+			movement_direction <- target_movement_direction;
+			movement_direction_initialized <- true;
+		}
+
+		direction_timer <- rnd(60, 140);
+		do update_heading_from_direction;
 	}
 
-	action update_heading_between(point origin, point destination) {
+	action steer_towards_target_direction {
 
-		float delta_x <- destination.x - origin.x;
-		float delta_y <- destination.y - origin.y;
+		float direction_x <- movement_direction.x * (1.0 - steering_rate)
+			+ target_movement_direction.x * steering_rate;
+		float direction_y <- movement_direction.y * (1.0 - steering_rate)
+			+ target_movement_direction.y * steering_rate;
+		float direction_z <- movement_direction.z * (1.0 - steering_rate)
+			+ target_movement_direction.z * steering_rate;
 
-		if abs(delta_x) > 0.001 or abs(delta_y) > 0.001 {
-			float new_heading <- atan2(delta_y, delta_x);
+		float direction_length <- sqrt(
+			direction_x * direction_x
+			+ direction_y * direction_y
+			+ direction_z * direction_z
+		);
+
+		if direction_length > 0.001 {
+			movement_direction <- {
+				direction_x / direction_length,
+				direction_y / direction_length,
+				direction_z / direction_length
+			};
+		}
+
+		do update_heading_from_direction;
+	}
+
+	action update_heading_from_direction {
+
+		if abs(movement_direction.x) > 0.001
+			or abs(movement_direction.y) > 0.001 {
+
+			float new_heading <- atan2(
+				movement_direction.y,
+				movement_direction.x
+			);
 
 			if new_heading < 0.0 {
 				new_heading <- new_heading + 360.0;
@@ -330,22 +415,70 @@ species animal_template skills: [moving] {
 		// Egg records and other stationary records do not move.
 		if movement_mode != "stationary" {
 
-			destination_timer <- destination_timer - 1;
+			direction_timer <- direction_timer - 1;
 
-			if destination_timer <= 0
-				or self distance_to movement_destination < 0.30 {
-
-				do choose_new_destination;
+			if direction_timer <= 0 {
+				do choose_new_direction;
 			}
 
-			point previous_location <- location;
-			do goto target: movement_destination speed: movement_speed;
+			do steer_towards_target_direction;
 
-			if previous_location distance_to location > 0.001 {
-				do update_heading_between(previous_location, location);
-			} else if has_movement_heading {
-				heading <- movement_heading;
+			float direction_x <- movement_direction.x;
+			float direction_y <- movement_direction.y;
+			float direction_z <- movement_direction.z;
+			float target_direction_x <- target_movement_direction.x;
+			float target_direction_y <- target_movement_direction.y;
+			float target_direction_z <- target_movement_direction.z;
+
+			float next_x <- location.x + direction_x * movement_speed;
+			float next_y <- location.y + direction_y * movement_speed;
+			float next_z <- location.z + direction_z * movement_speed;
+
+			if next_x < field_min_x or next_x > field_max_x {
+				direction_x <- -direction_x;
+				target_direction_x <- -target_direction_x;
+				next_x <- location.x + direction_x * movement_speed;
 			}
+
+			if next_y < field_min_y or next_y > field_max_y {
+				direction_y <- -direction_y;
+				target_direction_y <- -target_direction_y;
+				next_y <- location.y + direction_y * movement_speed;
+			}
+
+			if movement_mode = "fly" {
+				if next_z < 1.2 or next_z > 4.0 {
+					direction_z <- -direction_z;
+					target_direction_z <- -target_direction_z;
+					next_z <- location.z + direction_z * movement_speed;
+				}
+				next_z <- max([1.2, min([4.0, next_z])]);
+			} else if movement_mode = "plant" {
+				if next_z < 0.25 or next_z > 1.70 {
+					direction_z <- -direction_z;
+					target_direction_z <- -target_direction_z;
+					next_z <- location.z + direction_z * movement_speed;
+				}
+				next_z <- max([0.25, min([1.70, next_z])]);
+			} else if movement_mode = "water" {
+				next_z <- 0.10;
+			} else {
+				next_z <- location.z;
+			}
+
+			movement_direction <- {direction_x, direction_y, direction_z};
+			target_movement_direction <- {
+				target_direction_x,
+				target_direction_y,
+				target_direction_z
+			};
+			location <- {
+				max([field_min_x, min([field_max_x, next_x])]),
+				max([field_min_y, min([field_max_y, next_y])]),
+				next_z
+			};
+
+			do update_heading_from_direction;
 		}
 	}
 

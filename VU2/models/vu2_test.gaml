@@ -39,7 +39,7 @@ global {
 			do create_rice_field;
 
 			// The CSV contains different animal records for each rice stage.
-			do clear_animals;
+			do clear_animals_for_stage_change;
 			do create_animals_for_stage(rice_stage);
 		}
 	}
