@@ -19,7 +19,7 @@ experiment vu2 type: gui {
 		var: stage_duration_cycles
 		min: 30
 		max: 2000
-		step: 10;
+		step: 1000;
 
 	parameter "Animal density scale"
 		var: density_scale
