@@ -55,8 +55,6 @@ global {
 	int vu3_bph_max_eggs_per_adult <- 3;
 	int vu3_bph_max_eggs_per_rice <- 5;
 
-	bool vu3_show_impact_labels <- true;
-
 	int vu3_pests_controlled_this_cycle <- 0;
 	int vu3_total_pests_controlled <- 0;
 	int vu3_bph_eggs_laid_this_cycle <- 0;

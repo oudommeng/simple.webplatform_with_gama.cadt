@@ -1,5 +1,11 @@
 model vu3_interactions
 
+// VU3 inherits the complete VU2 rice field, animal populations, movement,
+// stage progression, and base GUI. Only ecological interactions live in VU3.
+import "../../../VU2/models/vu2_main.gaml"
+import "vu3_config.gaml"
+
+
 global {
 
 	// One ordered reflex guarantees the required behavior:
@@ -543,12 +549,5 @@ species rice_impact {
 		draw sphere(marker_size)
 			at: {location.x, location.y, 0.65}
 			color: rgb(marker_color, primary_impact ? 0.72 : 0.42);
-
-		if vu3_show_impact_labels {
-			draw string(impact_types)
-				at: {location.x, location.y, 1.55}
-				color: marker_color
-				size: 0.28;
-		}
 	}
 }

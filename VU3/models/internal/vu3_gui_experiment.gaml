@@ -1,5 +1,9 @@
 model vu3_gui_experiment
 
+import "../../../VU2/models/vu2_main.gaml"
+import "vu3_config.gaml"
+import "vu3_interactions.gaml"
+
 experiment vu3 parent: "vu2" type: gui {
 
 	parameter "Enable VU3 interactions"
@@ -67,9 +71,6 @@ experiment vu3 parent: "vu2" type: gui {
 		min: 1
 		max: 50
 		step: 1;
-
-	parameter "Show impact labels"
-		var: vu3_show_impact_labels;
 
 	output {
 

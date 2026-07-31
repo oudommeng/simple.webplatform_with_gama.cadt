@@ -1,5 +1,11 @@
 model vu2_gui_experiment
 
+// The GUI references VU2 configuration variables and every displayed species.
+import "vu2_config.gaml"
+import "field_model.gaml"
+import "rice_model.gaml"
+import "animal_model.gaml"
+
 experiment vu2 type: gui {
 
 	parameter "Rice growth stage"
@@ -66,6 +72,73 @@ experiment vu2 type: gui {
 			species snake aspect: default;
 			species cricket aspect: default;
 			species fish aspect: default;
+
+			graphics "Species legend" {
+				draw "SPECIES LEGEND"
+					at: {72.0, 102.0, 1.0}
+					color: #black
+					size: 1.0;
+
+				draw triangle(0.90) at: {73.0, 97.5, 1.0} color: rgb(130, 75, 30);
+				draw "Brown planthopper" at: {75.0, 97.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 93.5, 1.0} rotate: 45.0 color: rgb(225, 70, 45);
+				draw "Leaf folder" at: {75.0, 93.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 89.5, 1.0} color: rgb(125, 55, 175);
+				draw "Lynx spider" at: {75.0, 89.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(1.20, 0.45) at: {73.0, 85.5, 1.0} color: rgb(245, 185, 25);
+				draw "Trichogramma" at: {75.0, 85.5, 1.0} color: #black size: 0.65;
+
+				draw triangle(0.90) at: {73.0, 81.5, 1.0} color: rgb(20, 175, 210);
+				draw "Dragonfly" at: {75.0, 81.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(1.20, 0.45) at: {73.0, 77.5, 1.0} color: rgb(225, 105, 155);
+				draw "Worm" at: {75.0, 77.5, 1.0} color: #black size: 0.65;
+
+				draw sphere(0.45) at: {73.0, 73.5, 1.0} color: rgb(45, 165, 70);
+				draw "Frog" at: {75.0, 73.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 69.5, 1.0} color: rgb(235, 145, 20);
+				draw "Yellow stem borer" at: {75.0, 69.5, 1.0} color: #black size: 0.65;
+
+				draw sphere(0.45) at: {73.0, 65.5, 1.0} color: rgb(155, 135, 35);
+				draw "Golden apple snail" at: {75.0, 65.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 61.5, 1.0} rotate: 45.0 color: rgb(65, 55, 35);
+				draw "Wasp" at: {75.0, 61.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(1.20, 0.45) at: {73.0, 57.5, 1.0} color: rgb(155, 35, 50);
+				draw "Weaver ant" at: {75.0, 57.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 53.5, 1.0} rotate: 45.0 color: rgb(210, 60, 190);
+				draw "Butterfly" at: {75.0, 53.5, 1.0} color: #black size: 0.65;
+
+				draw sphere(0.45) at: {73.0, 49.5, 1.0} color: rgb(250, 115, 20);
+				draw "Bee" at: {75.0, 49.5, 1.0} color: #black size: 0.65;
+
+				draw triangle(0.90) at: {73.0, 45.5, 1.0} color: rgb(65, 120, 220);
+				draw "Bird" at: {75.0, 45.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 41.5, 1.0} color: rgb(115, 115, 125);
+				draw "Rat" at: {75.0, 41.5, 1.0} color: #black size: 0.65;
+
+				draw sphere(0.45) at: {73.0, 37.5, 1.0} color: rgb(220, 30, 35);
+				draw "Ladybug" at: {75.0, 37.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 33.5, 1.0} rotate: 45.0 color: rgb(30, 145, 135);
+				draw "Duck" at: {75.0, 33.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(1.20, 0.45) at: {73.0, 29.5, 1.0} color: rgb(35, 105, 45);
+				draw "Snake" at: {75.0, 29.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 25.5, 1.0} color: rgb(105, 70, 45);
+				draw "Cricket" at: {75.0, 25.5, 1.0} color: #black size: 0.65;
+
+				draw rectangle(0.90, 0.90) at: {73.0, 21.5, 1.0} rotate: 45.0 color: rgb(30, 85, 190);
+				draw "Fish" at: {75.0, 21.5, 1.0} color: #black size: 0.65;
+			}
 		}
 
 		monitor "Rice stage"

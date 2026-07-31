@@ -1,5 +1,8 @@
 model field_model
 
+// Field geometry uses the dimensions and center declared by VU2.
+import "vu2_config.gaml"
+
 global {
 
 	action create_field_ground {

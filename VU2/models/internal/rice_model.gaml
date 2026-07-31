@@ -1,5 +1,8 @@
 model rice_model
 
+// Rice creation and rendering use the shared field and stage configuration.
+import "vu2_config.gaml"
+
 global {
 
 	action clear_rice_field {

@@ -1,5 +1,8 @@
 model animal_model
 
+// Animal creation, movement, and rendering use the shared CSV and field data.
+import "vu2_config.gaml"
+
 global {
 
 	action clear_animals {
@@ -419,18 +422,61 @@ species animal_template skills: [moving] {
 		}
 	}
 
+	rgb marker_color_for_species {
+		if species_id = "brown_planthopper" { return rgb(130, 75, 30); }
+		if species_id = "leaf_folder" { return rgb(225, 70, 45); }
+		if species_id = "lynx_spider" { return rgb(125, 55, 175); }
+		if species_id = "trichogramma" { return rgb(245, 185, 25); }
+		if species_id = "dragonfly" { return rgb(20, 175, 210); }
+		if species_id = "worm" { return rgb(225, 105, 155); }
+		if species_id = "frog" { return rgb(45, 165, 70); }
+		if species_id = "yellow_stem_borer" { return rgb(235, 145, 20); }
+		if species_id = "golden_apple_snail" { return rgb(155, 135, 35); }
+		if species_id = "wasp" { return rgb(65, 55, 35); }
+		if species_id = "weaver_ant" { return rgb(155, 35, 50); }
+		if species_id = "butterfly" { return rgb(210, 60, 190); }
+		if species_id = "bee" { return rgb(250, 115, 20); }
+		if species_id = "bird" { return rgb(65, 120, 220); }
+		if species_id = "rat" { return rgb(115, 115, 125); }
+		if species_id = "ladybug" { return rgb(220, 30, 35); }
+		if species_id = "duck" { return rgb(30, 145, 135); }
+		if species_id = "snake" { return rgb(35, 105, 45); }
+		if species_id = "cricket" { return rgb(105, 70, 45); }
+		if species_id = "fish" { return rgb(30, 85, 190); }
+		return #cyan;
+	}
+
+	string marker_shape_for_species {
+		if species_id in ["brown_planthopper", "dragonfly", "bird"] {
+			return "triangle";
+		}
+		if species_id in [
+			"lynx_spider",
+			"yellow_stem_borer",
+			"rat",
+			"cricket"
+		] {
+			return "square";
+		}
+		if species_id in [
+			"leaf_folder",
+			"wasp",
+			"butterfly",
+			"duck",
+			"fish"
+		] {
+			return "diamond";
+		}
+		if species_id in ["trichogramma", "worm", "weaver_ant", "snake"] {
+			return "bar";
+		}
+		return "sphere";
+	}
+
 	aspect default {
 
-		rgb animal_color <- #cyan;
-
-		if is_pest {
-			animal_color <- #red;
-		} else if movement_mode = "fly" {
-			animal_color <- #yellow;
-		} else if movement_mode = "water" {
-			animal_color <- #blue;
-		}
-
+		rgb marker_color <- marker_color_for_species();
+		string marker_shape <- marker_shape_for_species();
 		float body_size <- 0.18;
 
 		if movement_mode = "fly" {
@@ -441,15 +487,29 @@ species animal_template skills: [moving] {
 			body_size <- 0.12;
 		}
 
-		if animal_markers_are_triangles {
+		if animal_markers_are_triangles or marker_shape = "triangle" {
 			draw triangle(body_size * 2.0)
 				at: location
 				rotate: heading + 90.0
-				color: animal_color;
+				color: marker_color;
+		} else if marker_shape = "square" {
+			draw rectangle(body_size * 2.0, body_size * 2.0)
+				at: location
+				color: marker_color;
+		} else if marker_shape = "diamond" {
+			draw rectangle(body_size * 2.0, body_size * 2.0)
+				at: location
+				rotate: 45.0
+				color: marker_color;
+		} else if marker_shape = "bar" {
+			draw rectangle(body_size * 2.8, body_size)
+				at: location
+				rotate: heading
+				color: marker_color;
 		} else {
 			draw sphere(body_size)
 				at: location
-				color: animal_color;
+				color: marker_color;
 		}
 
 		bool display_label <- show_all_animal_labels
