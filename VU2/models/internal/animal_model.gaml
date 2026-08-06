@@ -376,11 +376,11 @@ species animal_template skills: [moving] {
 		};
 		movement_destination <- location;
 
-		movement_speed <- speed_min = speed_max ? speed_min : rnd(speed_min, speed_max);
+		movement_speed <- get_scaled_movement_speed(movement_mode, speed_min, speed_max);
 		heading <- movement_heading;
 		has_movement_heading <- true;
 
-		if movement_mode != "stationary" {
+		if movement_mode != "stationary" and movement_speed > 0.0 {
 			do choose_new_direction;
 		}
 	}
@@ -435,7 +435,7 @@ species animal_template skills: [moving] {
 		}
 
 		if move_mode = "water" {
-			return 0.10;
+			return water_level + 0.05;
 		}
 
 		if move_mode = "stationary" {
@@ -464,6 +464,36 @@ species animal_template skills: [moving] {
 		}
 
 		return rnd(0.03, 0.10);
+	}
+
+	float get_scaled_movement_speed(
+		string move_mode,
+		float speed_min,
+		float speed_max
+	) {
+		if move_mode = "stationary" or speed_max <= 0.0 {
+			return 0.0;
+		}
+
+		float base_speed <- speed_min = speed_max
+			? speed_min
+			: rnd(speed_min, speed_max);
+
+		float scaled_speed <- base_speed * animal_movement_speed_scale;
+
+		if move_mode = "fly" {
+			return min([scaled_speed, max_flying_speed_m_per_cycle]);
+		}
+
+		if move_mode = "plant" {
+			return min([scaled_speed, max_plant_speed_m_per_cycle]);
+		}
+
+		if move_mode = "water" {
+			return min([scaled_speed, max_water_speed_m_per_cycle]);
+		}
+
+		return min([scaled_speed, max_ground_speed_m_per_cycle]);
 	}
 
 	action choose_new_direction {
@@ -560,7 +590,7 @@ species animal_template skills: [moving] {
 	reflex move_independently {
 
 		// Egg records and other stationary records do not move.
-		if movement_mode != "stationary" {
+		if movement_mode != "stationary" and movement_speed > 0.0 {
 
 			direction_timer <- direction_timer - 1;
 
@@ -608,7 +638,7 @@ species animal_template skills: [moving] {
 				}
 				next_z <- max([0.25, min([1.70, next_z])]);
 			} else if movement_mode = "water" {
-				next_z <- 0.10;
+				next_z <- water_level + 0.05;
 			} else {
 				next_z <- location.z;
 			}
@@ -626,6 +656,9 @@ species animal_template skills: [moving] {
 			};
 
 			do update_heading_from_direction;
+		} else {
+			movement_speed <- 0.0;
+			movement_destination <- location;
 		}
 	}
 

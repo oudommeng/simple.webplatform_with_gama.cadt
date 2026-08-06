@@ -1,0 +1,13 @@
+Pest,Rice Stage,Damage
+Brown Planthopper,Vegetative Stage,BPH_Vegetative_Severe.prefab
+Brown Planthopper,Reproductive Stage,BPH_Reproductive_Severe.prefab
+Brown Planthopper,Ripening Stage,BPH_Ripening_Severe.prefab
+Golden Apple Snail,Vegetative Stage,GAS_Vegetative_Severe.prefab
+Golden Apple Snail,Reproductive Stage,GAS_Reproductive_Severe.prefab
+Yellow Stem Borer,Vegetative Stage,YSB_Vegetative_Severe.prefab
+Yellow Stem Borer,Reproductive Stage,YSB_Reproductive_Severe.prefab
+Leaf Folder,Vegetative Stage,LF_Vegetative_Severe.prefab
+Leaf Folder,Reproductive Stage,LF_Reproductive_Severe.prefab
+Leaf Folder,Ripening Stage,LF_Ripening_Severe.prefab
+Rat,Ripening Stage,R_Ripening.prefab
+Bird,Ripening Stage,B_Ripening.prefab

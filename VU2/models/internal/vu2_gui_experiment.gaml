@@ -3,8 +3,10 @@ model vu2_gui_experiment
 // The GUI references VU2 configuration variables and every displayed species.
 import "vu2_config.gaml"
 import "field_model.gaml"
+import "water_model.gaml"
 import "rice_model.gaml"
 import "animal_model.gaml"
+import "pest_damage_model.gaml"
 
 experiment vu2 type: gui {
 
@@ -21,6 +23,12 @@ experiment vu2 type: gui {
 		max: 2000
 		step: 1000;
 
+	parameter "Water adjustment rate"
+		var: water_level_adjustment_rate
+		min: 0.001
+		max: 0.05
+		step: 0.001;
+
 	parameter "Animal density scale"
 		var: density_scale
 		min: 0.01
@@ -33,8 +41,38 @@ experiment vu2 type: gui {
 		max: 1000
 		step: 10;
 
+	parameter "Animal movement speed scale"
+		var: animal_movement_speed_scale
+		min: 0.0
+		max: 1.0
+		step: 0.05;
+
+	parameter "Enable pest impacts"
+		var: enable_pest_impacts;
+
+	parameter "Pest impact update interval"
+		var: pest_impact_update_interval_cycles
+		min: 1
+		max: 300
+		step: 10;
+
+	parameter "Pest impact radius"
+		var: default_pest_impact_radius_m
+		min: 0.10
+		max: 5.00
+		step: 0.10;
+
+	parameter "Maximum pest impacts"
+		var: maximum_pest_impacts
+		min: 0
+		max: 2000
+		step: 50;
+
 	parameter "Show pest labels"
 		var: show_pest_labels;
+
+	parameter "Show pest damage labels"
+		var: show_pest_damage_labels;
 
 	parameter "Show all animal labels"
 		var: show_all_animal_labels;
@@ -49,6 +87,7 @@ experiment vu2 type: gui {
 			background: rgb(210, 230, 240) {
 
 			species field_ground aspect: default;
+			species water aspect: default;
 			species vegetative_rice_plant aspect: default;
 			species reproductive_rice_plant aspect: default;
 			species ripening_rice_plant aspect: default;
@@ -72,6 +111,7 @@ experiment vu2 type: gui {
 			species snake aspect: default;
 			species cricket aspect: default;
 			species fish aspect: default;
+			species pest_impact aspect: default;
 
 			graphics "Species legend" {
 				draw "SPECIES LEGEND"
@@ -138,11 +178,18 @@ experiment vu2 type: gui {
 
 				draw rectangle(0.90, 0.90) at: {73.0, 21.5, 1.0} rotate: 45.0 color: rgb(30, 85, 190);
 				draw "Fish" at: {75.0, 21.5, 1.0} color: #black size: 0.65;
+
+				draw sphere(0.45) at: {73.0, 17.5, 1.0} color: rgb(255, 55, 35);
+				draw circle(0.80) at: {73.0, 17.5, 1.0} color: rgb(#yellow, 0.45);
+				draw "Pest damage" at: {75.0, 17.5, 1.0} color: #black size: 0.65;
 			}
 		}
 
 		monitor "Rice stage"
 			value: rice_stage;
+
+		monitor "Water level"
+			value: water_level;
 
 		monitor "Rice plants"
 			value: length(vegetative_rice_plant)
@@ -192,6 +239,9 @@ experiment vu2 type: gui {
 				+ length(snake where (each.is_pest))
 				+ length(cricket where (each.is_pest))
 				+ length(fish where (each.is_pest));
+
+		monitor "Pest impacts"
+			value: length(pest_impact);
 
 		monitor "Animal data records"
 			value: animal_types_data.rows - 1
