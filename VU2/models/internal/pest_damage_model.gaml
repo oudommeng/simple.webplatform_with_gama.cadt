@@ -1,6 +1,6 @@
 model pest_damage_model
 
-// Pest impacts are distinct agents created from pest-rice relationships.
+// Pest impacts are predefined by pest species and rice growth stage.
 import "vu2_config.gaml"
 import "rice_model.gaml"
 import "animal_model.gaml"
@@ -8,421 +8,354 @@ import "animal_model.gaml"
 global {
 
 	action validate_pest_damage_relation_data {
+		// Damage species are predefined in this GAML file.
 		pest_damage_relation_csv_is_valid <- true;
-
-		if pest_damage_relation_data.rows <= 1 {
-			write "pest_damage_relation.csv has no data rows.";
-			pest_damage_relation_csv_is_valid <- false;
-		}
-
-		if string(pest_damage_relation_data[0, 0]) != "Pest"
-			or string(pest_damage_relation_data[1, 0]) != "Rice Stage"
-			or string(pest_damage_relation_data[2, 0]) != "Damage" {
-
-			write "pest_damage_relation.csv headers must be Pest,Rice Stage,Damage.";
-			pest_damage_relation_csv_is_valid <- false;
-		}
 	}
 
-	string rice_stage_label(string stage_id) {
-		if stage_id = "vegetative" {
-			return "Vegetative Stage";
-		}
-
-		if stage_id = "reproductive" {
-			return "Reproductive Stage";
-		}
-
-		return "Ripening Stage";
+	int pest_impact_count {
+		return length(bph_vegetative_damage)
+			+ length(bph_reproductive_damage)
+			+ length(bph_ripening_damage)
+			+ length(gas_vegetative_damage)
+			+ length(gas_reproductive_damage)
+			+ length(ysb_vegetative_damage)
+			+ length(ysb_reproductive_damage)
+			+ length(lf_vegetative_damage)
+			+ length(lf_reproductive_damage)
+			+ length(lf_ripening_damage)
+			+ length(rat_ripening_damage)
+			+ length(bird_ripening_damage);
 	}
 
 	action clear_pest_impacts {
-		ask pest_impact {
-			do die;
-		}
+		ask bph_vegetative_damage { do die; }
+		ask bph_reproductive_damage { do die; }
+		ask bph_ripening_damage { do die; }
+		ask gas_vegetative_damage { do die; }
+		ask gas_reproductive_damage { do die; }
+		ask ysb_vegetative_damage { do die; }
+		ask ysb_reproductive_damage { do die; }
+		ask lf_vegetative_damage { do die; }
+		ask lf_reproductive_damage { do die; }
+		ask lf_ripening_damage { do die; }
+		ask rat_ripening_damage { do die; }
+		ask bird_ripening_damage { do die; }
 	}
 
 	reflex create_pest_impacts when: enable_pest_impacts
-		and pest_damage_relation_csv_is_valid
 		and cycle mod pest_impact_update_interval_cycles = 0 {
 
 		do clear_pest_impacts;
 
-		string stage_label <- rice_stage_label(rice_stage);
+		if rice_stage = "vegetative" {
+			ask brown_planthopper {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
 
-		loop relation_row from: 1 to: pest_damage_relation_data.rows - 1 {
-			string relation_pest_name <- string(pest_damage_relation_data[0, relation_row]);
-			string relation_stage_label <- string(pest_damage_relation_data[1, relation_row]);
-			string damage_prefab <- string(pest_damage_relation_data[2, relation_row]);
-
-			if relation_stage_label = stage_label and damage_prefab != "" {
-				if relation_pest_name = "Brown Planthopper" {
-					ask brown_planthopper {
-						string pest_key <- string(name);
-						string pest_animal_id <- animal_id;
-						string pest_species_name <- species_name;
-						string pest_life_stage <- life_stage;
-						point pest_location <- location;
-
-						if rice_stage = "vegetative" {
-							ask vegetative_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						} else if rice_stage = "reproductive" {
-							ask reproductive_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						} else {
-							ask ripening_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						}
+				ask vegetative_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create bph_vegetative_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"BPH_Vegetative_Severe.prefab",
+							rice_location
+						);
 					}
-				} else if relation_pest_name = "Leaf Folder" {
-					ask leaf_folder {
-						string pest_key <- string(name);
-						string pest_animal_id <- animal_id;
-						string pest_species_name <- species_name;
-						string pest_life_stage <- life_stage;
-						point pest_location <- location;
+				}
+			}
 
-						if rice_stage = "vegetative" {
-							ask vegetative_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
+			ask golden_apple_snail {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
 
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						} else if rice_stage = "reproductive" {
-							ask reproductive_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						} else {
-							ask ripening_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						}
+				ask vegetative_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create gas_vegetative_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"GAS_Vegetative_Severe.prefab",
+							rice_location
+						);
 					}
-				} else if relation_pest_name = "Yellow Stem Borer" {
-					ask yellow_stem_borer {
-						string pest_key <- string(name);
-						string pest_animal_id <- animal_id;
-						string pest_species_name <- species_name;
-						string pest_life_stage <- life_stage;
-						point pest_location <- location;
+				}
+			}
 
-						if rice_stage = "vegetative" {
-							ask vegetative_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
+			ask yellow_stem_borer {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
 
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						} else if rice_stage = "reproductive" {
-							ask reproductive_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						}
+				ask vegetative_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create ysb_vegetative_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"YSB_Vegetative_Severe.prefab",
+							rice_location
+						);
 					}
-				} else if relation_pest_name = "Golden Apple Snail" {
-					ask golden_apple_snail {
-						string pest_key <- string(name);
-						string pest_animal_id <- animal_id;
-						string pest_species_name <- species_name;
-						string pest_life_stage <- life_stage;
-						point pest_location <- location;
+				}
+			}
 
-						if rice_stage = "vegetative" {
-							ask vegetative_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
+			ask leaf_folder {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
 
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						} else if rice_stage = "reproductive" {
-							ask reproductive_rice_plant where (
-								(each.location distance_to pest_location) <= default_pest_impact_radius_m
-							) {
-								string rice_id <- plant_id;
-								point rice_location <- location;
-								string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-								if length(pest_impact) < maximum_pest_impacts
-									and empty(pest_impact where (each.interaction_key = key)) {
-									create pest_impact number: 1 {
-										interaction_key <- key;
-										source_pest_id <- pest_animal_id;
-										source_pest_name <- pest_species_name;
-										source_pest_life_stage <- pest_life_stage;
-										affected_rice_id <- rice_id;
-										affected_rice_stage <- rice_stage;
-										damage_prefab_name <- damage_prefab;
-										location <- {
-											rice_location.x + rnd(-0.12, 0.12),
-											rice_location.y + rnd(-0.12, 0.12),
-											rice_location.z + 0.18
-										};
-									}
-								}
-							}
-						}
+				ask vegetative_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create lf_vegetative_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"LF_Vegetative_Severe.prefab",
+							rice_location
+						);
 					}
-				} else if relation_pest_name = "Rat" {
-					ask rat {
-						string pest_key <- string(name);
-						string pest_animal_id <- animal_id;
-						string pest_species_name <- species_name;
-						string pest_life_stage <- life_stage;
-						point pest_location <- location;
+				}
+			}
+		} else if rice_stage = "reproductive" {
+			ask brown_planthopper {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
 
-						ask ripening_rice_plant where (
-							(each.location distance_to pest_location) <= default_pest_impact_radius_m
-						) {
-							string rice_id <- plant_id;
-							point rice_location <- location;
-							string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
-
-							if length(pest_impact) < maximum_pest_impacts
-								and empty(pest_impact where (each.interaction_key = key)) {
-								create pest_impact number: 1 {
-									interaction_key <- key;
-									source_pest_id <- pest_animal_id;
-									source_pest_name <- pest_species_name;
-									source_pest_life_stage <- pest_life_stage;
-									affected_rice_id <- rice_id;
-									affected_rice_stage <- rice_stage;
-									damage_prefab_name <- damage_prefab;
-									location <- {
-										rice_location.x + rnd(-0.12, 0.12),
-										rice_location.y + rnd(-0.12, 0.12),
-										rice_location.z + 0.18
-									};
-								}
-							}
-						}
+				ask reproductive_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create bph_reproductive_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"BPH_Reproductive_Severe.prefab",
+							rice_location
+						);
 					}
-				} else if relation_pest_name = "Bird" {
-					ask bird {
-						string pest_key <- string(name);
-						string pest_animal_id <- animal_id;
-						string pest_species_name <- species_name;
-						string pest_life_stage <- life_stage;
-						point pest_location <- location;
+				}
+			}
 
-						ask ripening_rice_plant where (
-							(each.location distance_to pest_location) <= default_pest_impact_radius_m
-						) {
-							string rice_id <- plant_id;
-							point rice_location <- location;
-							string key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
+			ask golden_apple_snail {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
 
-							if length(pest_impact) < maximum_pest_impacts
-								and empty(pest_impact where (each.interaction_key = key)) {
-								create pest_impact number: 1 {
-									interaction_key <- key;
-									source_pest_id <- pest_animal_id;
-									source_pest_name <- pest_species_name;
-									source_pest_life_stage <- pest_life_stage;
-									affected_rice_id <- rice_id;
-									affected_rice_stage <- rice_stage;
-									damage_prefab_name <- damage_prefab;
-									location <- {
-										rice_location.x + rnd(-0.12, 0.12),
-										rice_location.y + rnd(-0.12, 0.12),
-										rice_location.z + 0.18
-									};
-								}
-							}
-						}
+				ask reproductive_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create gas_reproductive_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"GAS_Reproductive_Severe.prefab",
+							rice_location
+						);
+					}
+				}
+			}
+
+			ask yellow_stem_borer {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
+
+				ask reproductive_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create ysb_reproductive_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"YSB_Reproductive_Severe.prefab",
+							rice_location
+						);
+					}
+				}
+			}
+
+			ask leaf_folder {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
+
+				ask reproductive_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create lf_reproductive_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"LF_Reproductive_Severe.prefab",
+							rice_location
+						);
+					}
+				}
+			}
+		} else {
+			ask brown_planthopper {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
+
+				ask ripening_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create bph_ripening_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"BPH_Ripening_Severe.prefab",
+							rice_location
+						);
+					}
+				}
+			}
+
+			ask leaf_folder {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
+
+				ask ripening_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create lf_ripening_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"LF_Ripening_Severe.prefab",
+							rice_location
+						);
+					}
+				}
+			}
+
+			ask rat {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
+
+				ask ripening_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create rat_ripening_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"R_Ripening.prefab",
+							rice_location
+						);
+					}
+				}
+			}
+
+			ask bird {
+				string pest_key <- string(name);
+				string pest_animal_id <- animal_id;
+				string pest_species_name <- species_name;
+				string pest_life_stage <- life_stage;
+				point pest_location <- location;
+
+				ask ripening_rice_plant where (
+					(each.location distance_to pest_location) <= default_pest_impact_radius_m
+				) {
+					string rice_id <- plant_id;
+					point rice_location <- location;
+					create bird_ripening_damage number: 1 {
+						do setup_pest_impact(
+							pest_key,
+							pest_animal_id,
+							pest_species_name,
+							pest_life_stage,
+							rice_id,
+							"B_Ripening.prefab",
+							rice_location
+						);
 					}
 				}
 			}
@@ -439,9 +372,50 @@ species pest_impact {
 	string affected_rice_id;
 	string affected_rice_stage;
 	string damage_prefab_name;
-	agent source_pest_agent;
 	float marker_height <- 1.65;
 	float marker_radius <- 0.36;
+	rgb damage_color <- rgb(255, 55, 35);
+
+	rgb damage_color_for_prefab(string damage_prefab) {
+		if damage_prefab = "BPH_Vegetative_Severe.prefab" { return rgb(128, 70, 28); }
+		if damage_prefab = "BPH_Reproductive_Severe.prefab" { return rgb(145, 80, 32); }
+		if damage_prefab = "BPH_Ripening_Severe.prefab" { return rgb(165, 90, 36); }
+		if damage_prefab = "GAS_Vegetative_Severe.prefab" { return rgb(125, 132, 34); }
+		if damage_prefab = "GAS_Reproductive_Severe.prefab" { return rgb(155, 145, 38); }
+		if damage_prefab = "YSB_Vegetative_Severe.prefab" { return rgb(230, 145, 20); }
+		if damage_prefab = "YSB_Reproductive_Severe.prefab" { return rgb(245, 170, 35); }
+		if damage_prefab = "LF_Vegetative_Severe.prefab" { return rgb(220, 70, 45); }
+		if damage_prefab = "LF_Reproductive_Severe.prefab" { return rgb(235, 90, 55); }
+		if damage_prefab = "LF_Ripening_Severe.prefab" { return rgb(245, 110, 70); }
+		if damage_prefab = "R_Ripening.prefab" { return rgb(115, 115, 125); }
+		if damage_prefab = "B_Ripening.prefab" { return rgb(65, 120, 220); }
+
+		return rgb(255, 55, 35);
+	}
+
+	action setup_pest_impact(
+		string pest_key,
+		string source_id,
+		string source_name,
+		string source_life_stage,
+		string rice_id,
+		string damage_prefab,
+		point rice_location
+	) {
+		interaction_key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
+		source_pest_id <- source_id;
+		source_pest_name <- source_name;
+		source_pest_life_stage <- source_life_stage;
+		affected_rice_id <- rice_id;
+		affected_rice_stage <- rice_stage;
+		damage_prefab_name <- damage_prefab;
+		damage_color <- damage_color_for_prefab(damage_prefab);
+		location <- {
+			rice_location.x + rnd(-0.12, 0.12),
+			rice_location.y + rnd(-0.12, 0.12),
+			rice_location.z + 0.18
+		};
+	}
 
 	aspect default {
 		point marker_base <- {
@@ -471,21 +445,57 @@ species pest_impact {
 
 		draw sphere(marker_radius)
 			at: marker_top
-			color: rgb(255, 55, 35);
+			color: damage_color;
 
 		draw circle(marker_radius * 1.8)
 			at: marker_top
 			color: rgb(#yellow, 0.45);
 
 		if show_pest_damage_labels {
-			draw "DAMAGE"
+			draw source_pest_name + " damage"
 				at: {
 					location.x,
 					location.y,
 					location.z + marker_height + 0.45
 				}
 				color: #red
-				size: 0.55;
+				size: 0.45;
 		}
 	}
+}
+
+species bph_vegetative_damage parent: pest_impact {
+}
+
+species bph_reproductive_damage parent: pest_impact {
+}
+
+species bph_ripening_damage parent: pest_impact {
+}
+
+species gas_vegetative_damage parent: pest_impact {
+}
+
+species gas_reproductive_damage parent: pest_impact {
+}
+
+species ysb_vegetative_damage parent: pest_impact {
+}
+
+species ysb_reproductive_damage parent: pest_impact {
+}
+
+species lf_vegetative_damage parent: pest_impact {
+}
+
+species lf_reproductive_damage parent: pest_impact {
+}
+
+species lf_ripening_damage parent: pest_impact {
+}
+
+species rat_ripening_damage parent: pest_impact {
+}
+
+species bird_ripening_damage parent: pest_impact {
 }

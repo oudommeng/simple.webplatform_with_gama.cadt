@@ -1,0 +1,38 @@
+category,species_name,export_to_unity,unity_aspect_note
+animal,brown_planthopper,true,prefab/dynamic animal
+animal,leaf_folder,true,prefab/dynamic animal
+animal,yellow_stem_borer,true,prefab/dynamic animal
+animal,golden_apple_snail,true,prefab/dynamic animal
+animal,rat,true,prefab/dynamic animal
+animal,bird,true,prefab/dynamic animal
+animal,ladybug,true,prefab/dynamic animal
+animal,dragonfly,true,prefab/dynamic animal
+animal,duck,true,prefab/dynamic animal
+animal,fish,true,prefab/dynamic animal
+animal,frog,true,prefab/dynamic animal
+animal,weaver_ant,true,prefab/dynamic animal
+animal,lynx_spider,true,prefab/dynamic animal
+animal,wasp,true,prefab/dynamic animal
+animal,trichogramma,true,prefab/dynamic animal
+animal,worm,true,prefab/dynamic animal
+animal,bee,true,prefab/dynamic animal
+animal,butterfly,true,prefab/dynamic animal
+animal,cricket,true,prefab/dynamic animal
+animal,snake,true,prefab/dynamic animal
+pest_damage,bph_vegetative_damage,true,damage prefab/marker
+pest_damage,bph_reproductive_damage,true,damage prefab/marker
+pest_damage,bph_ripening_damage,true,damage prefab/marker
+pest_damage,gas_vegetative_damage,true,damage prefab/marker
+pest_damage,gas_reproductive_damage,true,damage prefab/marker
+pest_damage,ysb_vegetative_damage,true,damage prefab/marker
+pest_damage,ysb_reproductive_damage,true,damage prefab/marker
+pest_damage,lf_vegetative_damage,true,damage prefab/marker
+pest_damage,lf_reproductive_damage,true,damage prefab/marker
+pest_damage,lf_ripening_damage,true,damage prefab/marker
+pest_damage,rat_ripening_damage,true,damage prefab/marker
+pest_damage,bird_ripening_damage,true,damage prefab/marker
+environment_rice,field_ground,true,environment geometry
+environment_rice,water,true,environment geometry
+environment_rice,vegetative_rice_plant,true,rice plant geometry
+environment_rice,reproductive_rice_plant,true,rice plant geometry
+environment_rice,ripening_rice_plant,true,rice plant geometry

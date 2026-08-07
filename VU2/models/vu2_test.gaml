@@ -9,15 +9,19 @@ model cropguard_rice_field_3d_corrected
 
 import "internal/vu2_config.gaml"
 import "internal/field_model.gaml"
+import "internal/water_model.gaml"
 import "internal/rice_model.gaml"
 import "internal/animal_model.gaml"
+import "internal/pest_damage_model.gaml"
 import "internal/vu2_gui_experiment.gaml"
 
 global {
 
 	init {
 		do validate_animal_csv_data;
+		do validate_pest_damage_relation_data;
 		do create_field_ground;
+		do create_water_surface;
 		do create_rice_field;
 		do create_animals_for_stage(rice_stage);
 	}
@@ -35,12 +39,13 @@ global {
 
 		if rice_stage != previous_rice_stage {
 			previous_rice_stage <- rice_stage;
+			do update_water_target_for_stage;
+			do clear_pest_impacts;
 
 			do clear_rice_field;
 			do create_rice_field;
 
-			// The CSV contains different animal records for each rice stage.
-			do clear_animals_for_stage_change;
+			// Keep existing animals and add only newly observed stage agents.
 			do create_animals_for_stage(rice_stage);
 		}
 	}

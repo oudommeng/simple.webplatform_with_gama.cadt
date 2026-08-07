@@ -1,4 +1,4 @@
-model cropguard_rice_field_3d_corrected
+model cropguard_vu2
 
 // ============================================================================
 // CropGuard - Rice Growth and Animal Observation Simulation
@@ -45,8 +45,7 @@ global {
 			do clear_rice_field;
 			do create_rice_field;
 
-			// The CSV contains different animal records for each rice stage.
-			do clear_animals_for_stage_change;
+			// Keep existing animals and add only newly observed stage agents.
 			do create_animals_for_stage(rice_stage);
 		}
 	}

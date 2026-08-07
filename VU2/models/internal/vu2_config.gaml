@@ -57,17 +57,14 @@ global {
 	string animal_types_csv_path <- "animal_types.csv";
 	string stage_populations_csv_path <- "stage_populations.csv";
 	string spawn_points_csv_path <- "spawn_points.csv";
-	string pest_damage_relation_csv_path <- "pest_damage_relation.csv";
 
 	file animal_types_csv_file <- csv_file(animal_types_csv_path, ",");
 	file stage_populations_csv_file <- csv_file(stage_populations_csv_path, ",");
 	file spawn_points_csv_file <- csv_file(spawn_points_csv_path, ",");
-	file pest_damage_relation_csv_file <- csv_file(pest_damage_relation_csv_path, ",");
 
 	matrix animal_types_data <- matrix(animal_types_csv_file);
 	matrix stage_populations_data <- matrix(stage_populations_csv_file);
 	matrix spawn_points_data <- matrix(spawn_points_csv_file);
-	matrix pest_damage_relation_data <- matrix(pest_damage_relation_csv_file);
 
 	bool animal_csv_is_valid <- true;
 	bool pest_damage_relation_csv_is_valid <- true;
@@ -86,7 +83,7 @@ global {
 	float max_water_speed_m_per_cycle <- 0.012;
 	float max_flying_speed_m_per_cycle <- 0.025;
 
-	// Fallback interaction radius until pest_damage_relation.csv contains one.
+	// Interaction radius for predefined pest damage species.
 	float default_pest_impact_radius_m <- 0.75;
 	bool enable_pest_impacts <- true;
 	int pest_impact_update_interval_cycles <- 1;

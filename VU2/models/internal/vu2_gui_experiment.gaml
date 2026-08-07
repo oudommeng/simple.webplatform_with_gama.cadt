@@ -111,7 +111,18 @@ experiment vu2 type: gui {
 			species snake aspect: default;
 			species cricket aspect: default;
 			species fish aspect: default;
-			species pest_impact aspect: default;
+			species bph_vegetative_damage aspect: default;
+			species bph_reproductive_damage aspect: default;
+			species bph_ripening_damage aspect: default;
+			species gas_vegetative_damage aspect: default;
+			species gas_reproductive_damage aspect: default;
+			species ysb_vegetative_damage aspect: default;
+			species ysb_reproductive_damage aspect: default;
+			species lf_vegetative_damage aspect: default;
+			species lf_reproductive_damage aspect: default;
+			species lf_ripening_damage aspect: default;
+			species rat_ripening_damage aspect: default;
+			species bird_ripening_damage aspect: default;
 
 			graphics "Species legend" {
 				draw "SPECIES LEGEND"
@@ -241,7 +252,7 @@ experiment vu2 type: gui {
 				+ length(fish where (each.is_pest));
 
 		monitor "Pest impacts"
-			value: length(pest_impact);
+			value: pest_impact_count();
 
 		monitor "Animal data records"
 			value: animal_types_data.rows - 1

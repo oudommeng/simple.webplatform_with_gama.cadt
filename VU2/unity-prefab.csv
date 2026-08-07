@@ -1,0 +1,43 @@
+category,species_name,export_to_unity,unity_aspect_note
+animal,brown_planthopper,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_BrownPlantHopper_01
+animal,brown_planthopper_eggs,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_BPH_Eggs
+animal,brown_planthopper_nymph,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_BPH_Nymph
+animal,leaf_folder,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GreenLeafFolder_01
+animal,leaf_folder_eggs,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GLF_Eggs
+animal,leaf_folder_larva,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GLF_Nymph
+animal,yellow_stem_borer,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_YellowStemBorer_01
+animal,yellow_stem_borer_eggs,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_YSB_Eggs
+animal,golden_apple_snail,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GoldenAppleSnail_01
+animal,golden_apple_snail_eggs,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GAS_Eggs
+animal,rat,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Rat_01
+animal,bird,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Bird_01
+animal,ladybug,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Ladybug_01
+animal,dragonfly,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Dragonfly_01
+animal,duck,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Duck_01
+animal,fish,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Fish_01
+animal,frog,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Frog_01
+animal,weaver_ant,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_WeaverAnt_01
+animal,lynx_spider,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Spider_01
+animal,wasp,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Wasp_01
+animal,trichogramma,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Trichogramma_01
+animal,worm,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Worm_01
+animal,bee,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Bee_01
+animal,butterfly,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Butterfly_01
+animal,cricket,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Cricket_01
+animal,snake,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Snake_01
+pest_damage,bph_vegetative_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Vegetative_SapSuckingDamage
+pest_damage,bph_reproductive_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Reproductive_SapSuckingDamage
+pest_damage,bph_ripening_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Ripening_SapSuckingDamage
+pest_damage,gas_vegetative_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Vegetative_SeedlingAndLeafFeedingDamage
+pest_damage,gas_reproductive_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Reproductive_LeafAndStemFeedingDamage
+pest_damage,ysb_vegetative_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Vegetative_DeadheartDamage
+pest_damage,ysb_reproductive_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Reproductive_WhiteheadDamage
+pest_damage,lf_vegetative_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Vegetative_LeafFoldingAndFeedingDamage
+pest_damage,lf_reproductive_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Reproductive_LeafFoldingAndFeedingDamage
+pest_damage,lf_ripening_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Ripening_LeafFoldingAndFeedingDamage
+pest_damage,rat_ripening_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Ripening_PanicleAndGrainFeedingDamage
+pest_damage,bird_ripening_damage,TRUE,Prefabs\Visual Prefabs\Prefabs\Plant Damage\Damage\Ripening_GrainFeedingDamage
+environment_rice,water,TRUE,"Prefabs\Visual Prefabs\Prefabs\Water "
+environment_rice,vegetative_rice_plant,TRUE,Prefabs\Visual Prefabs\Prefabs\Plants\SM_RiceCrop_Vegetative
+environment_rice,reproductive_rice_plant,TRUE,Prefabs\Visual Prefabs\Prefabs\Plants\SM_RiceCrop_Reproductive
+environment_rice,ripening_rice_plant,TRUE,Prefabs\Visual Prefabs\Prefabs\Plants\SM_RiceCrop_Rippening

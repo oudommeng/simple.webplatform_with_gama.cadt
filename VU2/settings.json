@@ -2,7 +2,7 @@
 "type": "json_settings",
 "name": "cropguard_VU2",
 "splashscreen": "./models/snapshots/snapshot.png",
-"model_file_path": "./models/vu2_test-VR.gaml",
+"model_file_path": "./models/vu2_main-VR.gaml",
 "experiment_name": "vr_xp",
 "minimal_players": "0",
 "maximal_players": "6",
