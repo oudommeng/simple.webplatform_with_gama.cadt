@@ -87,7 +87,7 @@ species unity_linker parent: abstract_unity_linker {
 		up_default <- geometry_properties("default","",default_aspect,#no_interaction,false);
 		unity_properties << up_default;
 
-		unity_aspect brown_planthopper_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_BrownPlantHopper_01",1.0,0.0,1.0,-90.0,precision);
+		unity_aspect brown_planthopper_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_BrownPlantHopper_01",0.1,0.0,1.0,-90.0,precision);
 		up_brown_planthopper <- geometry_properties("brown_planthopper","animal",brown_planthopper_aspect,#no_interaction,false);
 		unity_properties << up_brown_planthopper;
 

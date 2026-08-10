@@ -57,6 +57,9 @@ species vegetative_rice_plant {
 	int grid_row;
 	float plant_height <- 1.00;
 	float canopy_size <- 0.38;
+	int pest_pressure_count <- 0;
+	float pest_damage_score <- 0.0;
+	bool has_pest_damage <- false;
 
 	aspect default {
 		draw cylinder(0.07, plant_height)
@@ -83,6 +86,9 @@ species reproductive_rice_plant {
 	int grid_row;
 	float plant_height <- 1.45;
 	float canopy_size <- 0.48;
+	int pest_pressure_count <- 0;
+	float pest_damage_score <- 0.0;
+	bool has_pest_damage <- false;
 
 	aspect default {
 		draw cylinder(0.07, plant_height)
@@ -113,6 +119,9 @@ species ripening_rice_plant {
 	int grid_row;
 	float plant_height <- 1.70;
 	float canopy_size <- 0.52;
+	int pest_pressure_count <- 0;
+	float pest_damage_score <- 0.0;
+	bool has_pest_damage <- false;
 
 	aspect default {
 		draw cylinder(0.07, plant_height)

@@ -7,6 +7,8 @@ import "animal_model.gaml"
 
 global {
 
+	int current_pest_impact_creations <- 0;
+
 	action validate_pest_damage_relation_data {
 		// Damage species are predefined in this GAML file.
 		pest_damage_relation_csv_is_valid <- true;
@@ -46,317 +48,240 @@ global {
 		and cycle mod pest_impact_update_interval_cycles = 0 {
 
 		do clear_pest_impacts;
+		current_pest_impact_creations <- 0;
 
 		if rice_stage = "vegetative" {
-			ask brown_planthopper {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
+			ask vegetative_rice_plant {
+				string rice_id <- plant_id;
+				point rice_location <- location;
+				int bph_pressure <- length(brown_planthopper where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int gas_pressure <- length(golden_apple_snail where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int ysb_pressure <- length(yellow_stem_borer where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int lf_pressure <- length(leaf_folder where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
 
-				ask vegetative_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				pest_pressure_count <- bph_pressure + gas_pressure + ysb_pressure + lf_pressure;
+				pest_damage_score <- float(pest_pressure_count);
+				has_pest_damage <- pest_pressure_count > 0;
+
+				if (bph_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create bph_vegetative_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Brown Planthopper",
+							"multiple",
 							rice_id,
 							"BPH_Vegetative_Severe.prefab",
-							rice_location
+							rice_location,
+							bph_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask golden_apple_snail {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask vegetative_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (gas_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create gas_vegetative_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Golden Apple Snail",
+							"multiple",
 							rice_id,
 							"GAS_Vegetative_Severe.prefab",
-							rice_location
+							rice_location,
+							gas_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask yellow_stem_borer {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask vegetative_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (ysb_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create ysb_vegetative_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Yellow Stem Borer",
+							"multiple",
 							rice_id,
 							"YSB_Vegetative_Severe.prefab",
-							rice_location
+							rice_location,
+							ysb_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask leaf_folder {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask vegetative_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (lf_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create lf_vegetative_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Leaf Folder",
+							"multiple",
 							rice_id,
 							"LF_Vegetative_Severe.prefab",
-							rice_location
+							rice_location,
+							lf_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
 			}
 		} else if rice_stage = "reproductive" {
-			ask brown_planthopper {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
+			ask reproductive_rice_plant {
+				string rice_id <- plant_id;
+				point rice_location <- location;
+				int bph_pressure <- length(brown_planthopper where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int gas_pressure <- length(golden_apple_snail where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int ysb_pressure <- length(yellow_stem_borer where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int lf_pressure <- length(leaf_folder where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
 
-				ask reproductive_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				pest_pressure_count <- bph_pressure + gas_pressure + ysb_pressure + lf_pressure;
+				pest_damage_score <- float(pest_pressure_count);
+				has_pest_damage <- pest_pressure_count > 0;
+
+				if (bph_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create bph_reproductive_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Brown Planthopper",
+							"multiple",
 							rice_id,
 							"BPH_Reproductive_Severe.prefab",
-							rice_location
+							rice_location,
+							bph_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask golden_apple_snail {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask reproductive_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (gas_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create gas_reproductive_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Golden Apple Snail",
+							"multiple",
 							rice_id,
 							"GAS_Reproductive_Severe.prefab",
-							rice_location
+							rice_location,
+							gas_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask yellow_stem_borer {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask reproductive_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (ysb_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create ysb_reproductive_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Yellow Stem Borer",
+							"multiple",
 							rice_id,
 							"YSB_Reproductive_Severe.prefab",
-							rice_location
+							rice_location,
+							ysb_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask leaf_folder {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask reproductive_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (lf_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create lf_reproductive_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Leaf Folder",
+							"multiple",
 							rice_id,
 							"LF_Reproductive_Severe.prefab",
-							rice_location
+							rice_location,
+							lf_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
 			}
 		} else {
-			ask brown_planthopper {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
+			ask ripening_rice_plant {
+				string rice_id <- plant_id;
+				point rice_location <- location;
+				int bph_pressure <- length(brown_planthopper where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int lf_pressure <- length(leaf_folder where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int rat_pressure <- length(rat where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
+				int bird_pressure <- length(bird where (
+					(each.location distance_to rice_location) <= default_pest_impact_radius_m
+				));
 
-				ask ripening_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				pest_pressure_count <- bph_pressure + lf_pressure + rat_pressure + bird_pressure;
+				pest_damage_score <- float(pest_pressure_count);
+				has_pest_damage <- pest_pressure_count > 0;
+
+				if (bph_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create bph_ripening_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Brown Planthopper",
+							"multiple",
 							rice_id,
 							"BPH_Ripening_Severe.prefab",
-							rice_location
+							rice_location,
+							bph_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask leaf_folder {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask ripening_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (lf_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create lf_ripening_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Leaf Folder",
+							"multiple",
 							rice_id,
 							"LF_Ripening_Severe.prefab",
-							rice_location
+							rice_location,
+							lf_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask rat {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask ripening_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (rat_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create rat_ripening_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Rat",
+							"multiple",
 							rice_id,
 							"R_Ripening.prefab",
-							rice_location
+							rice_location,
+							rat_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
-			}
-
-			ask bird {
-				string pest_key <- string(name);
-				string pest_animal_id <- animal_id;
-				string pest_species_name <- species_name;
-				string pest_life_stage <- life_stage;
-				point pest_location <- location;
-
-				ask ripening_rice_plant where (
-					(each.location distance_to pest_location) <= default_pest_impact_radius_m
-				) {
-					string rice_id <- plant_id;
-					point rice_location <- location;
+				if (bird_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
 					create bird_ripening_damage number: 1 {
 						do setup_pest_impact(
-							pest_key,
-							pest_animal_id,
-							pest_species_name,
-							pest_life_stage,
+							"aggregated",
+							"Bird",
+							"multiple",
 							rice_id,
 							"B_Ripening.prefab",
-							rice_location
+							rice_location,
+							bird_pressure
 						);
 					}
+					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
 			}
 		}
@@ -372,6 +297,8 @@ species pest_impact {
 	string affected_rice_id;
 	string affected_rice_stage;
 	string damage_prefab_name;
+	int contributing_pest_count <- 0;
+	float combined_damage_score <- 0.0;
 	float marker_height <- 1.65;
 	float marker_radius <- 0.36;
 	rgb damage_color <- rgb(255, 55, 35);
@@ -394,21 +321,23 @@ species pest_impact {
 	}
 
 	action setup_pest_impact(
-		string pest_key,
 		string source_id,
 		string source_name,
 		string source_life_stage,
 		string rice_id,
 		string damage_prefab,
-		point rice_location
+		point rice_location,
+		int pest_count
 	) {
-		interaction_key <- pest_key + "|" + rice_id + "|" + rice_stage + "|" + damage_prefab;
+		interaction_key <- rice_id + "|" + rice_stage + "|" + damage_prefab;
 		source_pest_id <- source_id;
 		source_pest_name <- source_name;
 		source_pest_life_stage <- source_life_stage;
 		affected_rice_id <- rice_id;
 		affected_rice_stage <- rice_stage;
 		damage_prefab_name <- damage_prefab;
+		contributing_pest_count <- pest_count;
+		combined_damage_score <- float(pest_count);
 		damage_color <- damage_color_for_prefab(damage_prefab);
 		location <- {
 			rice_location.x + rnd(-0.12, 0.12),
@@ -452,7 +381,7 @@ species pest_impact {
 			color: rgb(#yellow, 0.45);
 
 		if show_pest_damage_labels {
-			draw source_pest_name + " damage"
+			draw source_pest_name + " damage x" + string(contributing_pest_count)
 				at: {
 					location.x,
 					location.y,
