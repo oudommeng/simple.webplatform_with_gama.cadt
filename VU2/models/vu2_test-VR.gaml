@@ -63,9 +63,9 @@ species unity_linker parent: abstract_unity_linker {
 	reflex send_geometries {
 		do add_geometries_to_send(wasp,up_wasp);
 		do add_geometries_to_send(frog,up_frog);
-		do add_geometries_to_send(ripening_rice_plant,up_ripening_rice_plant);
-		do add_geometries_to_send(reproductive_rice_plant,up_reproductive_rice_plant);
-		do add_geometries_to_send(vegetative_rice_plant,up_vegetative_rice_plant);
+		do add_geometries_to_send(ripening_rice_plant where (!each.has_pest_damage),up_ripening_rice_plant);
+		do add_geometries_to_send(reproductive_rice_plant where (!each.has_pest_damage),up_reproductive_rice_plant);
+		do add_geometries_to_send(vegetative_rice_plant where (!each.has_pest_damage),up_vegetative_rice_plant);
 	}
 }
 

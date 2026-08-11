@@ -70,62 +70,54 @@ global {
 				pest_pressure_count <- bph_pressure + gas_pressure + ysb_pressure + lf_pressure;
 				pest_damage_score <- float(pest_pressure_count);
 				has_pest_damage <- pest_pressure_count > 0;
+				int total_pest_pressure <- pest_pressure_count;
 
-				if (bph_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create bph_vegetative_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Brown Planthopper",
-							"multiple",
-							rice_id,
-							"BPH_Vegetative_Severe.prefab",
-							rice_location,
-							bph_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				string dominant_pest_name <- "";
+				string dominant_damage_prefab <- "";
+				int dominant_pressure <- 0;
+
+				if bph_pressure > dominant_pressure {
+					dominant_pest_name <- "Brown Planthopper";
+					dominant_damage_prefab <- "BPH_Vegetative_Severe.prefab";
+					dominant_pressure <- bph_pressure;
 				}
-				if (gas_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create gas_vegetative_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Golden Apple Snail",
-							"multiple",
-							rice_id,
-							"GAS_Vegetative_Severe.prefab",
-							rice_location,
-							gas_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				if gas_pressure > dominant_pressure {
+					dominant_pest_name <- "Golden Apple Snail";
+					dominant_damage_prefab <- "GAS_Vegetative_Severe.prefab";
+					dominant_pressure <- gas_pressure;
 				}
-				if (ysb_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create ysb_vegetative_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Yellow Stem Borer",
-							"multiple",
-							rice_id,
-							"YSB_Vegetative_Severe.prefab",
-							rice_location,
-							ysb_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				if ysb_pressure > dominant_pressure {
+					dominant_pest_name <- "Yellow Stem Borer";
+					dominant_damage_prefab <- "YSB_Vegetative_Severe.prefab";
+					dominant_pressure <- ysb_pressure;
 				}
-				if (lf_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create lf_vegetative_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Leaf Folder",
-							"multiple",
-							rice_id,
-							"LF_Vegetative_Severe.prefab",
-							rice_location,
-							lf_pressure
-						);
+				if lf_pressure > dominant_pressure {
+					dominant_pest_name <- "Leaf Folder";
+					dominant_damage_prefab <- "LF_Vegetative_Severe.prefab";
+					dominant_pressure <- lf_pressure;
+				}
+
+				if total_pest_pressure > 0 {
+					if current_pest_impact_creations < maximum_pest_impacts {
+						if dominant_damage_prefab = "BPH_Vegetative_Severe.prefab" {
+							create bph_vegetative_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "GAS_Vegetative_Severe.prefab" {
+							create gas_vegetative_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "YSB_Vegetative_Severe.prefab" {
+							create ysb_vegetative_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "LF_Vegetative_Severe.prefab" {
+							create lf_vegetative_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						}
+						current_pest_impact_creations <- current_pest_impact_creations + 1;
 					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
 			}
 		} else if rice_stage = "reproductive" {
@@ -148,62 +140,54 @@ global {
 				pest_pressure_count <- bph_pressure + gas_pressure + ysb_pressure + lf_pressure;
 				pest_damage_score <- float(pest_pressure_count);
 				has_pest_damage <- pest_pressure_count > 0;
+				int total_pest_pressure <- pest_pressure_count;
 
-				if (bph_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create bph_reproductive_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Brown Planthopper",
-							"multiple",
-							rice_id,
-							"BPH_Reproductive_Severe.prefab",
-							rice_location,
-							bph_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				string dominant_pest_name <- "";
+				string dominant_damage_prefab <- "";
+				int dominant_pressure <- 0;
+
+				if bph_pressure > dominant_pressure {
+					dominant_pest_name <- "Brown Planthopper";
+					dominant_damage_prefab <- "BPH_Reproductive_Severe.prefab";
+					dominant_pressure <- bph_pressure;
 				}
-				if (gas_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create gas_reproductive_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Golden Apple Snail",
-							"multiple",
-							rice_id,
-							"GAS_Reproductive_Severe.prefab",
-							rice_location,
-							gas_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				if gas_pressure > dominant_pressure {
+					dominant_pest_name <- "Golden Apple Snail";
+					dominant_damage_prefab <- "GAS_Reproductive_Severe.prefab";
+					dominant_pressure <- gas_pressure;
 				}
-				if (ysb_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create ysb_reproductive_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Yellow Stem Borer",
-							"multiple",
-							rice_id,
-							"YSB_Reproductive_Severe.prefab",
-							rice_location,
-							ysb_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				if ysb_pressure > dominant_pressure {
+					dominant_pest_name <- "Yellow Stem Borer";
+					dominant_damage_prefab <- "YSB_Reproductive_Severe.prefab";
+					dominant_pressure <- ysb_pressure;
 				}
-				if (lf_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create lf_reproductive_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Leaf Folder",
-							"multiple",
-							rice_id,
-							"LF_Reproductive_Severe.prefab",
-							rice_location,
-							lf_pressure
-						);
+				if lf_pressure > dominant_pressure {
+					dominant_pest_name <- "Leaf Folder";
+					dominant_damage_prefab <- "LF_Reproductive_Severe.prefab";
+					dominant_pressure <- lf_pressure;
+				}
+
+				if total_pest_pressure > 0 {
+					if current_pest_impact_creations < maximum_pest_impacts {
+						if dominant_damage_prefab = "BPH_Reproductive_Severe.prefab" {
+							create bph_reproductive_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "GAS_Reproductive_Severe.prefab" {
+							create gas_reproductive_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "YSB_Reproductive_Severe.prefab" {
+							create ysb_reproductive_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "LF_Reproductive_Severe.prefab" {
+							create lf_reproductive_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						}
+						current_pest_impact_creations <- current_pest_impact_creations + 1;
 					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
 			}
 		} else {
@@ -226,62 +210,54 @@ global {
 				pest_pressure_count <- bph_pressure + lf_pressure + rat_pressure + bird_pressure;
 				pest_damage_score <- float(pest_pressure_count);
 				has_pest_damage <- pest_pressure_count > 0;
+				int total_pest_pressure <- pest_pressure_count;
 
-				if (bph_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create bph_ripening_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Brown Planthopper",
-							"multiple",
-							rice_id,
-							"BPH_Ripening_Severe.prefab",
-							rice_location,
-							bph_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				string dominant_pest_name <- "";
+				string dominant_damage_prefab <- "";
+				int dominant_pressure <- 0;
+
+				if bph_pressure > dominant_pressure {
+					dominant_pest_name <- "Brown Planthopper";
+					dominant_damage_prefab <- "BPH_Ripening_Severe.prefab";
+					dominant_pressure <- bph_pressure;
 				}
-				if (lf_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create lf_ripening_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Leaf Folder",
-							"multiple",
-							rice_id,
-							"LF_Ripening_Severe.prefab",
-							rice_location,
-							lf_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				if lf_pressure > dominant_pressure {
+					dominant_pest_name <- "Leaf Folder";
+					dominant_damage_prefab <- "LF_Ripening_Severe.prefab";
+					dominant_pressure <- lf_pressure;
 				}
-				if (rat_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create rat_ripening_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Rat",
-							"multiple",
-							rice_id,
-							"R_Ripening.prefab",
-							rice_location,
-							rat_pressure
-						);
-					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
+				if rat_pressure > dominant_pressure {
+					dominant_pest_name <- "Rat";
+					dominant_damage_prefab <- "R_Ripening.prefab";
+					dominant_pressure <- rat_pressure;
 				}
-				if (bird_pressure > 0) and (current_pest_impact_creations < maximum_pest_impacts) {
-					create bird_ripening_damage number: 1 {
-						do setup_pest_impact(
-							"aggregated",
-							"Bird",
-							"multiple",
-							rice_id,
-							"B_Ripening.prefab",
-							rice_location,
-							bird_pressure
-						);
+				if bird_pressure > dominant_pressure {
+					dominant_pest_name <- "Bird";
+					dominant_damage_prefab <- "B_Ripening.prefab";
+					dominant_pressure <- bird_pressure;
+				}
+
+				if total_pest_pressure > 0 {
+					if current_pest_impact_creations < maximum_pest_impacts {
+						if dominant_damage_prefab = "BPH_Ripening_Severe.prefab" {
+							create bph_ripening_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "LF_Ripening_Severe.prefab" {
+							create lf_ripening_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "R_Ripening.prefab" {
+							create rat_ripening_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						} else if dominant_damage_prefab = "B_Ripening.prefab" {
+							create bird_ripening_damage number: 1 {
+								do setup_pest_impact("aggregated", dominant_pest_name, "multiple", rice_id, dominant_damage_prefab, rice_location, total_pest_pressure);
+							}
+						}
+						current_pest_impact_creations <- current_pest_impact_creations + 1;
 					}
-					current_pest_impact_creations <- current_pest_impact_creations + 1;
 				}
 			}
 		}
@@ -299,8 +275,8 @@ species pest_impact {
 	string damage_prefab_name;
 	int contributing_pest_count <- 0;
 	float combined_damage_score <- 0.0;
-	float marker_height <- 1.65;
-	float marker_radius <- 0.36;
+	float damaged_plant_height <- 1.25;
+	float damaged_canopy_size <- 0.42;
 	rgb damage_color <- rgb(255, 55, 35);
 
 	rgb damage_color_for_prefab(string damage_prefab) {
@@ -339,53 +315,43 @@ species pest_impact {
 		contributing_pest_count <- pest_count;
 		combined_damage_score <- float(pest_count);
 		damage_color <- damage_color_for_prefab(damage_prefab);
-		location <- {
-			rice_location.x + rnd(-0.12, 0.12),
-			rice_location.y + rnd(-0.12, 0.12),
-			rice_location.z + 0.18
-		};
+		location <- rice_location;
+
+		if rice_stage = "vegetative" {
+			damaged_plant_height <- 1.00;
+			damaged_canopy_size <- 0.38;
+		} else if rice_stage = "reproductive" {
+			damaged_plant_height <- 1.45;
+			damaged_canopy_size <- 0.48;
+		} else {
+			damaged_plant_height <- 1.70;
+			damaged_canopy_size <- 0.52;
+		}
 	}
 
 	aspect default {
-		point marker_base <- {
-			location.x,
-			location.y,
-			location.z + 0.20
-		};
-		point marker_top <- {
-			location.x,
-			location.y,
-			location.z + marker_height
-		};
-
-		draw rectangle(1.25, 1.25)
-			at: marker_base
-			rotate: 45.0
-			color: rgb(210, 25, 25)
-			border: #black;
-
-		draw cylinder(0.07, marker_height)
+		draw cylinder(0.07, damaged_plant_height)
 			at: {
 				location.x,
 				location.y,
-				location.z + marker_height / 2.0
+				location.z + damaged_plant_height / 2.0
 			}
-			color: rgb(230, 35, 25);
+			color: rgb(95, 80, 45);
 
-		draw sphere(marker_radius)
-			at: marker_top
+		draw sphere(damaged_canopy_size)
+			at: {location.x, location.y, location.z + damaged_plant_height * 0.70}
 			color: damage_color;
 
-		draw circle(marker_radius * 1.8)
-			at: marker_top
-			color: rgb(#yellow, 0.45);
+		draw sphere(0.10 + min([0.18, combined_damage_score * 0.015]))
+			at: {location.x, location.y, location.z + damaged_plant_height + 0.05}
+			color: rgb(95, 55, 35);
 
 		if show_pest_damage_labels {
 			draw source_pest_name + " damage x" + string(contributing_pest_count)
 				at: {
 					location.x,
 					location.y,
-					location.z + marker_height + 0.45
+					location.z + damaged_plant_height + 0.45
 				}
 				color: #red
 				size: 0.45;

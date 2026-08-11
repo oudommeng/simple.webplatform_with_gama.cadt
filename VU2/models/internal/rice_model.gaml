@@ -62,13 +62,15 @@ species vegetative_rice_plant {
 	bool has_pest_damage <- false;
 
 	aspect default {
-		draw cylinder(0.07, plant_height)
-			at: {location.x, location.y, plant_height / 2.0}
-			color: rgb(55, 165, 65);
+		if !has_pest_damage {
+			draw cylinder(0.07, plant_height)
+				at: {location.x, location.y, plant_height / 2.0}
+				color: rgb(55, 165, 65);
 
-		draw sphere(canopy_size)
-			at: {location.x, location.y, plant_height * 0.70}
-			color: rgb(55, 165, 65);
+			draw sphere(canopy_size)
+				at: {location.x, location.y, plant_height * 0.70}
+				color: rgb(55, 165, 65);
+		}
 
 		if show_rice_labels and grid_col = 0 and grid_row = 0 {
 			draw "vegetative"
@@ -91,17 +93,19 @@ species reproductive_rice_plant {
 	bool has_pest_damage <- false;
 
 	aspect default {
-		draw cylinder(0.07, plant_height)
-			at: {location.x, location.y, plant_height / 2.0}
-			color: rgb(75, 155, 60);
+		if !has_pest_damage {
+			draw cylinder(0.07, plant_height)
+				at: {location.x, location.y, plant_height / 2.0}
+				color: rgb(75, 155, 60);
 
-		draw sphere(canopy_size)
-			at: {location.x, location.y, plant_height * 0.70}
-			color: rgb(75, 155, 60);
+			draw sphere(canopy_size)
+				at: {location.x, location.y, plant_height * 0.70}
+				color: rgb(75, 155, 60);
 
-		draw sphere(0.14)
-			at: {location.x, location.y, plant_height + 0.08}
-			color: rgb(190, 205, 90);
+			draw sphere(0.14)
+				at: {location.x, location.y, plant_height + 0.08}
+				color: rgb(190, 205, 90);
+		}
 
 		if show_rice_labels and grid_col = 0 and grid_row = 0 {
 			draw "reproductive"
@@ -124,17 +128,19 @@ species ripening_rice_plant {
 	bool has_pest_damage <- false;
 
 	aspect default {
-		draw cylinder(0.07, plant_height)
-			at: {location.x, location.y, plant_height / 2.0}
-			color: rgb(145, 160, 55);
+		if !has_pest_damage {
+			draw cylinder(0.07, plant_height)
+				at: {location.x, location.y, plant_height / 2.0}
+				color: rgb(145, 160, 55);
 
-		draw sphere(canopy_size)
-			at: {location.x, location.y, plant_height * 0.70}
-			color: rgb(145, 160, 55);
+			draw sphere(canopy_size)
+				at: {location.x, location.y, plant_height * 0.70}
+				color: rgb(145, 160, 55);
 
-		draw sphere(0.14)
-			at: {location.x, location.y, plant_height + 0.08}
-			color: rgb(225, 185, 55);
+			draw sphere(0.14)
+				at: {location.x, location.y, plant_height + 0.08}
+				color: rgb(225, 185, 55);
+		}
 
 		if show_rice_labels and grid_col = 0 and grid_row = 0 {
 			draw "ripening"

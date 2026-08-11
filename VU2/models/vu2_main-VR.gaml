@@ -292,9 +292,9 @@ species unity_linker parent: abstract_unity_linker {
 		do add_geometries_to_send(bird_ripening_damage, up_bird_ripening_damage);
 
 		do add_geometries_to_send(water, up_water);
-		do add_geometries_to_send(vegetative_rice_plant, up_vegetative_rice_plant);
-		do add_geometries_to_send(reproductive_rice_plant, up_reproductive_rice_plant);
-		do add_geometries_to_send(ripening_rice_plant, up_ripening_rice_plant);
+		do add_geometries_to_send(vegetative_rice_plant where (!each.has_pest_damage), up_vegetative_rice_plant);
+		do add_geometries_to_send(reproductive_rice_plant where (!each.has_pest_damage), up_reproductive_rice_plant);
+		do add_geometries_to_send(ripening_rice_plant where (!each.has_pest_damage), up_ripening_rice_plant);
 	}
 }
 

@@ -8,9 +8,7 @@ species vu3_unity_linker parent: unity_linker {
 
 	unity_property up_rice_impact;
 
-	action define_properties {
-		invoke super.define_properties;
-
+	init {
 		unity_aspect rice_impact_aspect
 			<- geometry_aspect(0.8, #red, precision);
 
