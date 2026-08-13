@@ -1,0 +1,127 @@
+graph TB
+    subgraph "VU2 Simulation System"
+        direction TB
+        
+        subgraph "INITIALIZATION"
+            Init["🔄 Init Phase"]
+            CreateField["📦 create_field_ground<br/>Creates background display"]
+            CreateRice["🌾 create_rice_field<br/>Creates 13×13 grid<br/>169 plants"]
+            CreateAnimals["🦗 create_animals_for_stage<br/>Loads CSV, instantiates animals"]
+            Init --> CreateField
+            Init --> CreateRice
+            Init --> CreateAnimals
+        end
+        
+        subgraph "CONFIGURATION & DATA"
+            Config["⚙️ vu2_config.gaml"]
+            CSV["📊 animal_data.csv<br/>- Stage info<br/>- Species<br/>- Density<br/>- 3D Models"]
+            Config -->|loads| CSV
+        end
+        
+        subgraph "RICE GROWTH MODEL"
+            direction LR
+            Stage_1["🌱 VEGETATIVE<br/>H=1.0m, Green"]
+            Stage_2["🌾 REPRODUCTIVE<br/>H=1.45m, Medium Green<br/>+ Panicles"]
+            Stage_3["🌻 RIPENING<br/>H=1.70m, Yellow<br/>+ Golden Heads"]
+            Timer["⏱️ stage_duration_cycles<br/>300 cycles per stage"]
+            
+            Stage_1 -->|300 cycles| Stage_2
+            Stage_2 -->|300 cycles| Stage_3
+            Stage_3 -->|300 cycles| Stage_1
+            Timer -.->|controls| Stage_1
+        end
+        
+        subgraph "ANIMAL SPECIES MODEL"
+            direction TB
+            
+            subgraph "PESTS"
+                P1["🐛 Brown Planthopper"]
+                P2["🦗 Leaf Folder"]
+                P3["🪲 Yellow Stem Borer"]
+                P4["🐌 Golden Apple Snail"]
+                P5["🐭 Rat / Bird"]
+            end
+            
+            subgraph "BENEFICIAL"
+                B1["🕷️ Lynx Spider"]
+                B2["🦟 Wasp / Trichogramma"]
+                B3["🐞 Ladybug"]
+                B4["🦋 Butterfly"]
+            end
+            
+            subgraph "AQUATIC"
+                A1["🐸 Frog"]
+                A2["🪰 Dragonfly"]
+                A3["🐠 Fish"]
+                A4["🦆 Duck"]
+            end
+        end
+        
+        subgraph "ANIMAL BEHAVIOR"
+            Direction_1["↔️ GROUND: Snails, Crickets"]
+            Direction_2["⬆️ FLY: Insects, Birds"]
+            Direction_3["🔇 STATIONARY: Eggs, Pupae"]
+            Direction_4["💧 SWIM: Fish, Aquatic"]
+        end
+        
+        subgraph "SIMULATION CYCLE"
+            direction TB
+            Cycle["🔁 Each Frame/Cycle"]
+            CheckStage["Check: cycle ÷ 300"]
+            StageChange{Stage Changed?}
+            Clear["Clear old plants<br/>& animals"]
+            Recreate["Recreate for new stage"]
+            AnimalMove["Animals move &<br/>render"]
+            RiceDraw["Rice plants render"]
+            
+            Cycle --> CheckStage
+            CheckStage --> StageChange
+            StageChange -->|YES| Clear
+            StageChange -->|NO| AnimalMove
+            Clear --> Recreate
+            Recreate --> AnimalMove
+            AnimalMove --> RiceDraw
+        end
+        
+        subgraph "3D VISUALIZATION"
+            Display["🎮 GAMA Display<br/>- 3D World View<br/>- Field Ground<br/>- Rice Plants<br/>- Animal Models<br/>- GUI Controls"]
+        end
+        
+        Config -.->|parameters| CreateRice
+        Config -.->|density info| CreateAnimals
+        CSV -.->|animal data| CreateAnimals
+        
+        Stage_1 -.->|current stage| CreateAnimals
+        Stage_2 -.->|current stage| CreateAnimals
+        Stage_3 -.->|current stage| CreateAnimals
+        
+        CreateAnimals --> Direction_1
+        CreateAnimals --> Direction_2
+        CreateAnimals --> Direction_3
+        CreateAnimals --> Direction_4
+        
+        Cycle -->|checks| Timer
+        
+        RiceDraw --> Display
+        AnimalMove --> Display
+        CreateField --> Display
+        
+        style Init fill:#e1f5ff
+        style Config fill:#fff3e0
+        style CSV fill:#fff3e0
+        style Stage_1 fill:#c8e6c9
+        style Stage_2 fill:#a5d6a7
+        style Stage_3 fill:#fff9c4
+        style P1 fill:#ffccbc
+        style P2 fill:#ffccbc
+        style P3 fill:#ffccbc
+        style P4 fill:#ffccbc
+        style P5 fill:#ffccbc
+        style B1 fill:#c5e1a5
+        style B2 fill:#c5e1a5
+        style B3 fill:#c5e1a5
+        style B4 fill:#c5e1a5
+        style Display fill:#b3e5fc
+        style Cycle fill:#ffe0b2
+    end
+

@@ -13,6 +13,8 @@
     "build:sea:win": "node scripts/build-sea-win.mjs",
     "build:sea:linux": "node scripts/build-sea-unix.mjs",
     "build:sea:macos": "node scripts/build-sea-unix.mjs",
+    "prepare:vu2-data": "node VU2/models/scripts/prepare_animal_data.mjs",
+    "validate:vu2-data": "node VU2/models/scripts/validate_animal_data.mjs",
     "lint": "biome lint .",
     "format": "biome format .",
     "check": "biome check .",

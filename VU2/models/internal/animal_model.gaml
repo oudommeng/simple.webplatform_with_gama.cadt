@@ -1,5 +1,9 @@
 model animal_model
 
+// Animal creation, movement, and rendering use the shared CSV and field data.
+import "vu2_config.gaml"
+import "rice_model.gaml"
+
 global {
 
 	action clear_animals {
@@ -25,89 +29,262 @@ global {
 		ask fish { do die; }
 	}
 
+	int current_animal_count(string row_animal_id, string gama_species_value) {
+		if gama_species_value = "brown_planthopper" { return length(brown_planthopper where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "leaf_folder" { return length(leaf_folder where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "lynx_spider" { return length(lynx_spider where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "trichogramma" { return length(trichogramma where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "dragonfly" { return length(dragonfly where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "worm" { return length(worm where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "frog" { return length(frog where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "yellow_stem_borer" { return length(yellow_stem_borer where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "golden_apple_snail" { return length(golden_apple_snail where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "wasp" { return length(wasp where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "weaver_ant" { return length(weaver_ant where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "butterfly" { return length(butterfly where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "bee" { return length(bee where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "bird" { return length(bird where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "rat" { return length(rat where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "ladybug" { return length(ladybug where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "duck" { return length(duck where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "snake" { return length(snake where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "cricket" { return length(cricket where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "fish" { return length(fish where (each.animal_id = row_animal_id)); }
+
+		return 0;
+	}
+
+	action update_existing_animals_for_population(
+		string row_animal_id,
+		string gama_species_value,
+		int population_row
+	) {
+		if gama_species_value = "brown_planthopper" { ask brown_planthopper where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "leaf_folder" { ask leaf_folder where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "lynx_spider" { ask lynx_spider where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "trichogramma" { ask trichogramma where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "dragonfly" { ask dragonfly where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "worm" { ask worm where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "frog" { ask frog where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "yellow_stem_borer" { ask yellow_stem_borer where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "golden_apple_snail" { ask golden_apple_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "wasp" { ask wasp where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "weaver_ant" { ask weaver_ant where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "butterfly" { ask butterfly where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "bee" { ask bee where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "bird" { ask bird where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "rat" { ask rat where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "ladybug" { ask ladybug where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "duck" { ask duck where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "snake" { ask snake where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "cricket" { ask cricket where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "fish" { ask fish where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+	}
+
 	action create_animals_for_stage(string requested_stage) {
 
-		list<string> processed_animal_ids <- [];
+		string effective_stage <- requested_stage;
 
-		// Row 0 contains the CSV header, so data starts at row 1.
-		loop row_index from: 1 to: animal_data.rows - 1 {
+		if !animal_csv_is_valid {
+			write "Animal CSV validation failed. No animals will be created.";
+			effective_stage <- "invalid";
+		}
 
-			string row_stage <- string(animal_data[0, row_index]);
-			string row_animal_id <- string(animal_data[2, row_index]);
+		// Each population row represents one animal life stage. Row 0 is the header.
+		loop population_row from: 1 to: stage_populations_data.rows - 1 {
+			string row_stage <- string(stage_populations_data[0, population_row]);
+			string presence_status <- string(stage_populations_data[8, population_row]);
 
-			if row_stage = requested_stage and !(row_animal_id in processed_animal_ids) {
+			if row_stage = effective_stage and presence_status = "observed" {
+				string row_animal_id <- string(stage_populations_data[2, population_row]);
+				int type_row <- find_animal_type_row(row_animal_id);
 
-				processed_animal_ids << row_animal_id;
+				bool should_create_type <- row_animal_id != "brown_planthopper_eggs"
+					or create_seeded_bph_eggs;
 
-				// Collect all CSV rows belonging to this animal and rice stage.
-				list<int> matching_rows <- [];
+				if should_create_type
+					and type_row > 0
+					and string(animal_types_data[15, type_row]) = "true" {
 
-				loop search_row from: 1 to: animal_data.rows - 1 {
-					if string(animal_data[0, search_row]) = requested_stage
-						and string(animal_data[2, search_row]) = row_animal_id {
+					list<int> matching_spawn_rows <- [];
 
-						matching_rows << search_row;
+					// GAMA recognizes the fully populated spawn header, so row 0 is data.
+					loop spawn_row from: 0 to: spawn_points_data.rows - 1 {
+						if string(spawn_points_data[0, spawn_row]) = effective_stage
+							and string(spawn_points_data[1, spawn_row]) = row_animal_id {
+
+							matching_spawn_rows << spawn_row;
+						}
+					}
+
+					float species_density <- float(stage_populations_data[4, population_row]);
+					float life_stage_fraction <- float(stage_populations_data[5, population_row]);
+					int desired_count <- int(round(
+						species_density
+						* life_stage_fraction
+						* field_area_m2 / 100.0
+						* density_scale
+					));
+
+					desired_count <- min([maximum_agents_per_animal_type, desired_count]);
+
+					if desired_count > 0 and !empty(matching_spawn_rows) {
+						string gama_species_value <- string(animal_types_data[7, type_row]);
+						int current_count <- current_animal_count(row_animal_id, gama_species_value);
+						int additional_count <- max([0, desired_count - current_count]);
+
+						do update_existing_animals_for_population(
+							row_animal_id,
+							gama_species_value,
+							population_row
+						);
+
+						if additional_count > 0 {
+							if gama_species_value = "brown_planthopper" {
+								create brown_planthopper number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "leaf_folder" {
+								create leaf_folder number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "lynx_spider" {
+								create lynx_spider number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "trichogramma" {
+								create trichogramma number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "dragonfly" {
+								create dragonfly number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "worm" {
+								create worm number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "frog" {
+								create frog number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "yellow_stem_borer" {
+								create yellow_stem_borer number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "golden_apple_snail" {
+								create golden_apple_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "wasp" {
+								create wasp number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "weaver_ant" {
+								create weaver_ant number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "butterfly" {
+								create butterfly number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "bee" {
+								create bee number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "bird" {
+								create bird number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "rat" {
+								create rat number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "ladybug" {
+								create ladybug number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "duck" {
+								create duck number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "snake" {
+								create snake number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "cricket" {
+								create cricket number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "fish" {
+								create fish number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							}
+						}
 					}
 				}
+			}
+		}
+	}
 
-				if !empty(matching_rows) {
+	int find_animal_type_row(string animal_id_value) {
+		loop type_row from: 1 to: animal_types_data.rows - 1 {
+			if string(animal_types_data[0, type_row]) = animal_id_value {
+				return type_row;
+			}
+		}
+		return -1;
+	}
 
-					int first_row <- first(matching_rows);
-					float density <- float(animal_data[8, first_row]);
+	action validate_animal_csv_data {
+		animal_csv_is_valid <- true;
 
-					int desired_count <- int(
-						round(density * field_area_m2 / 100.0 * density_scale)
-					);
+		if animal_types_data.rows <= 1 {
+			write "animal_types.csv has no data rows.";
+			animal_csv_is_valid <- false;
+		}
 
-					desired_count <- max([
-						1,
-						min([maximum_agents_per_animal_type, desired_count])
-					]);
+		if stage_populations_data.rows <= 1 {
+			write "stage_populations.csv has no data rows.";
+			animal_csv_is_valid <- false;
+		}
 
-					string species_value <- string(animal_data[4, first_row]);
+		if spawn_points_data.rows <= 1 {
+			write "spawn_points.csv has no data rows.";
+			animal_csv_is_valid <- false;
+		}
 
-					if species_value = "Brown Planthopper" {
-						create brown_planthopper number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Leaf Folder" {
-						create leaf_folder number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Lynx Spider" {
-						create lynx_spider number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Trichogramma" {
-						create trichogramma number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Dragonfly" {
-						create dragonfly number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Worm" {
-						create worm number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Frog" {
-						create frog number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Yellow Stem Borer" {
-						create yellow_stem_borer number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Golden Apple Snail" {
-						create golden_apple_snail number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Wasp" {
-						create wasp number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Weaver Ant" {
-						create weaver_ant number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Butterfly" {
-						create butterfly number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Bee" {
-						create bee number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Bird" {
-						create bird number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Rat" {
-						create rat number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Ladybug" {
-						create ladybug number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Duck" {
-						create duck number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Snake" {
-						create snake number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Cricket" {
-						create cricket number: desired_count { do setup_from_csv_rows(matching_rows); }
-					} else if species_value = "Fish" {
-						create fish number: desired_count { do setup_from_csv_rows(matching_rows); }
-					}
-				}
+		if string(animal_types_data[0, 0]) != "animal_id"
+			or string(stage_populations_data[0, 0]) != "stage_id"
+			or !(string(spawn_points_data[0, 0]) in ["vegetative", "reproductive", "ripening"])
+			or string(spawn_points_data[6, 0]) != "gama_field_local_m" {
+
+			write "Animal CSV headers do not match the normalized schema.";
+			animal_csv_is_valid <- false;
+		}
+
+		loop population_row from: 1 to: stage_populations_data.rows - 1 {
+			string row_stage <- string(stage_populations_data[0, population_row]);
+			string row_animal_id <- string(stage_populations_data[2, population_row]);
+			float species_density <- float(stage_populations_data[4, population_row]);
+			float life_stage_fraction <- float(stage_populations_data[5, population_row]);
+			string presence_status <- string(stage_populations_data[8, population_row]);
+
+			if !(row_stage in ["vegetative", "reproductive", "ripening"]) {
+				write "Invalid stage in stage_populations.csv: " + row_stage;
+				animal_csv_is_valid <- false;
+			}
+
+			if find_animal_type_row(row_animal_id) <= 0 {
+				write "Unknown animal_id in stage_populations.csv: " + row_animal_id;
+				animal_csv_is_valid <- false;
+			}
+
+			if !(presence_status in ["observed", "absent", "not_sampled"]) {
+				write "Invalid presence_status in stage_populations.csv: " + presence_status;
+				animal_csv_is_valid <- false;
+			}
+
+			if species_density < 0.0 or life_stage_fraction < 0.0 or life_stage_fraction > 1.0 {
+				write "Invalid density or life-stage fraction for " + row_stage + "|" + row_animal_id;
+				animal_csv_is_valid <- false;
+			}
+
+			if presence_status != "observed"
+				and (species_density != 0.0 or life_stage_fraction != 0.0) {
+
+				write "Non-observed population rows must have zero density and fraction: " + row_stage + "|" + row_animal_id;
+				animal_csv_is_valid <- false;
+			}
+		}
+
+		loop spawn_row from: 0 to: spawn_points_data.rows - 1 {
+			string spawn_stage <- string(spawn_points_data[0, spawn_row]);
+			string spawn_animal_id <- string(spawn_points_data[1, spawn_row]);
+			float local_x <- float(spawn_points_data[3, spawn_row]);
+			float local_y <- float(spawn_points_data[4, spawn_row]);
+			float local_z <- float(spawn_points_data[5, spawn_row]);
+			float spawn_weight <- float(spawn_points_data[8, spawn_row]);
+
+			if !(spawn_stage in ["vegetative", "reproductive", "ripening"]) {
+				write "Invalid stage in spawn_points.csv: " + spawn_stage;
+				animal_csv_is_valid <- false;
+			}
+
+			if find_animal_type_row(spawn_animal_id) <= 0 {
+				write "Unknown animal_id in spawn_points.csv: " + spawn_animal_id;
+				animal_csv_is_valid <- false;
+			}
+
+			if local_x < -17.5 or local_x > 17.5 or local_y < -17.5 or local_y > 17.5 or local_z < 0.0 {
+				write "Spawn point outside local field bounds: " + spawn_stage + "|" + spawn_animal_id;
+				animal_csv_is_valid <- false;
+			}
+
+			if spawn_weight <= 0.0 {
+				write "Spawn weight must be positive: " + spawn_stage + "|" + spawn_animal_id;
+				animal_csv_is_valid <- false;
 			}
 		}
 	}
@@ -119,54 +296,78 @@ species animal_template skills: [moving] {
 	string stage_name;
 	string animal_id;
 	string animal_name;
+	string species_id;
 	string species_name;
+	string scientific_name;
 	string life_stage;
+	string ecological_role;
 	string prefab_name;
-	string prefab_path;
+	string unity_resource_path;
+	string asset_status;
+	string spawn_point_id;
+	string coordinate_frame;
+	string spawn_surface;
 
-	float density_per_100m2 <- 0.0;
+	float species_density_per_100m2 <- 0.0;
+	float life_stage_fraction <- 0.0;
 
 	bool is_pest <- false;
 	string movement_mode <- "ground";
 
+	point movement_direction <- {1.0, 0.0, 0.0};
+	point target_movement_direction <- {1.0, 0.0, 0.0};
+	// Retained for VU3-created stationary eggs and older VR consumers.
 	point movement_destination;
-	int destination_timer <- 0;
-	float movement_speed <- 0.08;
+	bool movement_direction_initialized <- false;
+	int direction_timer <- 0;
+	float movement_speed <- 0.0001;
+	float steering_rate <- 0.12;
 	float movement_heading <- 0.0;
 	bool has_movement_heading <- false;
 
-	action setup_from_csv_rows(list<int> matching_rows) {
+	// Generic lifecycle state. VU2 does not act on these fields; child models
+	// such as VU3 can add reproduction without replacing the base animal model.
+	bool spawned_by_reproduction <- false;
+	int eggs_laid <- 0;
+	int next_egg_laying_cycle <- 0;
+	agent host_rice;
 
-		int selected_row <- one_of(matching_rows);
+	action setup_from_csv_rows(
+		int type_row,
+		int population_row,
+		list<int> matching_spawn_rows
+	) {
 
-		stage_id <- string(animal_data[0, selected_row]);
-		stage_name <- string(animal_data[1, selected_row]);
-		animal_id <- string(animal_data[2, selected_row]);
-		animal_name <- string(animal_data[3, selected_row]);
-		species_name <- string(animal_data[4, selected_row]);
-		life_stage <- string(animal_data[5, selected_row]);
-		prefab_name <- string(animal_data[6, selected_row]);
-		prefab_path <- string(animal_data[7, selected_row]);
-		density_per_100m2 <- float(animal_data[8, selected_row]);
+		int spawn_row <- one_of(matching_spawn_rows);
 
-		float csv_x <- float(animal_data[10, selected_row]);
-		float csv_y <- float(animal_data[11, selected_row]);
-		float csv_z <- float(animal_data[12, selected_row]);
+		stage_id <- string(stage_populations_data[0, population_row]);
+		stage_name <- string(stage_populations_data[1, population_row]);
+		animal_id <- string(animal_types_data[0, type_row]);
+		animal_name <- string(animal_types_data[1, type_row]);
+		species_id <- string(animal_types_data[2, type_row]);
+		species_name <- string(animal_types_data[3, type_row]);
+		scientific_name <- string(animal_types_data[4, type_row]);
+		life_stage <- string(animal_types_data[5, type_row]);
+		ecological_role <- string(animal_types_data[6, type_row]);
+		movement_mode <- string(animal_types_data[8, type_row]);
+		spawn_surface <- string(animal_types_data[9, type_row]);
+		float speed_min <- float(animal_types_data[10, type_row]);
+		float speed_max <- float(animal_types_data[11, type_row]);
+		prefab_name <- string(animal_types_data[12, type_row]);
+		unity_resource_path <- string(animal_types_data[13, type_row]);
+		asset_status <- string(animal_types_data[14, type_row]);
 
-		is_pest <- species_name in pest_species;
-		movement_mode <- get_movement_mode(species_name, life_stage);
+		species_density_per_100m2 <- float(stage_populations_data[4, population_row]);
+		life_stage_fraction <- float(stage_populations_data[5, population_row]);
 
-		float local_x <- max([
-			-field_width / 2.0,
-			min([field_width / 2.0, csv_x])
-		]);
+		spawn_point_id <- string(spawn_points_data[2, spawn_row]);
+		float local_x <- float(spawn_points_data[3, spawn_row]);
+		float local_y <- float(spawn_points_data[4, spawn_row]);
+		float local_z <- float(spawn_points_data[5, spawn_row]);
+		coordinate_frame <- string(spawn_points_data[6, spawn_row]);
 
-		float local_y <- max([
-			-field_length / 2.0,
-			min([field_length / 2.0, csv_y])
-		]);
-
-		float start_z <- get_start_height(movement_mode, csv_z);
+		is_pest <- ecological_role = "pest";
+		float start_z <- get_start_height(movement_mode, local_z);
 
 		location <- {
 			max([
@@ -179,16 +380,24 @@ species animal_template skills: [moving] {
 			]),
 			start_z
 		};
+		movement_destination <- location;
 
-		movement_speed <- get_movement_speed(movement_mode);
+		movement_speed <- get_scaled_movement_speed(movement_mode, speed_min, speed_max);
 		heading <- movement_heading;
 		has_movement_heading <- true;
 
-		if movement_mode != "stationary" {
-			do choose_new_destination;
-		} else {
-			movement_destination <- location;
+		if movement_mode != "stationary" and movement_speed > 0.0 {
+			do choose_new_direction;
 		}
+	}
+
+	action update_population_metadata(int population_row) {
+		stage_id <- string(stage_populations_data[0, population_row]);
+		stage_name <- string(stage_populations_data[1, population_row]);
+		species_density_per_100m2
+			<- float(stage_populations_data[4, population_row]);
+		life_stage_fraction
+			<- float(stage_populations_data[5, population_row]);
 	}
 
 	string get_movement_mode(string species_value, string life_value) {
@@ -241,7 +450,7 @@ species animal_template skills: [moving] {
 		}
 
 		if move_mode = "water" {
-			return 0.10;
+			return water_level + 0.05;
 		}
 
 		if move_mode = "stationary" {
@@ -272,40 +481,108 @@ species animal_template skills: [moving] {
 		return rnd(0.03, 0.10);
 	}
 
-	action choose_new_destination {
-
-		float destination_z <- location.z;
-
-		if movement_mode = "fly" {
-			destination_z <- rnd(1.2, 4.0);
-
-		} else if movement_mode = "plant" {
-			destination_z <- rnd(0.25, 1.70);
-
-		} else if movement_mode = "water" {
-			destination_z <- 0.10;
-
-		} else if movement_mode = "ground" {
-			destination_z <- rnd(0.08, 0.30);
+	float get_scaled_movement_speed(
+		string move_mode,
+		float speed_min,
+		float speed_max
+	) {
+		if move_mode = "stationary" or speed_max <= 0.0 {
+			return 0.0;
 		}
 
-		movement_destination <- {
-			rnd(field_min_x, field_max_x),
-			rnd(field_min_y, field_max_y),
-			destination_z
-		};
+		float base_speed <- speed_min = speed_max
+			? speed_min
+			: rnd(speed_min, speed_max);
 
-		destination_timer <- rnd(20, 80);
-		do update_heading_between(location, movement_destination);
+		float scaled_speed <- base_speed * animal_movement_speed_scale;
+
+		if move_mode = "fly" {
+			return min([scaled_speed, max_flying_speed_m_per_cycle]);
+		}
+
+		if move_mode = "plant" {
+			return min([scaled_speed, max_plant_speed_m_per_cycle]);
+		}
+
+		if move_mode = "water" {
+			return min([scaled_speed, max_water_speed_m_per_cycle]);
+		}
+
+		return min([scaled_speed, max_ground_speed_m_per_cycle]);
 	}
 
-	action update_heading_between(point origin, point destination) {
+	action choose_new_direction {
 
-		float delta_x <- destination.x - origin.x;
-		float delta_y <- destination.y - origin.y;
+		float direction_x <- rnd(-1.0, 1.0);
+		float direction_y <- rnd(-1.0, 1.0);
+		float direction_z <- 0.0;
 
-		if abs(delta_x) > 0.001 or abs(delta_y) > 0.001 {
-			float new_heading <- atan2(delta_y, delta_x);
+		if movement_mode = "fly" {
+			direction_z <- rnd(-0.35, 0.35);
+		} else if movement_mode = "plant" {
+			direction_z <- rnd(-0.15, 0.15);
+		}
+
+		if abs(direction_x) + abs(direction_y) < 0.01 {
+			direction_x <- 1.0;
+		}
+
+		float direction_length <- sqrt(
+			direction_x * direction_x
+			+ direction_y * direction_y
+			+ direction_z * direction_z
+		);
+
+		target_movement_direction <- {
+			direction_x / direction_length,
+			direction_y / direction_length,
+			direction_z / direction_length
+		};
+
+		if !movement_direction_initialized {
+			movement_direction <- target_movement_direction;
+			movement_direction_initialized <- true;
+		}
+
+		direction_timer <- rnd(60, 140);
+		do update_heading_from_direction;
+	}
+
+	action steer_towards_target_direction {
+
+		float direction_x <- movement_direction.x * (1.0 - steering_rate)
+			+ target_movement_direction.x * steering_rate;
+		float direction_y <- movement_direction.y * (1.0 - steering_rate)
+			+ target_movement_direction.y * steering_rate;
+		float direction_z <- movement_direction.z * (1.0 - steering_rate)
+			+ target_movement_direction.z * steering_rate;
+
+		float direction_length <- sqrt(
+			direction_x * direction_x
+			+ direction_y * direction_y
+			+ direction_z * direction_z
+		);
+
+		if direction_length > 0.001 {
+			movement_direction <- {
+				direction_x / direction_length,
+				direction_y / direction_length,
+				direction_z / direction_length
+			};
+		}
+
+		do update_heading_from_direction;
+	}
+
+	action update_heading_from_direction {
+
+		if abs(movement_direction.x) > 0.001
+			or abs(movement_direction.y) > 0.001 {
+
+			float new_heading <- atan2(
+				movement_direction.y,
+				movement_direction.x
+			);
 
 			if new_heading < 0.0 {
 				new_heading <- new_heading + 360.0;
@@ -325,42 +602,157 @@ species animal_template skills: [moving] {
 		}
 	}
 
+	bool is_near_active_rice_crop {
+		if rice_stage = "vegetative" {
+			return !empty(vegetative_rice_plant where (
+				(each.location distance_to location) <= default_pest_impact_radius_m
+			));
+		}
+
+		if rice_stage = "reproductive" {
+			return !empty(reproductive_rice_plant where (
+				(each.location distance_to location) <= default_pest_impact_radius_m
+			));
+		}
+
+		return !empty(ripening_rice_plant where (
+			(each.location distance_to location) <= default_pest_impact_radius_m
+		));
+	}
+
 	reflex move_independently {
 
-		// Egg records and other stationary records do not move.
-		if movement_mode != "stationary" {
+		bool pest_is_resting_on_rice <- is_pest and is_near_active_rice_crop();
 
-			destination_timer <- destination_timer - 1;
+		if pest_is_resting_on_rice {
+			movement_destination <- location;
+		} else if movement_mode != "stationary" and movement_speed > 0.0 {
 
-			if destination_timer <= 0
-				or self distance_to movement_destination < 0.30 {
+			direction_timer <- direction_timer - 1;
 
-				do choose_new_destination;
+			if direction_timer <= 0 {
+				do choose_new_direction;
 			}
 
-			point previous_location <- location;
-			do goto target: movement_destination speed: movement_speed;
+			do steer_towards_target_direction;
 
-			if previous_location distance_to location > 0.001 {
-				do update_heading_between(previous_location, location);
-			} else if has_movement_heading {
-				heading <- movement_heading;
+			float direction_x <- movement_direction.x;
+			float direction_y <- movement_direction.y;
+			float direction_z <- movement_direction.z;
+			float target_direction_x <- target_movement_direction.x;
+			float target_direction_y <- target_movement_direction.y;
+			float target_direction_z <- target_movement_direction.z;
+
+			float next_x <- location.x + direction_x * movement_speed;
+			float next_y <- location.y + direction_y * movement_speed;
+			float next_z <- location.z + direction_z * movement_speed;
+
+			if next_x < field_min_x or next_x > field_max_x {
+				direction_x <- -direction_x;
+				target_direction_x <- -target_direction_x;
+				next_x <- location.x + direction_x * movement_speed;
 			}
+
+			if next_y < field_min_y or next_y > field_max_y {
+				direction_y <- -direction_y;
+				target_direction_y <- -target_direction_y;
+				next_y <- location.y + direction_y * movement_speed;
+			}
+
+			if movement_mode = "fly" {
+				if next_z < 1.2 or next_z > 4.0 {
+					direction_z <- -direction_z;
+					target_direction_z <- -target_direction_z;
+					next_z <- location.z + direction_z * movement_speed;
+				}
+				next_z <- max([1.2, min([4.0, next_z])]);
+			} else if movement_mode = "plant" {
+				if next_z < 0.25 or next_z > 1.70 {
+					direction_z <- -direction_z;
+					target_direction_z <- -target_direction_z;
+					next_z <- location.z + direction_z * movement_speed;
+				}
+				next_z <- max([0.25, min([1.70, next_z])]);
+			} else if movement_mode = "water" {
+				next_z <- water_level + 0.05;
+			} else {
+				next_z <- location.z;
+			}
+
+			movement_direction <- {direction_x, direction_y, direction_z};
+			target_movement_direction <- {
+				target_direction_x,
+				target_direction_y,
+				target_direction_z
+			};
+			location <- {
+				max([field_min_x, min([field_max_x, next_x])]),
+				max([field_min_y, min([field_max_y, next_y])]),
+				next_z
+			};
+
+			do update_heading_from_direction;
+		} else {
+			movement_speed <- 0.0;
+			movement_destination <- location;
 		}
+	}
+
+	rgb marker_color_for_species {
+		if species_id = "brown_planthopper" { return rgb(130, 75, 30); }
+		if species_id = "leaf_folder" { return rgb(225, 70, 45); }
+		if species_id = "lynx_spider" { return rgb(125, 55, 175); }
+		if species_id = "trichogramma" { return rgb(245, 185, 25); }
+		if species_id = "dragonfly" { return rgb(20, 175, 210); }
+		if species_id = "worm" { return rgb(225, 105, 155); }
+		if species_id = "frog" { return rgb(45, 165, 70); }
+		if species_id = "yellow_stem_borer" { return rgb(235, 145, 20); }
+		if species_id = "golden_apple_snail" { return rgb(155, 135, 35); }
+		if species_id = "wasp" { return rgb(65, 55, 35); }
+		if species_id = "weaver_ant" { return rgb(155, 35, 50); }
+		if species_id = "butterfly" { return rgb(210, 60, 190); }
+		if species_id = "bee" { return rgb(250, 115, 20); }
+		if species_id = "bird" { return rgb(65, 120, 220); }
+		if species_id = "rat" { return rgb(115, 115, 125); }
+		if species_id = "ladybug" { return rgb(220, 30, 35); }
+		if species_id = "duck" { return rgb(30, 145, 135); }
+		if species_id = "snake" { return rgb(35, 105, 45); }
+		if species_id = "cricket" { return rgb(105, 70, 45); }
+		if species_id = "fish" { return rgb(30, 85, 190); }
+		return #cyan;
+	}
+
+	string marker_shape_for_species {
+		if species_id in ["brown_planthopper", "dragonfly", "bird"] {
+			return "triangle";
+		}
+		if species_id in [
+			"lynx_spider",
+			"yellow_stem_borer",
+			"rat",
+			"cricket"
+		] {
+			return "square";
+		}
+		if species_id in [
+			"leaf_folder",
+			"wasp",
+			"butterfly",
+			"duck",
+			"fish"
+		] {
+			return "diamond";
+		}
+		if species_id in ["trichogramma", "worm", "weaver_ant", "snake"] {
+			return "bar";
+		}
+		return "sphere";
 	}
 
 	aspect default {
 
-		rgb animal_color <- #cyan;
-
-		if is_pest {
-			animal_color <- #red;
-		} else if movement_mode = "fly" {
-			animal_color <- #yellow;
-		} else if movement_mode = "water" {
-			animal_color <- #blue;
-		}
-
+		rgb marker_color <- marker_color_for_species();
+		string marker_shape <- marker_shape_for_species();
 		float body_size <- 0.18;
 
 		if movement_mode = "fly" {
@@ -371,9 +763,30 @@ species animal_template skills: [moving] {
 			body_size <- 0.12;
 		}
 
-		draw sphere(body_size)
-			at: location
-			color: animal_color;
+		if animal_markers_are_triangles or marker_shape = "triangle" {
+			draw triangle(body_size * 2.0)
+				at: location
+				rotate: heading + 90.0
+				color: marker_color;
+		} else if marker_shape = "square" {
+			draw rectangle(body_size * 2.0, body_size * 2.0)
+				at: location
+				color: marker_color;
+		} else if marker_shape = "diamond" {
+			draw rectangle(body_size * 2.0, body_size * 2.0)
+				at: location
+				rotate: 45.0
+				color: marker_color;
+		} else if marker_shape = "bar" {
+			draw rectangle(body_size * 2.8, body_size)
+				at: location
+				rotate: heading
+				color: marker_color;
+		} else {
+			draw sphere(body_size)
+				at: location
+				color: marker_color;
+		}
 
 		bool display_label <- show_all_animal_labels
 			or (show_pest_labels and is_pest);
