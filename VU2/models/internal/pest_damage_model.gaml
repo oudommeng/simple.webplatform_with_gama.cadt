@@ -329,6 +329,37 @@ species pest_impact {
 		}
 	}
 
+	string mesh_asset_path {
+		if damage_prefab_name = "BPH_Vegetative_Severe.prefab" { return "../fbx/Damage/Damage_Vegetative_Sap_sucking_damage.gama.obj"; }
+		if damage_prefab_name = "BPH_Reproductive_Severe.prefab" { return "../fbx/Damage/Damage_Reproductive_Sap_sucking_damage.gama.obj"; }
+		if damage_prefab_name = "BPH_Ripening_Severe.prefab" { return "../fbx/Damage/Damage_Ripening_Sap_sucking_damage.gama.obj"; }
+		if damage_prefab_name = "GAS_Vegetative_Severe.prefab" { return "../fbx/Damage/Damage_Vegetative_Seedling_and_leaf_feeding_damage.gama.obj"; }
+		if damage_prefab_name = "GAS_Reproductive_Severe.prefab" { return "../fbx/Damage/Damage_Reproductive_Leaf_and_stem_feeding_damage.gama.obj"; }
+		if damage_prefab_name = "YSB_Vegetative_Severe.prefab" { return "../fbx/Damage/Damage_Vegetative_Deadhead_damage.gama.obj"; }
+		if damage_prefab_name = "YSB_Reproductive_Severe.prefab" { return "../fbx/Damage/Damage_Reproductive_Whitehead_damage.gama.obj"; }
+		if damage_prefab_name = "LF_Vegetative_Severe.prefab" { return "../fbx/Damage/Damage_Vegetative_Leaf_folding_and_feeding_damage.gama.obj"; }
+		if damage_prefab_name = "LF_Reproductive_Severe.prefab" { return "../fbx/Damage/Damage_Reproductive_Leaf_folding_and_feeding_damage.gama.obj"; }
+		if damage_prefab_name = "LF_Ripening_Severe.prefab" { return "../fbx/Damage/Damage_Ripening_Leaf_folding_and_feeding_damage.gama.obj"; }
+		if damage_prefab_name = "R_Ripening.prefab" { return "../fbx/Damage/Damage_Ripening_Panicle_and_grain_feeding_damage.gama.obj"; }
+		if damage_prefab_name = "B_Ripening.prefab" { return "../fbx/Damage/Damage_Ripening_Grain_feeding_damage.gama.obj"; }
+		return "";
+	}
+
+	aspect mesh3d {
+		string mesh_path <- mesh_asset_path();
+
+		if mesh_path != "" {
+			draw obj_file(mesh_path, 90::{-1, 0, 0})
+				size: damaged_plant_height + 0.50
+				at: location
+				color: damage_color;
+		} else {
+			draw sphere(0.22)
+				at: {location.x, location.y, location.z + damaged_plant_height}
+				color: damage_color;
+		}
+	}
+
 	aspect default {
 		draw cylinder(0.07, damaged_plant_height)
 			at: {

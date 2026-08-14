@@ -7,7 +7,7 @@ leaf_folder_larva,Leaf Folder - Larva,leaf_folder,Leaf Folder,Cnaphalocrocis med
 leaf_folder_adult,Leaf Folder - Adult,leaf_folder,Leaf Folder,Cnaphalocrocis medinalis,adult,pest,leaf_folder,plant,plant,0.05,0.14,SM_GreenLeafFolder_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GreenLeafFolder_01,configured,true
 yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,yellow_stem_borer,Yellow Stem Borer,Scirpophaga incertulas,eggs,pest,yellow_stem_borer,stationary,leaf,0,0,SM_YSB_Eggs,Prefabs/Visual Prefabs/Prefabs/Animals/SM_YSB_Eggs,configured,true
 yellow_stem_borer_adult,Yellow Stem Borer - Adult,yellow_stem_borer,Yellow Stem Borer,Scirpophaga incertulas,adult,pest,yellow_stem_borer,plant,plant,0.05,0.14,SM_YellowStemBorer_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_YellowStemBorer_01,configured,true
-golden_apple_snail_eggs,Golden Apple Snail - Eggs,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,eggs,pest,golden_apple_snail,stationary,stem,0,0,,,missing,true
+golden_apple_snail_eggs,Golden Apple Snail - Eggs,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,eggs,pest,golden_apple_snail,stationary,stem,0,0,SM_GAS_Eggs,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GAS_Eggs,configured,true
 golden_apple_snail_adult,Golden Apple Snail - Adult,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,adult,pest,golden_apple_snail,water,water,0.06,0.18,SM_GoldenAppleSnail_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GoldenAppleSnail_01,configured,true
 rat,Rat,rat,Rat,Rattus spp.,mixed,pest,rat,ground,soil,0.03,0.1,SM_Rat_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Rat_01,configured,true
 bird,Bird,bird,Bird,Aves,mixed,pest,bird,fly,air,0.2,0.5,SM_Bird_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Bird_01,configured,true

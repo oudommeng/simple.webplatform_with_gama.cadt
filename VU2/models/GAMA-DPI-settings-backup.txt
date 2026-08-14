@@ -1,0 +1,17 @@
+GAMA installation settings changed to fix the shifted OpenGL canvas.
+
+Installation file:
+C:\Program Files\Gama\Gama.ini
+
+Original relevant settings:
+-Duse_delayed_resize=false
+-Dswt.autoScale=exact
+-Dswt.enable.autoScale=true
+-Dswt.autoScale=quarter
+-Dswt.autoScale.method=smooth
+-Dswt.autoScale.updateOnRuntime=true
+
+Replacement settings:
+-Duse_delayed_resize=true
+-Dswt.autoScale=100
+-Dswt.enable.autoScale=false
