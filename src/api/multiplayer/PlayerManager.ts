@@ -45,63 +45,80 @@ class PlayerManager {
 				//: (uWS.SHARED_COMPRESSOR | uWS.SHARED_DECOMPRESSOR),
 
 				open: (ws) => {
-					const playerWsId: string = Buffer.from(ws.getRemoteAddressAsText()).toString();
-
-					// Check if known player or not
-					if (this.playerList.has(playerWsId)) {
-						const player: Player = this.playerList.get(playerWsId)!;
-
-						logger.info(`Reconnecting player of id ${player.id}`);
-						player.ws = ws;
-						player.connected = true;
-						player.is_alive = true;
-						player.date_connection = `${new Date().getHours().toString().padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
-
-						// Add in simulation if game already started and player is reconnecting
-						if (!player.in_game) {
-							this.addPlayerConnection(playerWsId, true);
-						}
-
-						// Restart ping interval
-						player.timeout = setInterval(() => this.sendHeartbeat(playerWsId), player.ping_interval);
-
-						// Update new version of player
-						this.playerList.set(playerWsId, player);
-
-						this.notifyPlayerChange(playerWsId);
-						this.controller.notifyMonitor();
-					} else {
-						logger.debug(`New ws connection from ${playerWsId}, waiting for connection message...`);
-						logger.trace(ws.toString());
-					}
+					const remoteAddr: string = Buffer.from(ws.getRemoteAddressAsText()).toString();
+					logger.debug(`New ws connection from ${remoteAddr}, waiting for connection message...`);
+					logger.trace(ws.toString());
 				},
 				// ======================================
 
 				message: (ws, message) => {
-					const playerIP = Buffer.from(ws.getRemoteAddressAsText()).toString();
-					const jsonPlayer: JsonPlayer = JSON.parse(Buffer.from(message).toString());
+					let jsonPlayer: JsonPlayer;
+					try {
+						jsonPlayer = JSON.parse(Buffer.from(message).toString());
+					} catch (e) {
+						logger.error("Failed to parse player message: {e}", { e });
+						return;
+					}
 
-					// Alive as received any message
-					if (this.playerList.has(playerIP)) this.playerList.get(playerIP)!.is_alive = true;
+					// Resolve existing player for this socket if already authenticated
+					const playerKey =
+						this.getIndexByPlayerWs(ws) ?? (jsonPlayer.id ? this.getIndexByPlayerId(jsonPlayer.id) : undefined);
+					if (playerKey && this.playerList.has(playerKey)) {
+						this.playerList.get(playerKey)!.is_alive = true;
+					}
 
 					switch (jsonPlayer.type) {
 						case "pong":
-							this.playerList.get(playerIP)!.is_alive = true;
+							if (playerKey && this.playerList.has(playerKey)) {
+								this.playerList.get(playerKey)!.is_alive = true;
+							}
 							break;
 
 						case "ping":
-							this.sendMessageByWs(playerIP, {
-								type: "pong",
-								id: jsonPlayer.id,
-							});
+							if (playerKey) {
+								this.sendMessageByWs(playerKey, {
+									type: "pong",
+									id: jsonPlayer.id,
+								});
+							}
 							break;
 
-						case "connection":
-							if (!this.playerList.has(playerIP)) {
-								logger.info(`New connection of the player of id ${jsonPlayer.id}`);
-								// Create new player in the list
+						case "connection": {
+							const existingKey =
+								this.getIndexByPlayerId(jsonPlayer.id) ??
+								(this.playerList.has(jsonPlayer.id) ? jsonPlayer.id : undefined);
 
-								this.playerList.set(playerIP, {
+							if (existingKey && this.playerList.has(existingKey)) {
+								const player: Player = this.playerList.get(existingKey)!;
+
+								logger.info(`Reconnecting player of id ${player.id}`);
+								if (player.timeout) clearInterval(player.timeout);
+								if (player.ws && player.ws !== ws) {
+									try {
+										player.ws.end(1000, "Replaced by new connection");
+									} catch (_e) {}
+								}
+								player.ws = ws;
+								player.connected = true;
+								player.is_alive = true;
+								player.date_connection = `${new Date().getHours().toString().padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
+								player.ping_interval = jsonPlayer.heartbeat || 5000;
+
+								// Add in simulation if game already started and player is reconnecting
+								if (!player.in_game) {
+									this.addPlayerConnection(existingKey, true);
+								}
+
+								// Restart ping interval
+								player.timeout = setInterval(() => this.sendHeartbeat(existingKey), player.ping_interval);
+
+								this.notifyPlayerChange(existingKey);
+								this.controller.notifyMonitor();
+							} else {
+								logger.info(`New connection of the player of id ${jsonPlayer.id}`);
+								const newKey = jsonPlayer.id;
+
+								this.playerList.set(newKey, {
 									id: jsonPlayer.id,
 									ws: ws,
 									ping_interval: jsonPlayer.heartbeat || 5000,
@@ -111,79 +128,72 @@ class PlayerManager {
 									date_connection: "",
 								});
 
-								this.addPlayerConnection(playerIP, true);
+								this.addPlayerConnection(newKey, true);
 
 								// Trigger heartbeat
-								this.playerList.get(playerIP)!.timeout = setInterval(
-									() => this.sendHeartbeat(playerIP),
+								this.playerList.get(newKey)!.timeout = setInterval(
+									() => this.sendHeartbeat(newKey),
 									jsonPlayer.heartbeat || 5000,
 								);
 
-								this.notifyPlayerChange(playerIP);
+								this.notifyPlayerChange(newKey);
 								this.controller.notifyMonitor();
-							} // Reconnection managed on WS opening
+							}
 							break;
-
-						// case "restart":
-						//     // Restart the headset logic
-						//     break;
+						}
 
 						case "expression":
-							logger.trace(`[PLAYER ${this.playerList.get(playerIP)?.id}] Sent expression: {json}`, {
-								json: jsonPlayer.expr,
-							});
-							this.controller.sendExpression(this.playerList.get(playerIP)?.id, jsonPlayer.expr!);
+							if (playerKey && this.playerList.has(playerKey)) {
+								logger.trace(`[PLAYER ${this.playerList.get(playerKey)?.id}] Sent expression: {json}`, {
+									json: jsonPlayer.expr,
+								});
+								this.controller.sendExpression(this.playerList.get(playerKey)!.id, jsonPlayer.expr!);
+							}
 							break;
 
 						case "ask":
 							{
 								const askJsonPlayer: JsonPlayerAsk = JSON.parse(Buffer.from(message).toString());
-								logger.trace(`[PLAYER ${this.playerList.get(playerIP)?.id}] Sent expression: {json}`, {
-									json: askJsonPlayer,
-								});
+								if (playerKey && this.playerList.has(playerKey)) {
+									logger.trace(`[PLAYER ${this.playerList.get(playerKey)?.id}] Sent expression: {json}`, {
+										json: askJsonPlayer,
+									});
+								}
 								this.controller.sendAsk(askJsonPlayer);
 							}
 							break;
 
 						case "disconnect_properly":
-							ws.end(1000, playerIP);
-							this.controller.purgePlayer(this.playerList.get(playerIP)?.id);
+							ws.end(1000, playerKey ?? "");
+							if (playerKey && this.playerList.has(playerKey)) {
+								this.controller.purgePlayer(this.playerList.get(playerKey)!.id);
+							}
 							break;
 
 						default:
 							logger.warn(
-								`The last message received from ${this.playerList.get(playerIP)?.id} had an unknown type\n{json}`,
+								`The last message received from ${playerKey && this.playerList.has(playerKey) ? this.playerList.get(playerKey)?.id : "unknown"} had an unknown type\n{json}`,
 								{ json: jsonPlayer },
 							);
 					}
 
 					// Client is alive as he just communicated
-					if (this.playerList.has(playerIP)) this.playerList.get(playerIP)!.is_alive = true;
+					if (playerKey && this.playerList.has(playerKey)) this.playerList.get(playerKey)!.is_alive = true;
 				},
 
 				// ======================================
 
 				close: (ws, code: number, message) => {
 					// Try exact ws reference match first
-					let playerIP: string | undefined = this.getIndexByPlayerWs(ws);
+					const playerKey: string | undefined = this.getIndexByPlayerWs(ws);
 
-					// Fallback: identify by remote IP (getIndexByPlayerWs returns undefined when
-					// the player has already reconnected and player.ws points to the new socket)
-					if (!playerIP) {
+					if (!playerKey) {
+						logger.debug("Can't find which player WebSocket was closed (might be unauthenticated or already replaced)");
+					} else {
 						try {
-							const ip = Buffer.from(ws.getRemoteAddressAsText()).toString();
-							if (ip) playerIP = ip;
-						} catch (e) {
-							logger.trace("getRemoteAddressAsText failed in close handler: {e}", { e });
-						}
-					}
-
-					if (!playerIP) logger.error("Can't find which WebSocket been closed...");
-					else
-						try {
-							const player = this.playerList.get(playerIP);
+							const player = this.playerList.get(playerKey);
 							if (player) {
-								logger.info(`Connection closed with ${player.id} - ${playerIP}.\n\tCode: ${code}`);
+								logger.info(`Connection closed with ${player.id}.\n\tCode: ${code}`);
 								code !== 1000 ? logger.info(`, Reason: ${Buffer.from(message).toString()}`) : "";
 
 								// Only mark disconnected if this close event is for the current active socket.
@@ -200,6 +210,7 @@ class PlayerManager {
 						} catch (err) {
 							logger.error("Error during close handling: {err}", { err });
 						}
+					}
 
 					// Handle specific close codes
 					switch (code) {
@@ -215,7 +226,7 @@ class PlayerManager {
 							logger.error(`[Err ${code}] Message too big!`);
 							if (message) {
 								try {
-									logger.error(`${playerIP} - Message: ${Buffer.from(message).toString()}`);
+									logger.error(`Player ${playerKey} - Message: ${Buffer.from(message).toString()}`);
 									if (typeof message.byteLength !== "undefined") {
 										logger.error(`Message size: ${message.byteLength} bytes`);
 									}
@@ -244,6 +255,9 @@ class PlayerManager {
 
 	// Getters
 	getIndexByPlayerId(id: string): string | undefined {
+		if (this.playerList.has(id)) {
+			return id;
+		}
 		let toReturn: string | undefined;
 		for (const [key, player] of this.playerList) {
 			if (player.id === id) {
@@ -251,7 +265,7 @@ class PlayerManager {
 				break;
 			}
 		}
-		if (toReturn === undefined) logger.error(`Cannot find player with ID ${id}}`);
+		if (toReturn === undefined) logger.error(`Cannot find player with ID ${id}`);
 
 		return toReturn;
 	}
@@ -264,19 +278,20 @@ class PlayerManager {
 				break;
 			}
 		}
-		if (toReturn === undefined) logger.error(`Cannot find player with WS ${ws}`);
+		if (toReturn === undefined) logger.trace(`Cannot find player with WS ${ws}`);
 
 		return toReturn;
 	}
 
 	/**
 	 * Gets the state of a specific player
-	 * @param {string} playerWsId - Player WS ID
+	 * @param {string} playerWsId - Player WS ID or Player ID
 	 * @returns {PlayerState} - The state of the player
 	 */
 	getPlayerState(playerWsId: string): PlayerState | undefined {
-		if (this.playerList.has(playerWsId)) {
-			const player: Player = this.playerList.get(playerWsId)!;
+		const key = this.playerList.has(playerWsId) ? playerWsId : this.getIndexByPlayerId(playerWsId);
+		if (key && this.playerList.has(key)) {
+			const player: Player = this.playerList.get(key)!;
 			return { connected: player.connected, in_game: player.in_game, date_connection: player.date_connection };
 		} else logger.warn(`Can't find player with ID ${playerWsId}`);
 	}
@@ -290,7 +305,12 @@ class PlayerManager {
 	getPlayerId(playerWsId: string): string | undefined {
 		if (this.playerList.has(playerWsId)) {
 			return this.playerList.get(playerWsId)?.id;
-		} else logger.warn(`Can't find player with ws ID ${playerWsId}`);
+		}
+		const key = this.getIndexByPlayerId(playerWsId);
+		if (key && this.playerList.has(key)) {
+			return this.playerList.get(key)?.id;
+		}
+		logger.warn(`Can't find player with ws ID ${playerWsId}`);
 	}
 
 	/**
@@ -316,17 +336,20 @@ class PlayerManager {
 	 * @param {boolean} connected - Connection status
 	 */
 	addPlayerConnection(playerWsId: string, connected: boolean) {
-		this.playerList.get(playerWsId)!.connected = connected;
-		this.playerList.get(playerWsId)!.date_connection =
-			`${new Date().getHours().toString().padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
+		const key = this.playerList.has(playerWsId) ? playerWsId : this.getIndexByPlayerId(playerWsId);
+		if (!key || !this.playerList.has(key)) return;
+
+		const player = this.playerList.get(key)!;
+		player.connected = connected;
+		player.date_connection = `${new Date().getHours().toString().padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
 
 		if (
 			this.controller.gama_connector !== undefined &&
 			!["NONE", "NOTREADY"].includes(this.controller.gama_connector.jsonGamaState.experiment_state)
 		) {
-			logger.debug(`Adding player ${this.playerList.get(playerWsId)?.id} to GAMA simulation...`);
-			this.controller.addInGamePlayer(playerWsId);
-			this.togglePlayerInGame(playerWsId, true);
+			logger.debug(`Adding player ${player.id} to GAMA simulation...`);
+			this.controller.addInGamePlayer(key);
+			this.togglePlayerInGame(key, true);
 		}
 	}
 
@@ -338,25 +361,28 @@ class PlayerManager {
 		logger.debug(`Deleting player ${playerWsId}`);
 
 		// Manage both working with Player ID or Player IP
-		const playerIP: string = this.playerList.has(playerWsId) ? playerWsId : this.getIndexByPlayerId(playerWsId)!;
+		const playerKey: string | undefined = this.playerList.has(playerWsId)
+			? playerWsId
+			: this.getIndexByPlayerId(playerWsId);
 
-		if (this.playerList.has(playerIP)) {
+		if (playerKey && this.playerList.has(playerKey)) {
+			const player = this.playerList.get(playerKey);
 			try {
 				// Properly close web socket
-				this.playerList.get(playerIP)?.ws.end(1000, playerIP);
+				player?.ws?.end(1000, playerKey);
 			} catch (_e) {
-				logger.warn(`${playerIP} is already disconnected from middleware\nFull log of player: {player}`, {
-					player: this.playerList.get(playerIP),
+				logger.warn(`${playerKey} is already disconnected from middleware\nFull log of player: {player}`, {
+					player: player,
 				});
 			}
 
 			if (ENV_AGGRESSIVE_DISCONNECT) {
 				logger.debug("Aggressively deleting player");
 				// Remove player
-				this.playerList.delete(playerIP);
+				this.playerList.delete(playerKey);
 			}
 		} else {
-			logger.warn(`Can't remove un-existing player ${playerIP}`);
+			logger.warn(`Can't remove un-existing player ${playerWsId}`);
 		}
 	}
 

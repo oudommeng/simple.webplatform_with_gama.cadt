@@ -167,3 +167,21 @@ describe("removePlayer — aggressive disconnect OFF (issue #57/#59)", () => {
 		expect(pm.playerList.size).toBe(1);
 	});
 });
+
+describe("Multi-player connection independence", () => {
+	it("maintains distinct entries for multiple players keyed by id", () => {
+		const pm = buildManager([
+			["Player_89", { id: "Player_89", in_game: true }],
+			["Player_90", { id: "Player_90", in_game: false }],
+		]);
+
+		expect(pm.playerList.size).toBe(2);
+		expect(pm.getPlayerId("Player_89")).toBe("Player_89");
+		expect(pm.getPlayerId("Player_90")).toBe("Player_90");
+		expect(pm.getPlayerState("Player_89")?.in_game).toBe(true);
+		expect(pm.getPlayerState("Player_90")?.in_game).toBe(false);
+
+		const arr = pm.getArrayPlayerList();
+		expect(Object.keys(arr).sort()).toEqual(["Player_89", "Player_90"]);
+	});
+});
