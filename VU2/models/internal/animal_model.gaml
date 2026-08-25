@@ -16,6 +16,8 @@ global {
 		ask frog { do die; }
 		ask yellow_stem_borer { do die; }
 		ask golden_apple_snail { do die; }
+		ask native_snail { do die; }
+		ask river_snail { do die; }
 		ask wasp { do die; }
 		ask weaver_ant { do die; }
 		ask butterfly { do die; }
@@ -39,6 +41,8 @@ global {
 		if gama_species_value = "frog" { return length(frog where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "yellow_stem_borer" { return length(yellow_stem_borer where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "golden_apple_snail" { return length(golden_apple_snail where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "native_snail" { return length(native_snail where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "river_snail" { return length(river_snail where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "wasp" { return length(wasp where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "weaver_ant" { return length(weaver_ant where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "butterfly" { return length(butterfly where (each.animal_id = row_animal_id)); }
@@ -68,6 +72,8 @@ global {
 		else if gama_species_value = "frog" { ask frog where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "yellow_stem_borer" { ask yellow_stem_borer where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "golden_apple_snail" { ask golden_apple_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "native_snail" { ask native_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "river_snail" { ask river_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "wasp" { ask wasp where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "weaver_ant" { ask weaver_ant where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "butterfly" { ask butterfly where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
@@ -158,6 +164,10 @@ global {
 								create yellow_stem_borer number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
 							} else if gama_species_value = "golden_apple_snail" {
 								create golden_apple_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "native_snail" {
+								create native_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "river_snail" {
+								create river_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
 							} else if gama_species_value = "wasp" {
 								create wasp number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
 							} else if gama_species_value = "weaver_ant" {
@@ -799,6 +809,8 @@ species animal_template skills: [moving] {
 		if species_id = "frog" { return rgb(45, 165, 70); }
 		if species_id = "yellow_stem_borer" { return rgb(235, 145, 20); }
 		if species_id = "golden_apple_snail" { return rgb(155, 135, 35); }
+		if species_id = "native_snail" { return rgb(85, 145, 95); }
+		if species_id = "river_snail" { return rgb(60, 125, 165); }
 		if species_id = "wasp" { return rgb(65, 55, 35); }
 		if species_id = "weaver_ant" { return rgb(155, 35, 50); }
 		if species_id = "butterfly" { return rgb(210, 60, 190); }
@@ -850,6 +862,8 @@ species animal_template skills: [moving] {
 		if animal_id = "yellow_stem_borer_eggs" { return "../fbx/Animals/YellowStemBorer_Eggs.gama.obj"; }
 		if animal_id = "golden_apple_snail_eggs" { return "../fbx/Animals/GoldenAppleSnail_Eggs.gama.obj"; }
 		if animal_id = "golden_apple_snail_adult" { return "../fbx/Animals/GoldenAppleSnail.gama.obj"; }
+		if animal_id = "native_snail_adult" { return "../fbx/Animals/NativeSnail.gama.obj"; }
+		if animal_id = "river_snail_adult" { return "../fbx/Animals/RiverSnail.gama.obj"; }
 		if species_id = "rat" { return "../fbx/Animals/Rat.gama.obj"; }
 		if species_id = "bird" { return "../fbx/Animals/Bird.gama.obj"; }
 		if species_id = "ladybug" { return "../fbx/Animals/Ladybug.gama.obj"; }
@@ -977,6 +991,12 @@ species yellow_stem_borer parent: animal_template {
 }
 
 species golden_apple_snail parent: animal_template {
+}
+
+species native_snail parent: animal_template {
+}
+
+species river_snail parent: animal_template {
 }
 
 species wasp parent: animal_template {

@@ -100,6 +100,8 @@ experiment vu2 type: gui {
 			species frog aspect: default;
 			species yellow_stem_borer aspect: default;
 			species golden_apple_snail aspect: default;
+			species native_snail aspect: default;
+			species river_snail aspect: default;
 			species wasp aspect: default;
 			species weaver_ant aspect: default;
 			species butterfly aspect: default;
@@ -217,6 +219,8 @@ experiment vu2 type: gui {
 				+ length(frog)
 				+ length(yellow_stem_borer)
 				+ length(golden_apple_snail)
+				+ length(native_snail)
+				+ length(river_snail)
 				+ length(wasp)
 				+ length(weaver_ant)
 				+ length(butterfly)
@@ -239,6 +243,8 @@ experiment vu2 type: gui {
 				+ length(frog where (each.is_pest))
 				+ length(yellow_stem_borer where (each.is_pest))
 				+ length(golden_apple_snail where (each.is_pest))
+				+ length(native_snail where (each.is_pest))
+				+ length(river_snail where (each.is_pest))
 				+ length(wasp where (each.is_pest))
 				+ length(weaver_ant where (each.is_pest))
 				+ length(butterfly where (each.is_pest))

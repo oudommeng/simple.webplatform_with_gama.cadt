@@ -86,6 +86,8 @@ const animalTypeOrder = [
 	"yellow_stem_borer_adult",
 	"golden_apple_snail_eggs",
 	"golden_apple_snail_adult",
+	"native_snail_adult",
+	"river_snail_adult",
 	"rat",
 	"bird",
 	"ladybug",
@@ -133,6 +135,8 @@ const ecologicalRoles = {
 	"Leaf Folder": "pest",
 	"Yellow Stem Borer": "pest",
 	"Golden Apple Snail": "pest",
+	"Native Snail": "neutral",
+	"River Snail": "neutral",
 	Rat: "pest",
 	Bird: "pest",
 	"Lynx Spider": "predator",
@@ -160,7 +164,9 @@ function movementMode(species, lifeStage) {
 	if (["Bird", "Bee", "Butterfly", "Dragonfly", "Wasp", "Trichogramma"].includes(species)) {
 		return "fly";
 	}
-	if (["Fish", "Duck", "Golden Apple Snail"].includes(species)) return "water";
+	if (["Fish", "Duck", "Golden Apple Snail", "Native Snail", "River Snail"].includes(species)) {
+		return "water";
+	}
 	if (
 		[
 			"Brown Planthopper",

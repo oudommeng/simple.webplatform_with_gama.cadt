@@ -9,6 +9,8 @@ yellow_stem_borer_eggs,Yellow Stem Borer - Eggs,yellow_stem_borer,Yellow Stem Bo
 yellow_stem_borer_adult,Yellow Stem Borer - Adult,yellow_stem_borer,Yellow Stem Borer,Scirpophaga incertulas,adult,pest,yellow_stem_borer,plant,plant,0.05,0.14,SM_YellowStemBorer_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_YellowStemBorer_01,configured,true
 golden_apple_snail_eggs,Golden Apple Snail - Eggs,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,eggs,pest,golden_apple_snail,stationary,stem,0,0,SM_GAS_Eggs,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GAS_Eggs,configured,true
 golden_apple_snail_adult,Golden Apple Snail - Adult,golden_apple_snail,Golden Apple Snail,Pomacea canaliculata,adult,pest,golden_apple_snail,water,water,0.06,0.18,SM_GoldenAppleSnail_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_GoldenAppleSnail_01,configured,true
+native_snail_adult,Native Snail - Adult,native_snail,Native Snail,not_specified,adult,neutral,native_snail,water,water,0.06,0.18,SM_Native_Snail_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Native_Snail_01,configured,true
+river_snail_adult,River Snail - Adult,river_snail,River Snail,not_specified,adult,neutral,river_snail,water,water,0.06,0.18,SM_River_Snail_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_River_Snail_01,configured,true
 rat,Rat,rat,Rat,Rattus spp.,mixed,pest,rat,ground,soil,0.03,0.1,SM_Rat_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Rat_01,configured,true
 bird,Bird,bird,Bird,Aves,mixed,pest,bird,fly,air,0.2,0.5,SM_Bird_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Bird_01,configured,true
 ladybug,Ladybug,ladybug,Ladybug,Coccinellidae,mixed,predator,ladybug,plant,plant,0.05,0.14,SM_Ladybug_01,Prefabs/Visual Prefabs/Prefabs/Animals/SM_Ladybug_01,configured,true

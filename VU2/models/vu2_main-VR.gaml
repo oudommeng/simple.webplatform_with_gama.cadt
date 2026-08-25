@@ -23,6 +23,8 @@ species unity_linker parent: abstract_unity_linker {
 	unity_property up_yellow_stem_borer_eggs;
 	unity_property up_golden_apple_snail;
 	unity_property up_golden_apple_snail_eggs;
+	unity_property up_native_snail;
+	unity_property up_river_snail;
 	unity_property up_rat;
 	unity_property up_bird;
 	unity_property up_ladybug;
@@ -126,6 +128,14 @@ species unity_linker parent: abstract_unity_linker {
 		unity_aspect golden_apple_snail_eggs_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_GAS_Eggs",1.0,0.0,1.0,-90.0,precision);
 		up_golden_apple_snail_eggs <- geometry_properties("golden_apple_snail_eggs","animal",golden_apple_snail_eggs_aspect,#no_interaction,false);
 		unity_properties << up_golden_apple_snail_eggs;
+
+		unity_aspect native_snail_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_Native_Snail_01",1.0,0.0,1.0,-90.0,precision);
+		up_native_snail <- geometry_properties("native_snail","animal",native_snail_aspect,#no_interaction,false);
+		unity_properties << up_native_snail;
+
+		unity_aspect river_snail_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_River_Snail_01",1.0,0.0,1.0,-90.0,precision);
+		up_river_snail <- geometry_properties("river_snail","animal",river_snail_aspect,#no_interaction,false);
+		unity_properties << up_river_snail;
 
 		unity_aspect rat_aspect <- prefab_aspect("Prefabs/Visual Prefabs/Prefabs/Animals/SM_Rat_01",1.0,0.0,1.0,-90.0,precision);
 		up_rat <- geometry_properties("rat","animal",rat_aspect,#no_interaction,false);
@@ -261,6 +271,8 @@ species unity_linker parent: abstract_unity_linker {
 		do add_geometries_to_send(leaf_folder, up_leaf_folder);
 		do add_geometries_to_send(yellow_stem_borer, up_yellow_stem_borer);
 		do add_geometries_to_send(golden_apple_snail, up_golden_apple_snail);
+		do add_geometries_to_send(native_snail, up_native_snail);
+		do add_geometries_to_send(river_snail, up_river_snail);
 		do add_geometries_to_send(rat, up_rat);
 		do add_geometries_to_send(bird, up_bird);
 		do add_geometries_to_send(ladybug, up_ladybug);

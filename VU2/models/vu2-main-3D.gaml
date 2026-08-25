@@ -141,6 +141,8 @@ experiment vu2_main_3D type: gui {
 			species frog aspect: mesh3d;
 			species yellow_stem_borer aspect: mesh3d;
 			species golden_apple_snail aspect: mesh3d;
+			species native_snail aspect: mesh3d;
+			species river_snail aspect: mesh3d;
 			species wasp aspect: mesh3d;
 			species weaver_ant aspect: mesh3d;
 			species butterfly aspect: mesh3d;
@@ -172,6 +174,8 @@ experiment vu2_main_3D type: gui {
 				+ length(frog)
 				+ length(yellow_stem_borer)
 				+ length(golden_apple_snail)
+				+ length(native_snail)
+				+ length(river_snail)
 				+ length(wasp)
 				+ length(weaver_ant)
 				+ length(butterfly)

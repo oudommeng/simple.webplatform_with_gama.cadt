@@ -9,6 +9,8 @@ vegetative,Vegetative Stage,yellow_stem_borer_eggs,yellow_stem_borer,6,0.400000,
 vegetative,Vegetative Stage,yellow_stem_borer_adult,yellow_stem_borer,6,0.600000,,24,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 vegetative,Vegetative Stage,golden_apple_snail_eggs,golden_apple_snail,18,0.428571,,12,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 vegetative,Vegetative Stage,golden_apple_snail_adult,golden_apple_snail,18,0.571429,,16,observed,legacy_animal_data_v1,low,unique_spawn_point_share
+vegetative,Vegetative Stage,native_snail_adult,native_snail,1,1.000000,,16,observed,legacy_animal_data_v1,low,single_life_stage
+vegetative,Vegetative Stage,river_snail_adult,river_snail,1,1.000000,,8,observed,legacy_animal_data_v1,low,single_life_stage
 vegetative,Vegetative Stage,rat,rat,1,1.000000,,4,observed,legacy_animal_data_v1,low,single_life_stage
 vegetative,Vegetative Stage,bird,bird,2,1.000000,,4,observed,legacy_animal_data_v1,low,single_life_stage
 vegetative,Vegetative Stage,ladybug,ladybug,8,1.000000,,32,observed,legacy_animal_data_v1,low,single_life_stage
@@ -36,6 +38,8 @@ reproductive,Reproductive Stage,yellow_stem_borer_eggs,yellow_stem_borer,10,0.42
 reproductive,Reproductive Stage,yellow_stem_borer_adult,yellow_stem_borer,10,0.533333,,40,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,golden_apple_snail_eggs,golden_apple_snail,1,0.428571,,12,observed,legacy_animal_data_v1,low,unique_spawn_point_share
 reproductive,Reproductive Stage,golden_apple_snail_adult,golden_apple_snail,1,0.571429,,16,observed,legacy_animal_data_v1,low,unique_spawn_point_share
+reproductive,Reproductive Stage,native_snail_adult,native_snail,1,1.000000,,16,observed,legacy_animal_data_v1,low,single_life_stage
+reproductive,Reproductive Stage,river_snail_adult,river_snail,1,1.000000,,20,observed,legacy_animal_data_v1,low,single_life_stage
 reproductive,Reproductive Stage,rat,rat,2,1.000000,,8,observed,legacy_animal_data_v1,low,single_life_stage
 reproductive,Reproductive Stage,bird,bird,3,1.000000,,4,observed,legacy_animal_data_v1,low,single_life_stage
 reproductive,Reproductive Stage,ladybug,ladybug,15,1.000000,,40,observed,legacy_animal_data_v1,low,single_life_stage
@@ -63,6 +67,8 @@ ripening,Ripening Stage,yellow_stem_borer_eggs,yellow_stem_borer,0,0,,0,not_samp
 ripening,Ripening Stage,yellow_stem_borer_adult,yellow_stem_borer,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 ripening,Ripening Stage,golden_apple_snail_eggs,golden_apple_snail,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 ripening,Ripening Stage,golden_apple_snail_adult,golden_apple_snail,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
+ripening,Ripening Stage,native_snail_adult,native_snail,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
+ripening,Ripening Stage,river_snail_adult,river_snail,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available
 ripening,Ripening Stage,rat,rat,5,1.000000,,20,observed,legacy_animal_data_v1,low,single_life_stage
 ripening,Ripening Stage,bird,bird,8,1.000000,,8,observed,legacy_animal_data_v1,low,single_life_stage
 ripening,Ripening Stage,ladybug,ladybug,0,0,,0,not_sampled,legacy_animal_data_v1,unknown,not_available

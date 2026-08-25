@@ -95,6 +95,18 @@ const prefabToAnimal = {
 		species: "Golden Apple Snail",
 		life_stage: "adult",
 	},
+	SM_Native_Snail_01: {
+		animal_id: "native_snail_adult",
+		animal_name: "Native Snail - Adult",
+		species: "Native Snail",
+		life_stage: "adult",
+	},
+	SM_River_Snail_01: {
+		animal_id: "river_snail_adult",
+		animal_name: "River Snail - Adult",
+		species: "River Snail",
+		life_stage: "adult",
+	},
 	SM_Rat_01: { animal_id: "rat", animal_name: "Rat", species: "Rat", life_stage: "unspecified" },
 	SM_Bird_01: { animal_id: "bird", animal_name: "Bird", species: "Bird", life_stage: "unspecified" },
 	SM_Ladybug_01: {
