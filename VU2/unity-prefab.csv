@@ -9,6 +9,8 @@ animal,yellow_stem_borer,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_YellowSt
 animal,yellow_stem_borer_eggs,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_YSB_Eggs
 animal,golden_apple_snail,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GoldenAppleSnail_01
 animal,golden_apple_snail_eggs,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_GAS_Eggs
+animal,native_snail,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Native_Snail_01
+animal,river_snail,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_River_Snail_01
 animal,rat,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Rat_01
 animal,bird,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Bird_01
 animal,ladybug,TRUE,Prefabs\Visual Prefabs\Prefabs\Animals\SM_Ladybug_01

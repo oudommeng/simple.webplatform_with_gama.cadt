@@ -280,7 +280,7 @@ class GamaConnector {
 			};
 
 			this.gama_socket.onerror = (error) => {
-				if (error.error.code === "ECONNREFUSED") {
+				if (error.error?.code === "ECONNREFUSED") {
 					logger.trace(`Show full stack for Error CONNREFUSED {error}`, { error });
 					logger.error(
 						`The platform can't connect to GAMA, please verify that GAMA is open/running and that it's reachable at the address ${process.env.GAMA_IP_ADDRESS}:${process.env.GAMA_WS_PORT}`,

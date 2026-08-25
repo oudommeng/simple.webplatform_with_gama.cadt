@@ -79,6 +79,15 @@ species vegetative_rice_plant {
 				size: 0.45;
 		}
 	}
+
+	aspect mesh3d {
+		if !has_pest_damage {
+			draw obj_file("../fbx/Plants/RicePlant_Vegetative.gama.obj", 90::{-1, 0, 0})
+				size: 1.60
+				at: location
+				color: rgb(55, 165, 65);
+		}
+	}
 }
 
 species reproductive_rice_plant {
@@ -114,6 +123,15 @@ species reproductive_rice_plant {
 				size: 0.45;
 		}
 	}
+
+	aspect mesh3d {
+		if !has_pest_damage {
+			draw obj_file("../fbx/Plants/RicePlant_Reproductive.gama.obj", 90::{-1, 0, 0})
+				size: 1.95
+				at: location
+				color: rgb(105, 165, 60);
+		}
+	}
 }
 
 species ripening_rice_plant {
@@ -147,6 +165,15 @@ species ripening_rice_plant {
 				at: {location.x, location.y, plant_height + 0.50}
 				color: #black
 				size: 0.45;
+		}
+	}
+
+	aspect mesh3d {
+		if !has_pest_damage {
+			draw obj_file("../fbx/Plants/RicePlant_Ripening.gama.obj", 90::{-1, 0, 0})
+				size: 2.10
+				at: location
+				color: rgb(205, 175, 55);
 		}
 	}
 }

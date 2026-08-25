@@ -16,6 +16,8 @@ global {
 		ask frog { do die; }
 		ask yellow_stem_borer { do die; }
 		ask golden_apple_snail { do die; }
+		ask native_snail { do die; }
+		ask river_snail { do die; }
 		ask wasp { do die; }
 		ask weaver_ant { do die; }
 		ask butterfly { do die; }
@@ -39,6 +41,8 @@ global {
 		if gama_species_value = "frog" { return length(frog where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "yellow_stem_borer" { return length(yellow_stem_borer where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "golden_apple_snail" { return length(golden_apple_snail where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "native_snail" { return length(native_snail where (each.animal_id = row_animal_id)); }
+		if gama_species_value = "river_snail" { return length(river_snail where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "wasp" { return length(wasp where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "weaver_ant" { return length(weaver_ant where (each.animal_id = row_animal_id)); }
 		if gama_species_value = "butterfly" { return length(butterfly where (each.animal_id = row_animal_id)); }
@@ -68,6 +72,8 @@ global {
 		else if gama_species_value = "frog" { ask frog where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "yellow_stem_borer" { ask yellow_stem_borer where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "golden_apple_snail" { ask golden_apple_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "native_snail" { ask native_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
+		else if gama_species_value = "river_snail" { ask river_snail where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "wasp" { ask wasp where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "weaver_ant" { ask weaver_ant where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
 		else if gama_species_value = "butterfly" { ask butterfly where (each.animal_id = row_animal_id) { do update_population_metadata(population_row); } }
@@ -158,6 +164,10 @@ global {
 								create yellow_stem_borer number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
 							} else if gama_species_value = "golden_apple_snail" {
 								create golden_apple_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "native_snail" {
+								create native_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
+							} else if gama_species_value = "river_snail" {
+								create river_snail number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
 							} else if gama_species_value = "wasp" {
 								create wasp number: additional_count { do setup_from_csv_rows(type_row, population_row, matching_spawn_rows); }
 							} else if gama_species_value = "weaver_ant" {
@@ -383,6 +393,14 @@ species animal_template skills: [moving] {
 		movement_destination <- location;
 
 		movement_speed <- get_scaled_movement_speed(movement_mode, speed_min, speed_max);
+		if species_id = "duck" or species_id = "snake" or species_id = "fish" {
+			steering_rate <- 0.05;
+		}
+
+		if species_id = "duck" {
+			location <- constrain_duck_to_field_edge(location.x, location.y, location.z);
+		}
+
 		heading <- movement_heading;
 		has_movement_heading <- true;
 
@@ -439,6 +457,49 @@ species animal_template skills: [moving] {
 		return "ground";
 	}
 
+	point constrain_duck_to_field_edge(float proposed_x, float proposed_y, float z_value) {
+		float edge_margin <- spacing * 0.5;
+		float minimum_x <- field_min_x + edge_margin;
+		float maximum_x <- field_max_x - edge_margin;
+		float minimum_y <- field_min_y + edge_margin;
+		float maximum_y <- field_max_y - edge_margin;
+		float distance_left <- abs(proposed_x - field_min_x);
+		float distance_right <- abs(proposed_x - field_max_x);
+		float distance_bottom <- abs(proposed_y - field_min_y);
+		float distance_top <- abs(proposed_y - field_max_y);
+		float nearest_distance <- min([distance_left, distance_right, distance_bottom, distance_top]);
+
+		if nearest_distance = distance_left {
+			return {
+				minimum_x,
+				max([minimum_y, min([maximum_y, proposed_y])]),
+				z_value
+			};
+		}
+
+		if nearest_distance = distance_right {
+			return {
+				maximum_x,
+				max([minimum_y, min([maximum_y, proposed_y])]),
+				z_value
+			};
+		}
+
+		if nearest_distance = distance_bottom {
+			return {
+				max([minimum_x, min([maximum_x, proposed_x])]),
+				minimum_y,
+				z_value
+			};
+		}
+
+		return {
+			max([minimum_x, min([maximum_x, proposed_x])]),
+			maximum_y,
+			z_value
+		};
+	}
+
 	float get_start_height(string move_mode, float csv_z) {
 
 		if move_mode = "fly" {
@@ -450,14 +511,17 @@ species animal_template skills: [moving] {
 		}
 
 		if move_mode = "water" {
-			return water_level + 0.05;
+			if species_id = "duck" {
+				return water_level + 0.02;
+			}
+			return max([0.0, min([water_level, abs(csv_z)])]);
 		}
 
 		if move_mode = "stationary" {
 			return max([0.15, min([1.5, abs(csv_z)])]);
 		}
 
-		return max([0.08, min([0.35, abs(csv_z)])]);
+		return max([0.0, min([0.20, abs(csv_z)])]);
 	}
 
 	float get_movement_speed(string move_mode) {
@@ -496,6 +560,14 @@ species animal_template skills: [moving] {
 
 		float scaled_speed <- base_speed * animal_movement_speed_scale;
 
+		if species_id = "fish" {
+			scaled_speed <- scaled_speed * 0.25;
+		} else if species_id = "duck" {
+			scaled_speed <- scaled_speed * 0.40;
+		} else if species_id = "snake" {
+			scaled_speed <- scaled_speed * 0.20;
+		}
+
 		if move_mode = "fly" {
 			return min([scaled_speed, max_flying_speed_m_per_cycle]);
 		}
@@ -505,7 +577,17 @@ species animal_template skills: [moving] {
 		}
 
 		if move_mode = "water" {
+			if species_id = "fish" {
+				return min([scaled_speed, 0.003]);
+			}
+			if species_id = "duck" {
+				return min([scaled_speed, 0.004]);
+			}
 			return min([scaled_speed, max_water_speed_m_per_cycle]);
+		}
+
+		if species_id = "snake" {
+			return min([scaled_speed, 0.0015]);
 		}
 
 		return min([scaled_speed, max_ground_speed_m_per_cycle]);
@@ -544,7 +626,15 @@ species animal_template skills: [moving] {
 			movement_direction_initialized <- true;
 		}
 
-		direction_timer <- rnd(60, 140);
+		if species_id = "snake" {
+			direction_timer <- rnd(180, 360);
+		} else if species_id = "fish" {
+			direction_timer <- rnd(120, 240);
+		} else if species_id = "duck" {
+			direction_timer <- rnd(160, 300);
+		} else {
+			direction_timer <- rnd(60, 140);
+		}
 		do update_heading_from_direction;
 	}
 
@@ -620,7 +710,7 @@ species animal_template skills: [moving] {
 		));
 	}
 
-	reflex move_independently {
+	reflex move_independently when: animal_movement_speed_scale > 0.0 {
 
 		bool pest_is_resting_on_rice <- is_pest and is_near_active_rice_crop();
 
@@ -674,9 +764,20 @@ species animal_template skills: [moving] {
 				}
 				next_z <- max([0.25, min([1.70, next_z])]);
 			} else if movement_mode = "water" {
-				next_z <- water_level + 0.05;
+				if species_id = "duck" {
+					next_z <- water_level + 0.02;
+				} else {
+					next_z <- max([0.0, min([water_level, location.z])]);
+				}
 			} else {
 				next_z <- location.z;
+			}
+
+			if species_id = "duck" {
+				point edge_location <- constrain_duck_to_field_edge(next_x, next_y, next_z);
+				next_x <- edge_location.x;
+				next_y <- edge_location.y;
+				next_z <- edge_location.z;
 			}
 
 			movement_direction <- {direction_x, direction_y, direction_z};
@@ -708,6 +809,8 @@ species animal_template skills: [moving] {
 		if species_id = "frog" { return rgb(45, 165, 70); }
 		if species_id = "yellow_stem_borer" { return rgb(235, 145, 20); }
 		if species_id = "golden_apple_snail" { return rgb(155, 135, 35); }
+		if species_id = "native_snail" { return rgb(85, 145, 95); }
+		if species_id = "river_snail" { return rgb(60, 125, 165); }
 		if species_id = "wasp" { return rgb(65, 55, 35); }
 		if species_id = "weaver_ant" { return rgb(155, 35, 50); }
 		if species_id = "butterfly" { return rgb(210, 60, 190); }
@@ -747,6 +850,59 @@ species animal_template skills: [moving] {
 			return "bar";
 		}
 		return "sphere";
+	}
+
+	string mesh_asset_path {
+		if animal_id = "brown_planthopper_eggs" { return "../fbx/Animals/BrownPlanthopper_Eggs.gama.obj"; }
+		if animal_id = "brown_planthopper_nymph" { return "../fbx/Animals/BrownPlanthopper_Nymph.gama.obj"; }
+		if animal_id = "brown_planthopper_adult" { return "../fbx/Animals/BrownPlanthopper_Adult.gama.obj"; }
+		if animal_id = "leaf_folder_eggs" { return "../fbx/Animals/LeafFolder_Eggs.gama.obj"; }
+		if animal_id = "leaf_folder_larva" { return "../fbx/Animals/LeafFolder_Larva.gama.obj"; }
+		if animal_id = "leaf_folder_adult" { return "../fbx/Animals/LeafFolder_Adult.gama.obj"; }
+		if animal_id = "yellow_stem_borer_eggs" { return "../fbx/Animals/YellowStemBorer_Eggs.gama.obj"; }
+		if animal_id = "golden_apple_snail_eggs" { return "../fbx/Animals/GoldenAppleSnail_Eggs.gama.obj"; }
+		if animal_id = "golden_apple_snail_adult" { return "../fbx/Animals/GoldenAppleSnail.gama.obj"; }
+		if animal_id = "native_snail_adult" { return "../fbx/Animals/NativeSnail.gama.obj"; }
+		if animal_id = "river_snail_adult" { return "../fbx/Animals/RiverSnail.gama.obj"; }
+		if species_id = "rat" { return "../fbx/Animals/Rat.gama.obj"; }
+		if species_id = "bird" { return "../fbx/Animals/Bird.gama.obj"; }
+		if species_id = "ladybug" { return "../fbx/Animals/Ladybug.gama.obj"; }
+		if species_id = "dragonfly" { return "../fbx/Animals/Dragonfly.gama.obj"; }
+		if species_id = "duck" { return "../fbx/Animals/Duck.gama.obj"; }
+		if species_id = "fish" { return "../fbx/Animals/Fish.gama.obj"; }
+		if species_id = "frog" { return "../fbx/Animals/Frog.gama.obj"; }
+		if species_id = "weaver_ant" { return "../fbx/Animals/WeaverAnt.gama.obj"; }
+		if species_id = "lynx_spider" { return "../fbx/Animals/Spider.gama.obj"; }
+		if species_id = "wasp" { return "../fbx/Animals/Wasp.gama.obj"; }
+		if species_id = "trichogramma" { return "../fbx/Animals/Trichogramma.gama.obj"; }
+		if species_id = "worm" { return "../fbx/Animals/Worm.gama.obj"; }
+		if species_id = "bee" { return "../fbx/Animals/Bee.gama.obj"; }
+		if species_id = "butterfly" { return "../fbx/Animals/Butterfly.gama.obj"; }
+		if species_id = "cricket" { return "../fbx/Animals/Cricket.gama.obj"; }
+		if species_id = "snake" { return "../fbx/Animals/Snake.gama.obj"; }
+		return "";
+	}
+
+	float mesh_size {
+		if movement_mode = "fly" { return 0.90; }
+		if movement_mode = "water" { return 1.10; }
+		if movement_mode = "stationary" { return 0.55; }
+		if species_id in ["golden_apple_snail", "rat", "duck", "snake"] { return 1.20; }
+		return 0.80;
+	}
+
+	aspect mesh3d {
+		string mesh_path <- mesh_asset_path();
+
+		if mesh_path != "" {
+			draw obj_file(mesh_path, 90::{-1, 0, 0})
+				size: mesh_size()
+				at: location
+				rotate: heading - 90.0
+				color: marker_color_for_species();
+		} else {
+			draw sphere(0.18) at: location color: marker_color_for_species();
+		}
 	}
 
 	aspect default {
@@ -835,6 +991,12 @@ species yellow_stem_borer parent: animal_template {
 }
 
 species golden_apple_snail parent: animal_template {
+}
+
+species native_snail parent: animal_template {
+}
+
+species river_snail parent: animal_template {
 }
 
 species wasp parent: animal_template {

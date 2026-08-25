@@ -3,6 +3,8 @@ animal,brown_planthopper,true,prefab/dynamic animal
 animal,leaf_folder,true,prefab/dynamic animal
 animal,yellow_stem_borer,true,prefab/dynamic animal
 animal,golden_apple_snail,true,prefab/dynamic animal
+animal,native_snail,true,prefab/dynamic animal
+animal,river_snail,true,prefab/dynamic animal
 animal,rat,true,prefab/dynamic animal
 animal,bird,true,prefab/dynamic animal
 animal,ladybug,true,prefab/dynamic animal

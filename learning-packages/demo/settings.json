@@ -2,7 +2,7 @@
   "type": "json_settings",
   "name": "LinkToUnity",
   "splashscreen": "learning-packages/demo/splashscreen/demoOne.png",
-  "model_file_path": ".Models/Demo/Multi Player Game/RaceVR.gaml",
+  "model_file_path": "./Models/Demo/Multi Player Game/RaceVR.gaml",
   "experiment_name": "vr_xp", 
   "minimal_players": "0", 
   "maximal_players": "4", 

@@ -75,6 +75,37 @@ const stageNames = {
 	reproductive: "Reproductive Stage",
 	ripening: "Ripening Stage",
 };
+const animalTypeOrder = [
+	"brown_planthopper_eggs",
+	"brown_planthopper_nymph",
+	"brown_planthopper_adult",
+	"leaf_folder_eggs",
+	"leaf_folder_larva",
+	"leaf_folder_adult",
+	"yellow_stem_borer_eggs",
+	"yellow_stem_borer_adult",
+	"golden_apple_snail_eggs",
+	"golden_apple_snail_adult",
+	"native_snail_adult",
+	"river_snail_adult",
+	"rat",
+	"bird",
+	"ladybug",
+	"dragonfly",
+	"duck",
+	"fish",
+	"frog",
+	"weaver_ant",
+	"lynx_spider",
+	"wasp",
+	"trichogramma",
+	"worm",
+	"bee",
+	"butterfly",
+	"cricket",
+	"snake",
+	"yellow_stem_borer_larva",
+];
 
 const scientificNames = {
 	"Brown Planthopper": "Nilaparvata lugens",
@@ -104,6 +135,8 @@ const ecologicalRoles = {
 	"Leaf Folder": "pest",
 	"Yellow Stem Borer": "pest",
 	"Golden Apple Snail": "pest",
+	"Native Snail": "neutral",
+	"River Snail": "neutral",
 	Rat: "pest",
 	Bird: "pest",
 	"Lynx Spider": "predator",
@@ -131,7 +164,9 @@ function movementMode(species, lifeStage) {
 	if (["Bird", "Bee", "Butterfly", "Dragonfly", "Wasp", "Trichogramma"].includes(species)) {
 		return "fly";
 	}
-	if (["Fish", "Duck", "Golden Apple Snail"].includes(species)) return "water";
+	if (["Fish", "Duck", "Golden Apple Snail", "Native Snail", "River Snail"].includes(species)) {
+		return "water";
+	}
 	if (
 		[
 			"Brown Planthopper",
@@ -170,12 +205,16 @@ for (const row of sourceRows) {
 	if (!firstByAnimalId.has(row.animal_id)) firstByAnimalId.set(row.animal_id, row);
 }
 
-const animalTypes = [...firstByAnimalId.values()].map((row) => {
+const orderedAnimalRows = [...firstByAnimalId.values()].sort(
+	(left, right) =>
+		animalTypeOrder.indexOf(left.animal_id) - animalTypeOrder.indexOf(right.animal_id),
+);
+
+const animalTypes = orderedAnimalRows.map((row) => {
 	const speciesId = slug(row.species);
 	const mode = movementMode(row.species, row.life_stage);
 	const [speedMin, speedMax] = speeds(mode);
-	const missingAsset =
-		row.animal_id === "golden_apple_snail_eggs" || !row.prefab_name;
+	const missingAsset = !row.prefab_name;
 	const larvaAssetNeedsReview = row.animal_id === "leaf_folder_larva";
 	const prefabName = missingAsset ? "" : row.prefab_name;
 
